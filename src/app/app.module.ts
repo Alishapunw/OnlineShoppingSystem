@@ -8,13 +8,15 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegistrationComponent } from './registration/registration.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegistrationComponent,
-    ForgotpasswordComponent
+    ForgotpasswordComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
