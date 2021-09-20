@@ -1,0 +1,6 @@
+.form-control,
+.btn {
+    min-height: 38px;
+    border-radius: 2px;
+}
+

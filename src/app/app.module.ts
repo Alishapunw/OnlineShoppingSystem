@@ -8,13 +8,17 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegistrationComponent } from './registration/registration.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
+import { RetailerHomeComponent } from './retailer-home/retailer-home.component';
+import { RetailerProfileComponent } from './retailer-profile/retailer-profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegistrationComponent,
-    ForgotpasswordComponent
+    ForgotpasswordComponent,
+    RetailerHomeComponent,
+    RetailerProfileComponent
   ],
   imports: [
     BrowserModule,

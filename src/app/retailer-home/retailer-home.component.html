@@ -1,1 +1,55 @@
+<html>
+    <body>
+        <div class="login-form">
+            <form #rform="ngForm" (ngSubmit)="Submitdata()" novalidate>
+                <h2 class="text-center">Log in</h2>
+                <div class="form-group">
+                    <label>Email ID</label>
+                    <input type="text" class="form-control" placeholder="Email ID" id="email" name="email" #name1 required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" 
+                    [(ngModel)]="retailer.EmailId" #email="ngModel">
+                </div>
+                <div *ngIf="!email?.valid && (email?.dirty || email?.touched)" class="error">
+                    <div *ngIf="email!.errors!.required">
+                        <p class="text-danger">Email ID is required</p>
+                    </div>
+                </div>
+                <div *ngIf="!email?.valid && (email?.dirty || email?.touched)" class="error">
+                    <div *ngIf="email!.errors!.pattern">
+                        <p class="text-danger">Email format is wrong</p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" class="form-control" placeholder="Password" id="pwd" name="pwd" required
+                        minlength="8" [(ngModel)]="retailer.Password" #pwd="ngModel">
+                </div>
+                <div *ngIf="!pwd?.valid && (pwd ?.dirty || pwd?.touched)" class="error">
+                    <div *ngIf="pwd!.errors!.required">
+                        <p class="text-danger">Password is required</p>
+                    </div>
+                    <div *ngIf="pwd!.errors!.minlength">
+                        <p class="text-danger">Enter atleast 8 digits</p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block" [disabled]="!rform.valid">Log in</button>
+                </div>
+                <div class="clearfix">
+                    <label class="pull-left checkbox-inline"><input type="checkbox"> Remember me</label>
+                    <br>
+                    <a routerLink="../ForgotPassword">Forgot Password?</a>
+                </div>
+            </form>
+
+        </div>
+        <div class="container-fluid">
+            <div class="footer-copyright text-center py-3" style="background-color: rgb(170, 169, 169);">
+                <br>
+                <p>© 2020 Larsen & Toubro Infotech Limited</p>
+            </div>
+        </div>
+    </body>
+</html>
 
