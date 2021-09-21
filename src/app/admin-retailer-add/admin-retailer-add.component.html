@@ -36,8 +36,17 @@
                   <div class="login-form">
                       <form [formGroup]="ContactForm" (ngSubmit)="SubmitInfo()">
                          
+                        <div class="form-group">
+                            <label>Retailer's ID*</label>
+                            <input type="text" name="id" id="id" class="form-control" placeholder="Name" required="required" formControlName="id">
+                            <div *ngIf="!id?.valid && (id?.dirty || id?.touched)" class="error">
+                              <div *ngIf="id!.errors!.required">
+                                ID is required
+                              </div>
+                        </div>
+                    </div>
                           <div class="form-group">
-                              <label>Name*</label>
+                              <label>Retailer's Name*</label>
                               <input type="text" name="fname" id="fname" class="form-control" placeholder="Name" required="required" formControlName="firstName">
                               <div *ngIf="!fname?.valid && (fname?.dirty || fname?.touched)" class="error">
                                 <div *ngIf="fname!.errors!.required">
@@ -75,43 +84,18 @@
                         </div>                      
                         </div>
 
-                          <div class="form-group">
-                              <label>Password*</label>
-                              <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Password" 
-                              formControlName="pwd" required="required">
-                          </div>
-                          <div *ngIf="!pwd?.valid && (pwd ?.dirty || pwd?.touched)" class="error">
-                            <div *ngIf="pwd!.errors!.required">
-                                Password is required  
-                            </div>
-                            <div *ngIf="pwd!.errors!.minlength">
-                             Enter atleast 8 digits  
-                            </div>               
-                        </div>
-                    
-                        <div class="form-group">
-                            <label>Confirm Password*</label>
-                            <input type="text" class="form-control" id="cpwd" name="cpwd"
-                            placeholder="Re-Enter Password"  formControlName="cpwd" required="required">
-                        </div>
-                        <div *ngIf="!pwd?.valid && (cpwd ?.dirty || cpwd?.touched)" class="error">
-                            <div *ngIf="cpwd!.errors!.required">
-                                Password is required  
-                            </div>
-                            <div *ngIf="cpwd!.errors!.minlength">
-                             Enter atleast 8 digits  
-                            </div>               
-                        </div>
-
+                          
                         
                           <div class="form-group">
-                              <button type="submit" class="btn btn-primary btn-block">Register</button>
+                              <button type="submit" class="btn btn-primary btn-block" [disabled]="!ContactForm.valid">
+                                  <a routerLink="../AdminRetailerDetails">Submit</a></button>
                           </div>
                         
                           <div class="clearfix">
-                            <a routerLink="../Login">Already have an account? Sign in </a>
+                            
                         </div>        
 
                         </form>     
                   </div>
                 
+

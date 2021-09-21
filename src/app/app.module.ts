@@ -13,6 +13,9 @@ import { RetailerProfileComponent } from './retailer-profile/retailer-profile.co
 import { HomeComponent } from './home/home.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { AdminRetailerViewComponent } from './admin-retailer-view/admin-retailer-view.component';
+import { AdminRetailerAddComponent } from './admin-retailer-add/admin-retailer-add.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,11 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
     RetailerProfileComponent,
     HomeComponent,
     AddProductComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    HomeComponent,
+    AdminRetailerViewComponent,
+    AdminRetailerAddComponent,
+    AdminLoginComponent
   ],
   imports: [
     BrowserModule,
