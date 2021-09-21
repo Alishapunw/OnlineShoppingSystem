@@ -10,7 +10,6 @@ import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.compone
 import { AddProductComponent } from './add-product/add-product.component';
 import { RetailerProfileComponent } from './retailer-profile/retailer-profile.component';
 import { RetailerHomeComponent } from './retailer-home/retailer-home.component';
-// import { RetailerProfileComponent } from './retailer-profile/retailer-profile.component';
 import { HomeComponent } from './home/home.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { HomepageComponent } from './homepage/homepage.component';
@@ -40,7 +39,6 @@ import { ProductitemComponent } from './shopping/productlist/productitem/product
     AdminRetailerViewComponent,
     AdminRetailerAddComponent,
     AdminLoginComponent,
-<<<<<<< HEAD
     HomepageComponent,
     NavpageComponent,
     ShoppingComponent,
@@ -49,10 +47,6 @@ import { ProductitemComponent } from './shopping/productlist/productitem/product
     CartitemComponent,
     ProductlistComponent,
     ProductitemComponent
-=======
-    UserProfileComponent,
-    ProductDetailViewComponent
->>>>>>> 94812aaa46e7854c95403d64699dce083d1a29c1
   ],
   imports: [
     BrowserModule,
