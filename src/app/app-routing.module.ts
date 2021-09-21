@@ -12,6 +12,8 @@ import { AdminRetailerViewComponent } from './admin-retailer-view/admin-retailer
 import {AdminLoginComponent} from './admin-login/admin-login.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 
+
+
 const routes: Routes = [
   {path:'', redirectTo:'Home', pathMatch:'full'},
   {path:'Login', component: LoginComponent},
