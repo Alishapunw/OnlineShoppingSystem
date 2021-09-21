@@ -8,6 +8,8 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegistrationComponent } from './registration/registration.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
+import { RetailerHomeComponent } from './retailer-home/retailer-home.component';
+import { RetailerProfileComponent } from './retailer-profile/retailer-profile.component';
 import { HomeComponent } from './home/home.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { NavpageComponent } from './homepage/navpage/navpage.component';
@@ -27,6 +29,11 @@ import { ProductitemComponent } from './shopping/productlist/productitem/product
     LoginComponent,
     RegistrationComponent,
     ForgotpasswordComponent,
+    RetailerHomeComponent,
+    RetailerProfileComponent,
+    HomeComponent,
+    AddProductComponent,
+    ChangePasswordComponent,
     HomeComponent,
     AdminRetailerViewComponent,
     AdminRetailerAddComponent,

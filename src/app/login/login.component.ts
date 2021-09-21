@@ -21,10 +21,7 @@ console.log(this.user)
 }
 
 class User{
-  FirstName!: string;
-  Password!:string;
+  FirstName?: string;
+  Password?:string;
   constructor(){}
-
-  
-
 }
