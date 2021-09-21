@@ -9,6 +9,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RegistrationComponent } from './registration/registration.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { HomeComponent } from './home/home.component';
+import { AdminRetailerViewComponent } from './admin-retailer-view/admin-retailer-view.component';
+import { AdminRetailerAddComponent } from './admin-retailer-add/admin-retailer-add.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,10 @@ import { HomeComponent } from './home/home.component';
     LoginComponent,
     RegistrationComponent,
     ForgotpasswordComponent,
-    HomeComponent
+    HomeComponent,
+    AdminRetailerViewComponent,
+    AdminRetailerAddComponent,
+    AdminLoginComponent
   ],
   imports: [
     BrowserModule,

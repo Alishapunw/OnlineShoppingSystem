@@ -2,18 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-registration',
-  templateUrl: './registration.component.html',
-  styleUrls: ['./registration.component.css']
+  selector: 'app-admin-retailer-add',
+  templateUrl: './admin-retailer-add.component.html',
+  styleUrls: ['./admin-retailer-add.component.css']
 })
-export class RegistrationComponent implements OnInit {
+export class AdminRetailerAddComponent implements OnInit {
 
   ContactForm:FormGroup=new FormGroup({
     firstName:new FormControl("",[Validators.required]),
     email:new FormControl("",[Validators.required,Validators.pattern("^[a-zA-Z0-9]+@[a-zA-Z0-9.-]+$")]),
-    pwd:new FormControl("",[Validators.required,Validators.minLength(8)]),
-    cpwd:new FormControl("",[Validators.required,Validators.minLength(8)]),
     mobileno: new FormControl("",[Validators.required,Validators.minLength(10)]),
+    id:new FormControl("",[Validators.required]),
   })
 
 constructor() { }
@@ -32,14 +31,12 @@ get email()
 get Mobileno(){
   return this.ContactForm.get('mobileno')
 }
-get pwd(){
-  return this.ContactForm.get('pwd')
-}
-get cpwd(){
-  return this.ContactForm.get('pwd')
+get id(){
+  return this.ContactForm.get('id')
 }
 
 SubmitInfo(){
 console.log(this.ContactForm.value);
 }
 }
+
