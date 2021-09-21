@@ -7,7 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { AdminRetailerAddComponent } from './admin-retailer-add/admin-retailer-add.component';
 import { AdminRetailerViewComponent } from './admin-retailer-view/admin-retailer-view.component';
 import {AdminLoginComponent} from './admin-login/admin-login.component';
-
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'Home', pathMatch:'full'},
@@ -18,6 +18,7 @@ const routes: Routes = [
   {path:'AdminRetailerAdd',component:AdminRetailerAddComponent},
   {path:'AdminRetailerDetails',component:AdminRetailerViewComponent},
   {path:'AdminLogin',component:AdminLoginComponent},
+  {path:'UserProfile',component:UserProfileComponent},
 ];
 
 @NgModule({
