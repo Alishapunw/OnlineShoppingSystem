@@ -16,18 +16,28 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'Home', pathMatch:'full'},
-  {path:'Login', component: LoginComponent},
-  {path:'Registration', component: RegistrationComponent},
-  {path:'ForgotPassword',component: ForgotpasswordComponent},
-  {path:'RetailerHome',component:RetailerHomeComponent},
-  {path:'RetailerProfile',component:RetailerProfileComponent},
-  {path:'AddProduct',component:AddProductComponent},
-  {path:'Home',component: HomeComponent},
-  {path:'Home',component: HomeComponent},
+  /*Admin Routes Start*/
   {path:'AdminRetailerAdd',component:AdminRetailerAddComponent},
   {path:'AdminRetailerDetails',component:AdminRetailerViewComponent},
   {path:'AdminLogin',component:AdminLoginComponent},
+  /*Admin Routes End*/
+
+  /*Retailer Routes Start*/
+  {path:'RetailerHome',component:RetailerHomeComponent},
+  {path:'RetailerProfile',component:RetailerProfileComponent},
+  {path:'AddProduct',component:AddProductComponent},
+  /*Retailer Routes End*/
+
+  /*User Routes Start*/
+  {path:'Home',component: HomeComponent},
+  {path:'Login', component: LoginComponent},
+  {path:'Registration', component: RegistrationComponent},
+  {path:'ForgotPassword',component: ForgotpasswordComponent},
   {path:'UserProfile',component:UserProfileComponent},
+  /*User Routes End*/
+  
+  
+  
 ];
 
 @NgModule({
