@@ -48,6 +48,9 @@ const routes: Routes = [
   {path:'Cartitem',component:CartitemComponent},
   {path:'ProductList',component:ProductlistComponent},
   {path:'Productitem',component:ProductitemComponent},
+  {path:'Login',component:LoginComponent},
+  {path:'Registration',component:RegistrationComponent},
+  {path:'ForgotPassword',component:ForgotpasswordComponent}
 ];
 
 @NgModule({
