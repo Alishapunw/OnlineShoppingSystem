@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-admin-login',
+  templateUrl: './admin-login.component.html',
+  styleUrls: ['./admin-login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class AdminLoginComponent implements OnInit {
 
   user!:User;
 
@@ -21,7 +21,10 @@ console.log(this.user)
 }
 
 class User{
-  FirstName?: string;
-  Password?:string;
+  FirstName!: string;
+  Password!:string;
   constructor(){}
+
+  
+
 }
