@@ -3,4 +3,9 @@
     min-height: 38px;
     border-radius: 2px;
 }
-
+.card {
+    flex-direction: row;
+  }
+  .card img {
+    width: 30%;
+  }

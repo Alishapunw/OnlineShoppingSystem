@@ -8,12 +8,11 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegistrationComponent } from './registration/registration.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
-<<<<<<< HEAD
 import { RetailerHomeComponent } from './retailer-home/retailer-home.component';
 import { RetailerProfileComponent } from './retailer-profile/retailer-profile.component';
-=======
 import { HomeComponent } from './home/home.component';
->>>>>>> a09c9b87aaae998363dce3f0fc5b86708933cc83
+import { AddProductComponent } from './add-product/add-product.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 @NgModule({
   declarations: [
@@ -21,12 +20,11 @@ import { HomeComponent } from './home/home.component';
     LoginComponent,
     RegistrationComponent,
     ForgotpasswordComponent,
-<<<<<<< HEAD
     RetailerHomeComponent,
-    RetailerProfileComponent
-=======
-    HomeComponent
->>>>>>> a09c9b87aaae998363dce3f0fc5b86708933cc83
+    RetailerProfileComponent,
+    HomeComponent,
+    AddProductComponent,
+    ChangePasswordComponent
   ],
   imports: [
     BrowserModule,

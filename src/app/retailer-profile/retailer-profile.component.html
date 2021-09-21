@@ -1,6 +1,6 @@
 <html>
     <body>
-        <br><br><br><br>
+        <br><br><br>
         <div class="container">
             <div class="row">
               <div class="col-sm justify-content-center">
@@ -19,7 +19,20 @@
               </div>
               <div class="col-sm-8" style="padding-left:100px">
                 <div class="form-group">
-                    <button type="submit" class="form-control" class="btn btn-primary btn-lg" id="addproduct">Add Product</button>
+                    <button type="submit" class="form-control" class="btn btn-primary btn-lg" id="addproduct"><a routerLink="../AddProduct">Add Product</a></button>
+                  </div>
+                <div *ngFor="let item of RetailerProducts">
+                  <div class="card" style="width: 45rem;">
+                    <img src={{item.ImageUrls[0]}} class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">{{item.ProductName}}</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">Product ID: {{item.ProductId}}</h6>
+                      <p class="card-text">Brand Name: {{item.BrandName}}</p>
+                      <p class="card-text">Price Per Unit {{item.PricePerUnit}}</p>
+                      <p class="card-text">Description: {{item.Description}}</p>
+                      <a href="#" class="card-link">Edit</a>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
