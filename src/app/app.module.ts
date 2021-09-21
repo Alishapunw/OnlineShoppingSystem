@@ -17,6 +17,7 @@ import { AdminRetailerViewComponent } from './admin-retailer-view/admin-retailer
 import { AdminRetailerAddComponent } from './admin-retailer-add/admin-retailer-add.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { ProductDetailViewComponent } from './product-detail-view/product-detail-view.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     AdminRetailerViewComponent,
     AdminRetailerAddComponent,
     AdminLoginComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    ProductDetailViewComponent
   ],
   imports: [
     BrowserModule,
