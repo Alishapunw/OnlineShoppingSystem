@@ -40,6 +40,7 @@ import { ProductitemComponent } from './shopping/productlist/productitem/product
     AdminRetailerViewComponent,
     AdminRetailerAddComponent,
     AdminLoginComponent,
+<<<<<<< HEAD
     HomepageComponent,
     NavpageComponent,
     ShoppingComponent,
@@ -48,6 +49,10 @@ import { ProductitemComponent } from './shopping/productlist/productitem/product
     CartitemComponent,
     ProductlistComponent,
     ProductitemComponent
+=======
+    UserProfileComponent,
+    ProductDetailViewComponent
+>>>>>>> 94812aaa46e7854c95403d64699dce083d1a29c1
   ],
   imports: [
     BrowserModule,

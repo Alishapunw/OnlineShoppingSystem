@@ -23,12 +23,19 @@ import { ProductitemComponent } from './shopping/productlist/productitem/product
 
 const routes: Routes = [
   {path:'', redirectTo:'Home', pathMatch:'full'},
-  {path:'Login', component: LoginComponent},
-  {path:'Registration', component: RegistrationComponent},
-  {path:'ForgotPassword',component: ForgotpasswordComponent},
+  /*Admin Routes Start*/
+  {path:'AdminRetailerAdd',component:AdminRetailerAddComponent},
+  {path:'AdminRetailerDetails',component:AdminRetailerViewComponent},
+  {path:'AdminLogin',component:AdminLoginComponent},
+  /*Admin Routes End*/
+
+  /*Retailer Routes Start*/
   {path:'RetailerHome',component:RetailerHomeComponent},
   {path:'RetailerProfile',component:RetailerProfileComponent},
   {path:'AddProduct',component:AddProductComponent},
+  /*Retailer Routes End*/
+
+  /*User Routes Start*/
   {path:'Home',component: HomeComponent},
   {path:'Home',component: HomeComponent},
   {path:'Homepage',component: HomepageComponent},
