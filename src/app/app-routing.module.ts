@@ -34,6 +34,8 @@ const routes: Routes = [
   {path:'RetailerProfile',component:RetailerProfileComponent},
   {path:'AddProduct',component:AddProductComponent},
   /*Retailer Routes End*/
+  {path:'Login',component:LoginComponent},
+  {path:'Registration',component:RegistrationComponent},
 
   /*User Routes Start*/
   {path:'Home',component: HomeComponent},
@@ -48,6 +50,7 @@ const routes: Routes = [
   {path:'Cartitem',component:CartitemComponent},
   {path:'ProductList',component:ProductlistComponent},
   {path:'Productitem',component:ProductitemComponent},
+
 ];
 
 @NgModule({

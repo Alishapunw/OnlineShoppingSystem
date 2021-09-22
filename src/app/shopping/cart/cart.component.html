@@ -1,8 +1,13 @@
-<ul class="list-group w-100 my-3">
-        <li class="list-group-item list-group-item-action active">
-            Price Details
-        </li>
+<div *ngIf="cartItems.length===0" class="alert alert">No items added to the cart</div>
+
+
+<ul *ngIf="cartItems.length" class="list-group">
+    <li *ngFor="let item of cartItems" class="list-item-group">
+        <app-cartitem [cartItem]="item"></app-cartitem>   
+    </li>
+    <li class="list-item-group">
+        <strong>Price</strong>{{cartTotal | currency:'INR'}}
+    </li>
+
 </ul>
-<!-- 
- -->
- <app-cartitem></app-cartitem>
+ 

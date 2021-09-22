@@ -1,34 +1,9 @@
-<table class="table">
-    <thead>
-        <th>
-            Product Image
-        </th>
-        <th>
-            Product Name
-        </th>
-        <th>
-            Quantity
-        </th>
-        <th>
-            Total Price
-        </th>
-    </thead>
-    <tbody>
-        <tr >
-           <td> 
-               <img src="assets/phone2.jpg" style="width: 125px; height: 125px;"/>
-            </td>
-            <td class="align-middle" >
-                Iphone 12 Pro
-            </td>
-            <td class="align-middle">
-                <input type="button"  value="-" size="1">
-                <input type="text" size="1">
-                <input type="button" value="+" size="1">
-            </td>
-            <td class="align-middle">
-                {{75000 | currency:'INR'}}
-            </td>
-        </tr>
-    </tbody>
-</table>
+<div class="card">
+    <span>{{cartItem.id}}</span>
+    <span>{{cartItem.productName}}</span>
+    <span>{{cartItem.quantity}}</span>:
+    <strong>{{(cartItem.quantity * cartItem.price) | currency:'INR'}}</strong>
+
+
+
+</div>
