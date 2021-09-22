@@ -23,6 +23,8 @@ import { CartComponent } from './shopping/cart/cart.component';
 import { CartitemComponent } from './shopping/cart/cartitem/cartitem.component';
 import { ProductlistComponent } from './shopping/productlist/productlist.component';
 import { ProductitemComponent } from './shopping/productlist/productitem/productitem.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+
 
 @NgModule({
   declarations: [
@@ -46,7 +48,8 @@ import { ProductitemComponent } from './shopping/productlist/productitem/product
     CartComponent,
     CartitemComponent,
     ProductlistComponent,
-    ProductitemComponent
+    ProductitemComponent,
+    UserProfileComponent,
   ],
   imports: [
     BrowserModule,

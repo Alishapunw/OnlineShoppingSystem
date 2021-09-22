@@ -17,6 +17,7 @@ import { CartComponent } from './shopping/cart/cart.component';
 import { CartitemComponent } from './shopping/cart/cartitem/cartitem.component';
 import { ProductlistComponent } from './shopping/productlist/productlist.component';
 import { ProductitemComponent } from './shopping/productlist/productitem/productitem.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 
 
@@ -50,7 +51,8 @@ const routes: Routes = [
   {path:'Productitem',component:ProductitemComponent},
   {path:'Login',component:LoginComponent},
   {path:'Registration',component:RegistrationComponent},
-  {path:'ForgotPassword',component:ForgotpasswordComponent}
+  {path:'ForgotPassword',component:ForgotpasswordComponent},
+  {path:'UserProfile',component:UserProfileComponent},
 ];
 
 @NgModule({
