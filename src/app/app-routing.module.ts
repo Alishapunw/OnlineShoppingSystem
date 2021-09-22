@@ -10,6 +10,7 @@ import { RetailerProfileComponent } from './retailer-profile/retailer-profile.co
 import { AdminRetailerAddComponent } from './admin-retailer-add/admin-retailer-add.component';
 import { AdminRetailerViewComponent } from './admin-retailer-view/admin-retailer-view.component';
 import {AdminLoginComponent} from './admin-login/admin-login.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 
 const routes: Routes = [
@@ -20,7 +21,7 @@ const routes: Routes = [
   {path:'RetailerHome',component:RetailerHomeComponent},
   {path:'RetailerProfile',component:RetailerProfileComponent},
   {path:'AddProduct',component:AddProductComponent},
-  {path:'Home',component: HomeComponent},
+  {path:'ChangePassword',component:ChangePasswordComponent},
   {path:'Home',component: HomeComponent},
   {path:'AdminRetailerAdd',component:AdminRetailerAddComponent},
   {path:'AdminRetailerDetails',component:AdminRetailerViewComponent},
