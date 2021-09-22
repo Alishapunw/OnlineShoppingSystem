@@ -11,6 +11,7 @@ import { AdminRetailerAddComponent } from './admin-retailer-add/admin-retailer-a
 import { AdminRetailerViewComponent } from './admin-retailer-view/admin-retailer-view.component';
 import {AdminLoginComponent} from './admin-login/admin-login.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { ProductDetailViewComponent } from './product-detail-view/product-detail-view.component';
 
 
 
@@ -30,6 +31,7 @@ const routes: Routes = [
 
   /*User Routes Start*/
   {path:'Home',component: HomeComponent},
+  {path:'ProductDetail/:ProductId',component: ProductDetailViewComponent},
   {path:'Login', component: LoginComponent},
   {path:'Registration', component: RegistrationComponent},
   {path:'ForgotPassword',component: ForgotpasswordComponent},

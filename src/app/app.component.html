@@ -22,9 +22,10 @@
 <div class="container-fluid">
   <router-outlet></router-outlet>
 </div>
-<div class="container-fluid">
-  <footer class="footer-copyright text-center py-3 fixed" style="background-color: rgb(170, 169, 169);">
-      <br>
-      <p>© 2020 Larsen & Toubro Infotech Limited</p>
-  </footer>
-</div>
+
+
+<footer [ngClass]="'footer'">
+  <div class="container">
+    <span class="">&#169;  Larsen & Toubro Infotech Limited</span>
+  </div>
+</footer>
