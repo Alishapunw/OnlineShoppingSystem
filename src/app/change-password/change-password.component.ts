@@ -13,7 +13,7 @@ export class ChangePasswordComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.retailer=new Retailer("","");
+    this.retailer=new Retailer();
   }
   Submitdata(){
     console.log(this.retailer);
@@ -21,12 +21,10 @@ export class ChangePasswordComponent implements OnInit {
 
 }
 class Retailer{
-  EmailId?:string;
-  Password?:string;
+  OldPassword?:string;
+  NewPassword?:string;
 
-  constructor(EmailId:string,Password:string){
-    this.EmailId=EmailId;
-    this.Password=Password;
+  constructor(){
 
   }
 }
