@@ -13,7 +13,7 @@ import { AdminRetailerViewComponent } from './admin-retailer-view/admin-retailer
 import {AdminLoginComponent} from './admin-login/admin-login.component';
 
 
-import { ProductDetailViewComponent } from './product-detail-view/product-detail-view.component';
+import { ProductdetailviewComponent } from './productdetailview/productdetailview.component';
 
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { ShoppingComponent } from './shopping/shopping.component';
@@ -24,6 +24,7 @@ import { ProductlistComponent } from './shopping/productlist/productlist.compone
 import { ProductitemComponent } from './shopping/productlist/productitem/productitem.component';
 import { RetailerDetailsComponent } from './retailer-details/retailer-details.component';
 import { BillingComponent } from './billing/billing.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 
 
@@ -46,7 +47,7 @@ const routes: Routes = [
 
   /*User Routes Start*/
   {path:'Home',component: HomeComponent},
-  {path:'ProductDetail/:ProductId',component: ProductDetailViewComponent},
+  {path:'ProductDetail/:ProductId',component: ProductdetailviewComponent},
   {path:'Login', component: LoginComponent},
   {path:'Registration', component: RegistrationComponent},
   {path:'ForgotPassword',component: ForgotpasswordComponent},
@@ -70,7 +71,7 @@ const routes: Routes = [
 
   {path:'ForgotPassword',component:ForgotpasswordComponent},
 
-  {path:'UserProfile',component:UserProfileComponent},
+
   {path:'Billing',component:BillingComponent},
 
 
