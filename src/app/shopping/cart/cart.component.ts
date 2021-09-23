@@ -23,20 +23,15 @@ export class CartComponent implements OnInit {
   // product!:Product;
   cartTotal=0;
   ngOnInit(): void {
-    this.msg.getMessage().subscribe(product=>{
-      this.cartItems.push(
-        {
-          
-        }
-
-      )})
-    this.cartItems.forEach(item=>
-      {
-        this.cartTotal+=(item.quantity*item.price)
-      })
-  }
-
+    // this.msg.getMessage().subscribe(
+    // this.cartItems.forEach(item=>
+    //   {
+    //     // this.cartTotal+=(item.quantity*item.price)
+    //   })
+    }
 }
+
+
 
 
 
