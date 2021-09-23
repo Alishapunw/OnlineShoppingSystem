@@ -1,16 +1,21 @@
-<header class="p-3 bg-dark text-white">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<header class="p-3 bg-light navbar-light text-black">
     <div class="container">
         
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
         <i class="fa fa-shopping-bag" style="font-size: 35px;"aria-hidden="true"></i>
         <h3 class="my-0 mr-md-auto font-weight-normal px-3">
         Shopping Cart
+        
+        <h3 class="my-0 mr-md-auto  navbar-brand px-5">
+        Shopping App
         </h3>
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="#" routerLink="Home" class="nav-link px-2 text-white">Home</a></li>
-          <li><a href="#" routerLink="Shopping" class="nav-link px-2 text-white">Products</a></li>
-          <li><a href="#" class="nav-link px-2 text-white">Compare</a></li>
-          <li><a href="#" class="nav-link px-2 text-white">Categories</a></li>
+          <li><a href="#" routerLink="Home" class="nav-link px-2 text-black">Home</a></li>
+        <!-- <li><a href="#" routerLink="Shopping" class="nav-link px-2 text-black">Cart</a></li>-->
+          <li><a href="#" class="nav-link px-2 text-black">Compare</a></li>
+          <li><a href="#" class="nav-link px-2 text-black">Categories</a></li>
+          
         </ul>
 
         <form class="col-12 col-lg-auto mb-lg-0 me-lg-3" >
@@ -21,6 +26,10 @@
         <div class="text-end">
           <a routerLink="Login"><button type="button" class="btn btn-primary">Login</button></a>
           <a routerLink="Registration"><button type="button" class="btn btn-secondary mx-2">Sign-up</button></a>
+          <a routerLink="Shopping" >
+            <span> 1</span>
+            <i class="fa fa-fw fa-shopping-cart fa-lg"></i> 
+          </a>
         </div>
       </div>
     </div>

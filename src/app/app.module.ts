@@ -17,6 +17,7 @@ import { NavpageComponent } from './homepage/navpage/navpage.component';
 import { AdminRetailerViewComponent } from './admin-retailer-view/admin-retailer-view.component';
 import { AdminRetailerAddComponent } from './admin-retailer-add/admin-retailer-add.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { RetailerDetailsComponent } from './retailer-details/retailer-details.component';
 import { ShoppingComponent } from './shopping/shopping.component';
 import { FilterComponent } from './shopping/filter/filter.component';
 import { CartComponent } from './shopping/cart/cart.component';
@@ -25,6 +26,7 @@ import { ProductlistComponent } from './shopping/productlist/productlist.compone
 import { ProductitemComponent } from './shopping/productlist/productitem/productitem.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { CategorynavComponent } from './homepage/categorynav/categorynav.component';
+import { BillingComponent } from './billing/billing.component';
 
 
 @NgModule({
@@ -42,6 +44,7 @@ import { CategorynavComponent } from './homepage/categorynav/categorynav.compone
     AdminRetailerViewComponent,
     AdminRetailerAddComponent,
     AdminLoginComponent,
+    RetailerDetailsComponent,
     HomepageComponent,
     NavpageComponent,
     ShoppingComponent,
@@ -51,7 +54,11 @@ import { CategorynavComponent } from './homepage/categorynav/categorynav.compone
     ProductlistComponent,
     ProductitemComponent,
     UserProfileComponent,
+<<<<<<< HEAD
     CategorynavComponent,
+=======
+    BillingComponent,
+>>>>>>> aee58c331870851d4c61c2991e9f1cbd8e7cfbb7
   ],
   imports: [
     BrowserModule,
