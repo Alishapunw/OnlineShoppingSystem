@@ -54,11 +54,8 @@ import { BillingComponent } from './billing/billing.component';
     ProductlistComponent,
     ProductitemComponent,
     UserProfileComponent,
-<<<<<<< HEAD
     CategorynavComponent,
-=======
     BillingComponent,
->>>>>>> aee58c331870851d4c61c2991e9f1cbd8e7cfbb7
   ],
   imports: [
     BrowserModule,
