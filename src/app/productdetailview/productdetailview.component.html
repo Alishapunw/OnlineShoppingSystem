@@ -19,12 +19,14 @@
             <div class="row border m-lg-2 ">
                 <div [id]="'carouselExampleControls0'" class="carousel slide mx-auto" data-ride="carousel">
                     <div class="carousel-inner">
+                        
                         <div class="carousel-item active">
+                          
                             <img class="card-img-top" [src]="currentProduct.ImageUrls[0]" alt="First slide">
                         </div>
                        <div class="carousel-item"
                             *ngFor="let ii of currentProduct.ImageUrls | slice:1:currentProduct.ImageUrls.length">
-                            <img class="card-img-top" src="{{ii}}" alt="slide">  
+                            <img class="card-img-top" id="myimage" src="{{ii}}" alt="slide">  
                         </div> 
                     </div>
                     <a class="carousel-control-prev" [href]="'#carouselExampleControls0'" role="button"
@@ -38,9 +40,9 @@
                         <span class="sr-only">Next</span>
                     </a>
                 </div>
-
-
             </div>
+  
+            
 
             <div style="height: 20px;"></div>
 
@@ -49,7 +51,7 @@
                 <img src="{{imageUrl}}" alt="image" style="height: 80px;width: 80px;"
                     *ngFor="let imageUrl of currentProduct.ImageUrls">
             </div>
-
+         
         </div>
 
 

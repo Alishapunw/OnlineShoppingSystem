@@ -19,11 +19,13 @@ export class ProductdetailviewComponent implements OnInit {
   currentProduct!:Product;
 
   ProductId!:number ;
+  
 
   constructor(public router:ActivatedRoute ) { }
 
   ngOnInit(): void {
 
+    
     this.ProductId = this.router.snapshot.params["ProductId"];
    
     
