@@ -20,7 +20,7 @@ export class ProductDetailViewComponent implements OnInit {
 
   ProductId!:number ;
 
-  constructor(public router:ActivatedRoute, ) { }
+  constructor(public router:ActivatedRoute ) { }
 
   ngOnInit(): void {
 

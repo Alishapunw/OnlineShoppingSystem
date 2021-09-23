@@ -22,7 +22,6 @@ import { CartComponent } from './shopping/cart/cart.component';
 import { CartitemComponent } from './shopping/cart/cartitem/cartitem.component';
 import { ProductlistComponent } from './shopping/productlist/productlist.component';
 import { ProductitemComponent } from './shopping/productlist/productitem/productitem.component';
-import { UserProfileComponent } from './user-profile/user-profile.component';
 import { RetailerDetailsComponent } from './retailer-details/retailer-details.component';
 import { BillingComponent } from './billing/billing.component';
 
@@ -47,7 +46,6 @@ const routes: Routes = [
 
   /*User Routes Start*/
   {path:'Home',component: HomeComponent},
-
   {path:'ProductDetail/:ProductId',component: ProductDetailViewComponent},
   {path:'Login', component: LoginComponent},
   {path:'Registration', component: RegistrationComponent},
@@ -56,8 +54,6 @@ const routes: Routes = [
   /*User Routes End*/
   
   
-  
-  {path:'Home',component: HomeComponent},
 
   {path:'Homepage',component: HomepageComponent},
   {path:'AdminRetailerAdd',component:AdminRetailerAddComponent},
@@ -74,9 +70,10 @@ const routes: Routes = [
 
   {path:'ForgotPassword',component:ForgotpasswordComponent},
 
-  {path:'ForgotPassword',component:ForgotpasswordComponent},
   {path:'UserProfile',component:UserProfileComponent},
   {path:'Billing',component:BillingComponent},
+
+
 ];
 
 @NgModule({
