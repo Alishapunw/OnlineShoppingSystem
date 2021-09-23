@@ -12,7 +12,7 @@ import { AdminRetailerAddComponent } from './admin-retailer-add/admin-retailer-a
 import { AdminRetailerViewComponent } from './admin-retailer-view/admin-retailer-view.component';
 import {AdminLoginComponent} from './admin-login/admin-login.component';
 
-import { UserProfileComponent } from './user-profile/user-profile.component';
+
 import { ProductDetailViewComponent } from './product-detail-view/product-detail-view.component';
 
 import { ChangePasswordComponent } from './change-password/change-password.component';
