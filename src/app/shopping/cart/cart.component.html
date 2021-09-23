@@ -1,13 +1,56 @@
-<div *ngIf="cartItems.length===0" class="alert alert">No items added to the cart</div>
+<ng-container *ngIf="true">
+    <div class="container">
+    <div class="cardtable">
+        <div class="card-product">
+            <table class="table table-responsive">
+                <thead>
+                    <tr>
+                    <th>Sr.No</th>
+                    <th>Product Name</th>
+                    <th>Poduct Image</th>
+                    <th>Quantity</th>
+                    <th>PricePerProduct</th>
+                    <th>Total</th>
+                    <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- <tr *ngFor="let product of productList;let i=index"> -->
+                    <!-- <td>{{i+1}}</td> -->
+                    <!-- <td>{{product.ProductName}}</td> -->
+                    <td>Image</td>
+                    <td>1</td>
+                    <td>75000</td>
+                    <td>75000</td>
+                    <td><button class="btn btn-danger">Delete</button></td>
+                    <!-- </tr> -->
+                </tbody>
+
+            </table>
+        </div>
+        </div>
+    </div>
+</ng-container>
 
 
-<ul *ngIf="cartItems.length" class="list-group">
-    <li *ngFor="let item of cartItems" class="list-item-group">
-        <app-cartitem [cartItem]="item"></app-cartitem>   
-    </li>
-    <li class="list-item-group">
-        <strong>Price</strong>{{cartTotal | currency:'INR'}}
-    </li>
 
-</ul>
- 
+
+
+
+<ng-container *ngIf="false">
+    <div class="card ">
+        <div class="container">
+            <div class="card ">
+                <h5 class="card-title" style="padding-top: 12px;padding-left:10px;">
+                    My cart
+                </h5>
+            </div>
+            <div class="center">
+                <img src="" alt="">
+                <h4>Your Cart is Empty</h4>
+                <h6>Add items to the cart now</h6>
+                <button class="btn btn-primary align-center">Shop Now</button>
+            </div>
+        </div>
+        </div>
+</ng-container>
