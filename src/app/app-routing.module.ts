@@ -25,7 +25,7 @@ import { ProductitemComponent } from './shopping/productlist/productitem/product
 import { RetailerDetailsComponent } from './retailer-details/retailer-details.component';
 import { BillingComponent } from './billing/billing.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
-import { RetailerDetailsComponent } from './retailer-details/retailer-details.component';
+
 
 
 
@@ -52,7 +52,6 @@ const routes: Routes = [
   /*User Routes Start*/
   {path:'Home',component: HomeComponent},
   {path:'ProductDetail/:ProductId',component: ProductdetailviewComponent},
-  {path:'Login', component: LoginComponent},
   {path:'Registration', component: RegistrationComponent},
   {path:'ForgotPassword',component: ForgotpasswordComponent},
   {path:'UserProfile',component:UserProfileComponent},
@@ -70,7 +69,6 @@ const routes: Routes = [
   {path:'Cartitem',component:CartitemComponent},
   {path:'ProductList',component:ProductlistComponent},
   {path:'Productitem',component:ProductitemComponent},
-  {path:'Login',component:LoginComponent},
   {path:'Registration',component:RegistrationComponent},
 
   {path:'ForgotPassword',component:ForgotpasswordComponent},
