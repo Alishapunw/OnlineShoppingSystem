@@ -19,6 +19,7 @@ import { CartitemComponent } from './shopping/cart/cartitem/cartitem.component';
 import { ProductlistComponent } from './shopping/productlist/productlist.component';
 import { ProductitemComponent } from './shopping/productlist/productitem/productitem.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { RetailerDetailsComponent } from './retailer-details/retailer-details.component';
 
 
 
@@ -35,6 +36,7 @@ const routes: Routes = [
   {path:'RetailerHome',component:RetailerHomeComponent},
   {path:'RetailerProfile',component:RetailerProfileComponent},
   {path:'AddProduct',component:AddProductComponent},
+  {path:'RetailerDetails',component:RetailerDetailsComponent},
   {path:'ChangePassword',component:ChangePasswordComponent},
   /*Retailer Routes End*/
 
