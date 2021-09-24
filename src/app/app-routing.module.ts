@@ -11,6 +11,10 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { AdminRetailerAddComponent } from './admin-retailer-add/admin-retailer-add.component';
 import { AdminRetailerViewComponent } from './admin-retailer-view/admin-retailer-view.component';
 import {AdminLoginComponent} from './admin-login/admin-login.component';
+
+
+import { ProductdetailviewComponent } from './productdetailview/productdetailview.component';
+
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { ShoppingComponent } from './shopping/shopping.component';
 import { FilterComponent } from './shopping/filter/filter.component';
@@ -18,6 +22,8 @@ import { CartComponent } from './shopping/cart/cart.component';
 import { CartitemComponent } from './shopping/cart/cartitem/cartitem.component';
 import { ProductlistComponent } from './shopping/productlist/productlist.component';
 import { ProductitemComponent } from './shopping/productlist/productitem/productitem.component';
+import { RetailerDetailsComponent } from './retailer-details/retailer-details.component';
+import { BillingComponent } from './billing/billing.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { RetailerDetailsComponent } from './retailer-details/retailer-details.component';
 
@@ -38,10 +44,22 @@ const routes: Routes = [
   {path:'AddProduct',component:AddProductComponent},
   {path:'RetailerDetails',component:RetailerDetailsComponent},
   {path:'ChangePassword',component:ChangePasswordComponent},
+  {path:'RetailerDetails',component:RetailerDetailsComponent},
   /*Retailer Routes End*/
+  {path:'Login',component:LoginComponent},
+  {path:'Registration',component:RegistrationComponent},
 
   /*User Routes Start*/
   {path:'Home',component: HomeComponent},
+  {path:'ProductDetail/:ProductId',component: ProductdetailviewComponent},
+  {path:'Login', component: LoginComponent},
+  {path:'Registration', component: RegistrationComponent},
+  {path:'ForgotPassword',component: ForgotpasswordComponent},
+  {path:'UserProfile',component:UserProfileComponent},
+  /*User Routes End*/
+  
+  
+
   {path:'Homepage',component: HomepageComponent},
   {path:'AdminRetailerAdd',component:AdminRetailerAddComponent},
   {path:'AdminRetailerDetails',component:AdminRetailerViewComponent},
@@ -54,8 +72,13 @@ const routes: Routes = [
   {path:'Productitem',component:ProductitemComponent},
   {path:'Login',component:LoginComponent},
   {path:'Registration',component:RegistrationComponent},
+
   {path:'ForgotPassword',component:ForgotpasswordComponent},
-  {path:'UserProfile',component:UserProfileComponent},
+
+
+  {path:'Billing',component:BillingComponent},
+
+
 ];
 
 @NgModule({

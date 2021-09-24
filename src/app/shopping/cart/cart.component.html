@@ -1,8 +1,58 @@
-<ul class="list-group w-100 my-3">
-        <li class="list-group-item list-group-item-action active">
-            Price Details
-        </li>
-</ul>
-<!-- 
- -->
- <app-cartitem></app-cartitem>
+<ng-container *ngIf="true">
+    <div class="container">
+    <div class="cardtable">
+        <div class="card-product">
+            <table class="table table-responsive">
+                <thead>
+                    <tr>
+                    <th>Sr.No</th>
+                    <th>Product Name</th>
+                    <th>Poduct Image</th>
+                    <th>Quantity</th>
+                    <th>PricePerProduct</th>
+                    <th>Total</th>
+                    <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- <tr *ngFor="let product of productList;let i=index"> -->
+                    <td>1</td>
+                    <td>One-Plus</td>
+                    <td>Image</td>
+                    <td>1</td>
+                    <td>75000</td>
+                    <td>75000</td>
+                    <td><button class="btn btn-danger">Delete</button></td>
+                    <!-- </tr> -->
+                </tbody>
+
+            </table>
+            <button type="submit" class="btn btn-primary btn-block ">
+                <a routerLink="../Billing" class="text-white">Proceed to Payment</a></button>
+        </div>
+        </div>
+    </div>
+</ng-container>
+
+
+
+
+
+
+<ng-container *ngIf="false">
+    <div class="card ">
+        <div class="container">
+            <div class="card ">
+                <h5 class="card-title" style="padding-top: 12px;padding-left:10px;">
+                    My cart
+                </h5>
+            </div>
+            <div class="center">
+                <img src="" alt="">
+                <h4>Your Cart is Empty</h4>
+                <h6>Add items to the cart now</h6>
+                <button class="btn btn-primary align-center">Shop Now</button>
+            </div>
+        </div>
+        </div>
+</ng-container>
