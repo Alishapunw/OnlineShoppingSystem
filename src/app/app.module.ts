@@ -25,7 +25,9 @@ import { CartitemComponent } from './shopping/cart/cartitem/cartitem.component';
 import { ProductlistComponent } from './shopping/productlist/productlist.component';
 import { ProductitemComponent } from './shopping/productlist/productitem/productitem.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { CategorynavComponent } from './homepage/categorynav/categorynav.component';
 import { BillingComponent } from './billing/billing.component';
+import { ProductdetailviewComponent } from './productdetailview/productdetailview.component';
 
 
 @NgModule({
@@ -53,7 +55,9 @@ import { BillingComponent } from './billing/billing.component';
     ProductlistComponent,
     ProductitemComponent,
     UserProfileComponent,
+    CategorynavComponent,
     BillingComponent,
+    ProductdetailviewComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { Product } from '../product';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-product-detail-view',
-  templateUrl: './product-detail-view.component.html',
-  styleUrls: ['./product-detail-view.component.css']
+  selector: 'app-productdetailview',
+  templateUrl: './productdetailview.component.html',
+  styleUrls: ['./productdetailview.component.css']
 })
-export class ProductDetailViewComponent implements OnInit {
+export class ProductdetailviewComponent implements OnInit {
 
   topProducts:Product[] = [
     new Product(1, 'HP 14s Core i3 11th Gen' , 'HP', 40000, 'HP 14s Core i3 11th Gen - (8 GB/256 GB SSD/Windows 10 Home) 14s- DY2501TU Thin and Light Laptop  (14 inch, Natural Silver, 1.46 kg, With MS Office)', ["assets/images/1/0.jpg","assets/images/1/1.jpg", "assets/images/1/2.jpg", "assets/images/1/3.jpg"]),
@@ -19,11 +19,13 @@ export class ProductDetailViewComponent implements OnInit {
   currentProduct!:Product;
 
   ProductId!:number ;
+  
 
   constructor(public router:ActivatedRoute ) { }
 
   ngOnInit(): void {
 
+    
     this.ProductId = this.router.snapshot.params["ProductId"];
    
     
