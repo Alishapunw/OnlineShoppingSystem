@@ -1,27 +1,9 @@
 <html>
     <body>
-        <br><br><br>
+        <br><br>
         <div class="container">
             <div class="row">
-              <div class="col-sm justify-content-center">
-                <div class="form-group">
-                    <button type="submit" class="form-control" class="btn btn-primary btn-block " id="details">
-                      <a class="text-white" routerLink="../RetailerDetails">Retailer Details</a></button>
-                </div>
-                <br>
-                <div class="form-group">
-                    <button type="submit" class="form-control" class="btn btn-outline-primary btn-block" id="changepassword"><a routerLink="../ChangePassword">Change Password</a></button>
-                </div>
-                <br>
-                <div class="form-group">
-                    <button type="submit" class="form-control" class="btn btn-outline-primary btn-block" id="deleteaccount">Delete Account</button>
-                </div>
-                <br>
-              </div>
               <div class="col-sm-8" style="padding-left:100px">
-                <div class="form-group">
-                    <button type="submit" class="form-control" class="btn btn-outline-primary btn-lg" id="addproduct"><a routerLink="../AddProduct">Add Product</a></button>
-                  </div>
                 <div *ngFor="let item of RetailerProducts">
                   <div class="card" style="width: 45rem;">
                     <img src={{item.ImageUrls[0]}} class="card-img-top" alt="...">
