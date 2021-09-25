@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthenticationService } from '../authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -8,29 +10,61 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  user!:User;
-  LoginForm=new FormGroup({
-    UserName:new FormControl("",[Validators.required,Validators.minLength(8)]),
-    Password:new FormControl("",[Validators.required,Validators.pattern("/^(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,20}$/")])
-  });
+   userRole:string = "customer";
+ 
+
+  IsLoading:boolean = false;
+  UserDoesNotExist:boolean = false;
+  InvalidPassword:boolean = false;
 
 
-  constructor() { }
+  LoginForm = new FormGroup({
+    Email: new FormControl("", [Validators.required, Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$")]),
+    Password: new FormControl("",  [Validators.required, Validators.pattern("[A-Z](?=.*[a-z0-9A-Z])(?=.*?[!@#\$&*~]).{7,15}$")]),
+  })
+
+  constructor(public service:AuthenticationService, public router2:Router) { }
 
   ngOnInit(): void {
-    this.user=new User()
   }
 
-  get UserName(){
-    return this.LoginForm.get("UserName");
+ public get Email2()  {
+    return this.LoginForm.get('Email');
   }
 
-  get Password(){
+  get Password2(){
     return this.LoginForm.get("Password");
   }
 
-  Submitdata(){
-    console.log(this.user)
+  changeUserRole(currentRole:string){
+    this.userRole = currentRole;
+  }
+
+  SubmitForm(){
+    this.IsLoading=true;
+    this.UserDoesNotExist = false;
+    this.InvalidPassword = false;
+    console.log(this.LoginForm.value);
+    this.service.Login(this.LoginForm.value).subscribe( (data:any) =>{ 
+      console.log(data);
+      
+      if(data["LoginMessage"] == "UserDoesNotExist"){
+        this.UserDoesNotExist=true;
+        this.IsLoading=false;
+      }
+      else if(data["LoginMessage"] == "InvalidPassword"){
+        this.InvalidPassword=true;
+        this.IsLoading=false;
+      }
+      else if(data["LoginMessage"] == "Success"){
+        this.IsLoading=false;
+        sessionStorage.setItem("Email", this.LoginForm.value["Email"])
+        this.router2.navigateByUrl('Home');
+      }
+
+
+     } 
+     );
   }
 }
 

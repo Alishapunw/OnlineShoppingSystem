@@ -29,6 +29,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 
 
 
+
 const routes: Routes = [
   {path:'', redirectTo:'Home', pathMatch:'full'},
   /*Admin Routes Start*/
@@ -51,7 +52,6 @@ const routes: Routes = [
   /*User Routes Start*/
   {path:'Home',component: HomeComponent},
   {path:'ProductDetail/:ProductId',component: ProductdetailviewComponent},
-  {path:'Login', component: LoginComponent},
   {path:'Registration', component: RegistrationComponent},
   {path:'ForgotPassword',component: ForgotpasswordComponent},
   {path:'UserProfile',component:UserProfileComponent},
@@ -69,7 +69,6 @@ const routes: Routes = [
   {path:'Cartitem',component:CartitemComponent},
   {path:'ProductList',component:ProductlistComponent},
   {path:'Productitem',component:ProductitemComponent},
-  {path:'Login',component:LoginComponent},
   {path:'Registration',component:RegistrationComponent},
 
   {path:'ForgotPassword',component:ForgotpasswordComponent},
