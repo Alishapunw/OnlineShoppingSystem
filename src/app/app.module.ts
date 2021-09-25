@@ -29,6 +29,7 @@ import { CategorynavComponent } from './homepage/categorynav/categorynav.compone
 import { BillingComponent } from './billing/billing.component';
 import { ProductdetailviewComponent } from './productdetailview/productdetailview.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ProductsComponent } from './products/products.component';
 
 
 @NgModule({
@@ -59,6 +60,7 @@ import { HttpClientModule } from '@angular/common/http';
     CategorynavComponent,
     BillingComponent,
     ProductdetailviewComponent,
+    ProductsComponent,
   ],
   imports: [
     BrowserModule,
