@@ -1,0 +1,53 @@
+
+<div class="wrapper">
+    <!-- Sidebar  -->
+    <nav class="na navbar-light" id="sidebar">
+        <button type="button" id="sidebarCollapse" class="btn btn-outline-secondary active">
+            <i class="fas fa-align-left"></i>
+            <span>  Menu</span>
+        </button>
+        <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-align-justify"></i>
+        </button>
+        <br>
+        <div class="sidebar-header">
+            <h3>Shop&Stop</h3>
+        </div>
+
+        <ul class="list-unstyled components">
+            <p>Welcome Retailer!</p>
+            <li>
+                <a routerLink="../RetailerProfile" >Home</a>
+            </li>
+            <li>
+                <a routerLink='../RetailerDetails'>Profile</a>
+            </li>
+            <li>
+                <a routerLink='../AddProduct'>Add product</a>
+            </li>
+            <li>
+                <a routerLink='../ChangePassword'>Change Password</a>
+            </li>
+            <li>
+                <a href="#">Delete account</a>
+            </li>
+            <li>
+                <a href="../Home">Log out</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Page Content  -->
+    <div id="content">
+        <router-outlet></router-outlet>
+    <div class="line"></div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#sidebarCollapse').on('click', function () {
+            $('#sidebar').toggleClass('active');
+        });
+    });
+</script>
