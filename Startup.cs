@@ -30,6 +30,15 @@ namespace OnlineShopping
             services.AddDbContext<DB_OnlineShoppingContext>(option => option.UseSqlServer
                 (Configuration.GetConnectionString("DbCon"))
                 );
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    );
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,6 +50,8 @@ namespace OnlineShopping
             }
 
             app.UseRouting();
+
+            app.UseCors("CorsPolicy");
 
             app.UseAuthorization();
 
