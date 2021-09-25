@@ -27,6 +27,24 @@ namespace OnlineShopping.Controllers
             return await _context.Products.ToListAsync();
         }
 
+        [HttpGet("GetAllProducts")]
+        public ActionResult<IEnumerable<Products>> GetAllProducts()
+        {
+            var a = _context.Products.Select( p => new Products { ProductId = p.ProductId , 
+                ProductName = p.ProductName , 
+                BrandName = p.BrandName,
+                CategoryId = p.CategoryId,
+                Description = p.Description,
+                PricePerUnit = p.PricePerUnit,
+                Quantity = p.Quantity,
+                RetailerId = p.RetailerId,
+                Status = p.Status,
+                ProductImages = p.ProductImages.Select(pi => new ProductImages { ProductId = pi.ProductId,  ImagePath = pi.ImagePath }).ToList()
+            } ).ToList();
+
+            return Ok(a);
+        }
+
         // GET: api/Products/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Products>> GetProducts(int id)
