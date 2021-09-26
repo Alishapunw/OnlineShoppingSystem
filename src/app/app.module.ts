@@ -30,9 +30,13 @@ import { CategorynavComponent } from './homepage/categorynav/categorynav.compone
 import { BillingComponent } from './billing/billing.component';
 import { ProductdetailviewComponent } from './productdetailview/productdetailview.component';
 import { HttpClientModule } from '@angular/common/http';
+
+import { CategoriesComponent } from './categories/categories.component';
+import { CategoryComponent } from './category/category.component';
 import { ProductsComponent } from './products/products.component';
 import { RetailerSideNavComponent } from './retailer-side-nav/retailer-side-nav.component';
 import { MailComponent } from './mail/mail.component';
+
 
 
 @NgModule({
@@ -61,9 +65,12 @@ import { MailComponent } from './mail/mail.component';
     CategorynavComponent,
     BillingComponent,
     ProductdetailviewComponent,
+    CategoriesComponent,
+    CategoryComponent,
     ProductsComponent,
     RetailerSideNavComponent,
     MailComponent,
+
   ],
   imports: [
     BrowserModule,

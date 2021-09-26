@@ -1,20 +1,19 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { UserDetails } from './user-details';
+import { Customer} from './customer';
+import { Retailer } from './retailer';
+import { Admin } from './admin';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
 
-  // private url='http://localhost:65061/api/Authentication';
-  private url='http://localhost:65061/api';
+  private url='http://localhost:65061/api/Authentication';
 
   
-
-  
-
   constructor(private client:HttpClient) { }
 
   
@@ -24,19 +23,29 @@ export class AuthenticationService {
     })
   }
 
-  Register(userdetails:UserDetails){
-    return this.client.post(this.url+"/Register", JSON.stringify(userdetails), this.httpOptions)
+  Register(customers:Customer){
+    return this.client.post(this.url+"/Register", JSON.stringify(customers), this.httpOptions)
   }
 
-  Login(userdetails:UserDetails){
-    console.log(userdetails);
+  Login(admin:Admin){
+    console.log(admin);
     
-    return this.client.post(this.url+"/Login", JSON.stringify(userdetails), this.httpOptions)
+    return this.client.post(this.url+"/Login", JSON.stringify(admin), this.httpOptions)
   }
   CheckEmail(email:any)
   {
     return this.client.post(this.url+"/customers/Email",this.httpOptions);
   }
 
+  Login1(customer:Customer){
+    console.log(customer);
+    
+    return this.client.post(this.url+"/Login1", JSON.stringify(customer), this.httpOptions)
+  }
+  Login2(retailer:Retailer){
+    console.log(retailer);
+    
+    return this.client.post(this.url+"/Login2", JSON.stringify(retailer), this.httpOptions)
+  }
 
 }

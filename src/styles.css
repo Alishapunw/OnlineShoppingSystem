@@ -1,8 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
  .carousel-aria-button{
-    width: 28px;
-    height: 40px;
+    width: 22px;
+    height: 30px;
     background-color: #007bff;
+<<<<<<< HEAD
+}
+=======
 
 }
 html, body { height: 100%; }
@@ -13,4 +16,5 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     color: red;
 }
 
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+>>>>>>> 75846dcf7508e1cfb6abedd91e93f13f43b59d33

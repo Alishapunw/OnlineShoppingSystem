@@ -1,8 +1,9 @@
 export class UserDetails {
     Email!:string;
     Password!:string;
-    City!:string;
-    Mobile!:number;    
+   // City!:string;
+    Mobile!:number;
+    Name!:string;    
 }
 
 

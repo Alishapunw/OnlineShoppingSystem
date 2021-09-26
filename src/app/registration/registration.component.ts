@@ -19,7 +19,7 @@ export class RegistrationComponent implements OnInit {
     Email: new FormControl("", [Validators.required, Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$")]),
     Password: new FormControl("", [Validators.required, Validators.pattern("[A-Z](?=.*[a-z0-9A-Z])(?=.*?[!@#\$&*~]).{7,15}$")]),
     ConfirmPassword: new FormControl("", [Validators.required, Validators.pattern("[A-Z](?=.*[a-z0-9A-Z])(?=.*?[!@#\$&*~]).{7,15}$")]),
-    Mobile: new FormControl("", [Validators.required, Validators.pattern("[789][0-9]{9}")]),
+    phoneNumber: new FormControl("", [Validators.required, Validators.pattern("[789][0-9]{9}")]),
   })
 
 
@@ -72,7 +72,7 @@ export class RegistrationComponent implements OnInit {
     return this.RegistrationForm.get('Password');
   }
   public get Mobile2()  {
-    return this.RegistrationForm.get('Mobile');
+    return this.RegistrationForm.get('phoneNumber');
   }
   
 }
