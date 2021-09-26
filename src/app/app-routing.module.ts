@@ -23,6 +23,7 @@ import { ProductitemComponent } from './shopping/productlist/productitem/product
 import { RetailerDetailsComponent } from './retailer-details/retailer-details.component';
 import { BillingComponent } from './billing/billing.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { ProductsComponent } from './products/products.component';
 
 
 
@@ -67,6 +68,7 @@ const routes: Routes = [
   {path:'Registration',component:RegistrationComponent},
 
   {path:'ForgotPassword',component:ForgotpasswordComponent},
+  {path:'Products',component:ProductsComponent},
 
 
   {path:'Billing',component:BillingComponent},

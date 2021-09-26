@@ -30,6 +30,7 @@ import { CategorynavComponent } from './homepage/categorynav/categorynav.compone
 import { BillingComponent } from './billing/billing.component';
 import { ProductdetailviewComponent } from './productdetailview/productdetailview.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ProductsComponent } from './products/products.component';
 import { RetailerSideNavComponent } from './retailer-side-nav/retailer-side-nav.component';
 
 
@@ -59,6 +60,7 @@ import { RetailerSideNavComponent } from './retailer-side-nav/retailer-side-nav.
     CategorynavComponent,
     BillingComponent,
     ProductdetailviewComponent,
+    ProductsComponent,
     RetailerSideNavComponent,
   ],
   imports: [
