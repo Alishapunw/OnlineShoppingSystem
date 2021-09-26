@@ -168,6 +168,13 @@ C:\Users\LENOVO\source\repos\OnlineShopping\obj\Debug\netcoreapp3.1\Razor\Views\
 C:\Users\LENOVO\source\repos\OnlineShopping\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
 C:\Users\LENOVO\source\repos\OnlineShopping\obj\Debug\netcoreapp3.1\OnlineShopping.RazorTargetAssemblyInfo.cs
 C:\Users\LENOVO\source\repos\OnlineShopping\obj\Debug\netcoreapp3.1\OnlineShopping.Views.pdb
+<<<<<<< HEAD
+C:\Users\LENOVO\source\repos\OnlineShopping\obj\Debug\netcoreapp3.1\Razor\Views\ProductImages\Create.cshtml.g.cs
+C:\Users\LENOVO\source\repos\OnlineShopping\obj\Debug\netcoreapp3.1\Razor\Views\ProductImages\Delete.cshtml.g.cs
+C:\Users\LENOVO\source\repos\OnlineShopping\obj\Debug\netcoreapp3.1\Razor\Views\ProductImages\Details.cshtml.g.cs
+C:\Users\LENOVO\source\repos\OnlineShopping\obj\Debug\netcoreapp3.1\Razor\Views\ProductImages\Edit.cshtml.g.cs
+C:\Users\LENOVO\source\repos\OnlineShopping\obj\Debug\netcoreapp3.1\Razor\Views\ProductImages\Index.cshtml.g.cs
+=======
 H:\LTI_TRAINING\OnlineShoppingApplication\ASP\OnlineShoppingSystem\bin\Debug\netcoreapp3.1\appsettings.Development.json
 H:\LTI_TRAINING\OnlineShoppingApplication\ASP\OnlineShoppingSystem\bin\Debug\netcoreapp3.1\appsettings.json
 H:\LTI_TRAINING\OnlineShoppingApplication\ASP\OnlineShoppingSystem\bin\Debug\netcoreapp3.1\OnlineShopping.exe
@@ -343,3 +350,4 @@ H:\LTI_TRAINING\OnlineShoppingApplication\ASP\OnlineShoppingSystem\obj\Debug\net
 H:\LTI_TRAINING\OnlineShoppingApplication\ASP\OnlineShoppingSystem\obj\Debug\netcoreapp3.1\OnlineShopping.dll
 H:\LTI_TRAINING\OnlineShoppingApplication\ASP\OnlineShoppingSystem\obj\Debug\netcoreapp3.1\OnlineShopping.pdb
 H:\LTI_TRAINING\OnlineShoppingApplication\ASP\OnlineShoppingSystem\obj\Debug\netcoreapp3.1\OnlineShopping.genruntimeconfig.cache
+>>>>>>> d0f88a75b2af5b9e6bbd0437fd644b268c34d5fb
