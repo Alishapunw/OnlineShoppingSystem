@@ -23,6 +23,11 @@ import { ProductitemComponent } from './shopping/productlist/productitem/product
 import { RetailerDetailsComponent } from './retailer-details/retailer-details.component';
 import { BillingComponent } from './billing/billing.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+<<<<<<< HEAD
+import { CategoriesComponent } from './categories/categories.component';
+=======
+import { ProductsComponent } from './products/products.component';
+>>>>>>> 75846dcf7508e1cfb6abedd91e93f13f43b59d33
 
 
 
@@ -51,6 +56,8 @@ const routes: Routes = [
   {path:'Registration', component: RegistrationComponent},
   {path:'ForgotPassword',component: ForgotpasswordComponent},
   {path:'UserProfile',component:UserProfileComponent},
+  {path:'Categories',component: CategoriesComponent},
+
   /*User Routes End*/
   
   
@@ -67,6 +74,7 @@ const routes: Routes = [
   {path:'Registration',component:RegistrationComponent},
 
   {path:'ForgotPassword',component:ForgotpasswordComponent},
+  {path:'Products',component:ProductsComponent},
 
 
   {path:'Billing',component:BillingComponent},

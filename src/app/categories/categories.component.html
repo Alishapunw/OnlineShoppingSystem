@@ -1,0 +1,33 @@
+<div class="container mt-3">
+    <div class="row">
+        <section class="col-3">
+            <h5 class="text-primary ml-3 mt-4 mb-3">Sort</h5>
+            <select class="custom-select mb-4" >
+                <option *ngFor="let sort of sortOptions"
+                    
+                    [value]="sort.value">
+                    {{sort.name}} </option>
+            </select>
+           
+              <h5 class="text-primary ml-3">Categories</h5>
+              <ul class="list-group my-3">
+                <li class="list-group-item"
+                    *ngFor="let c of categoriesList"
+                >
+                    {{c.categoryName}}
+                </li>
+               
+              </ul>
+
+
+
+              
+        </section>
+
+        <ul>
+            <li *ngFor="let p of productsList" > {{p.productId}}  {{p.productName}}</li>
+        </ul>
+
+      
+    </div>
+</div>

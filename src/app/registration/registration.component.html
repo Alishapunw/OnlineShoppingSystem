@@ -79,7 +79,7 @@
                   <div class="form-group">
                     <label for="Mobile" class="required"
                      style="font-weight: 600;">Mobile No.</label>
-                    <input type="number" class="form-control" id="Mobile" placeholder="Enter Mobile Number" formControlName="Mobile" autocomplete="off">
+                    <input type="number" class="form-control" id="phoneNumber" placeholder="Enter Mobile Number" formControlName="phoneNumber" autocomplete="off">
                   </div>
                   <div *ngIf="!Mobile2?.valid &&  (Mobile2?.dirty || Mobile2?.touched) " class="text-danger">
                       <div *ngIf="Mobile2!.errors!.required">

@@ -61,35 +61,35 @@
             <div class="card-deck">
                 <div class="card border border-primary"  *ngFor="let p of topProducts">
 
-                <a [routerLink]="['/ProductDetail/', p.ProductId]">
 
-                    <div [id]="'carouselExampleControls'+p.ProductId" class="carousel slide"   data-ride="carousel">
+                    <div [id]="'carouselExampleControls'+p.productId" class="carousel slide"   data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img class="card-img-top"   [src]="p.ImageUrls[0]" alt="First slide">
+                                <img class="card-img-top"   [src]="p.productImages[0].imagePath" alt="First slide">
                             </div>
-                            <div class="carousel-item" *ngFor="let ii of p.ImageUrls | slice:1:p.ImageUrls.length">
-                                <img class="card-img-top"   src="{{ii}}" alt="slide">
+                            <div class="carousel-item" *ngFor="let ii of p.productImages | slice:1:p.productImages.length">
+                                <img class="card-img-top"   src="{{ii.imagePath}}" alt="slide">
                             </div>
                         </div>
-                        <a class="carousel-control-prev" [href]="'#carouselExampleControls'+p.ProductId" role="button"
+                        <a class="carousel-control-prev" [href]="'#carouselExampleControls'+p.productId" role="button"
                             data-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="carousel-control-prev-icon carousel-aria-button" aria-hidden="true"></span>
                             <span class="sr-only">Previous</span>
                         </a>
-                        <a class="carousel-control-next" [href]="'#carouselExampleControls'+p.ProductId" role="button"
+                        <a class="carousel-control-next" [href]="'#carouselExampleControls'+p.productId" role="button"
                             data-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="carousel-control-next-icon carousel-aria-button" aria-hidden="true"></span>
                             <span class="sr-only">Next</span>
                         </a>
                     </div>
 
-                    <div class="card-body">
-                        <h6 class="card-title">{{p.ProductName}}</h6>
-                        <p class="card-text">{{p.Description.slice(0,50).concat("...")}}</p>
+                <a [routerLink]="['/ProductDetail/', p.productId]">
+                    <div class="card-body" style="min-height: 140px;">
+                        <h6 class="card-title">{{p.productName}}</h6>
+                        <p class="card-text">{{p.description.slice(0,50).concat("...")}}</p>
                     </div>
-                    <div class="card-footer bg-transparent border-primary"> <h6>{{p.PricePerUnit| currency:"INR"}}</h6> </div>
-               </a>
+                    <div class="card-footer bg-transparent border-primary"> <h6>{{p.pricePerUnit| currency:"INR"}}</h6> </div>
+                </a>
                 </div>
             </div>
         </div>
