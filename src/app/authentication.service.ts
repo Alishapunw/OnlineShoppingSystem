@@ -10,9 +10,6 @@ export class AuthenticationService {
 
   private url='http://localhost:22372/api/Authentication';
 
-  
-
-  
 
   constructor(private client:HttpClient) { }
 
@@ -28,8 +25,6 @@ export class AuthenticationService {
   }
 
   Login(userdetails:UserDetails){
-    console.log(userdetails);
-    
     return this.client.post(this.url+"/Login", JSON.stringify(userdetails), this.httpOptions)
   }
 

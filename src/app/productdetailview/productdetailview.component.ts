@@ -11,18 +11,15 @@ import { ProductserviceService } from '../productservice.service';
 export class ProductdetailviewComponent implements OnInit {
 
 
-
   currentProduct!:Product;
-
-  ProductId!:number ;
-  
 
   constructor(public router:ActivatedRoute, public ps:ProductserviceService) { }
 
   ngOnInit(): void {
-    this.ProductId = this.router.snapshot.params["ProductId"];
-    this.ps.getProductById()
+    this.ps.getProductById(this.router.snapshot.params["ProductId"]).subscribe( (product:Product) => {
+      this.currentProduct=product;
+      console.log(this.currentProduct);
+    });
   }
-
 
 }

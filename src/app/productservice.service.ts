@@ -38,22 +38,14 @@ export class ProductserviceService {
         return this.client.get<IProduct[]>(this.url+"/GetAllProducts");
   } */
 
-  getProductById():Observable<Product>{
-   var a = this.client.get<Product>(this.url+"/getProductById")
-    return a;
+  getProductById(id:number):Observable<Product>{
+    return  this.client.get<Product>(this.url+"/getProductById/"+id);
   }
   
 
   getOneProduct():Observable<Product>{
     
    var a = this.client.get<Product>(this.url+"/GetOneProduct")
-  
-   
-    console.log("#####################################");
-    console.log(a);
-    console.log("#####################################"); 
-
-
     return a;
   
   }
