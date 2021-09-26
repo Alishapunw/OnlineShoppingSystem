@@ -32,6 +32,7 @@ import { ProductdetailviewComponent } from './productdetailview/productdetailvie
 import { HttpClientModule } from '@angular/common/http';
 import { ProductsComponent } from './products/products.component';
 import { RetailerSideNavComponent } from './retailer-side-nav/retailer-side-nav.component';
+import { MailComponent } from './mail/mail.component';
 
 
 @NgModule({
@@ -62,6 +63,7 @@ import { RetailerSideNavComponent } from './retailer-side-nav/retailer-side-nav.
     ProductdetailviewComponent,
     ProductsComponent,
     RetailerSideNavComponent,
+    MailComponent,
   ],
   imports: [
     BrowserModule,

@@ -8,7 +8,8 @@ import { UserDetails } from './user-details';
 })
 export class AuthenticationService {
 
-  private url='http://localhost:22372/api/Authentication';
+  // private url='http://localhost:65061/api/Authentication';
+  private url='http://localhost:65061/api';
 
   
 
@@ -31,6 +32,10 @@ export class AuthenticationService {
     console.log(userdetails);
     
     return this.client.post(this.url+"/Login", JSON.stringify(userdetails), this.httpOptions)
+  }
+  CheckEmail(email:any)
+  {
+    return this.client.post(this.url+"/customers/Email",this.httpOptions);
   }
 
 
