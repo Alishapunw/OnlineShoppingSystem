@@ -5,12 +5,10 @@ import { RegistrationComponent } from './registration/registration.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { RetailerProfileComponent } from './retailer-profile/retailer-profile.component';
 import {ForgotpasswordComponent} from  './forgotpassword/forgotpassword.component';
-import { RetailerHomeComponent } from './retailer-home/retailer-home.component';
 import { HomeComponent } from './home/home.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { AdminRetailerAddComponent } from './admin-retailer-add/admin-retailer-add.component';
 import { AdminRetailerViewComponent } from './admin-retailer-view/admin-retailer-view.component';
-import {AdminLoginComponent} from './admin-login/admin-login.component';
 
 
 import { ProductdetailviewComponent } from './productdetailview/productdetailview.component';
@@ -25,7 +23,11 @@ import { ProductitemComponent } from './shopping/productlist/productitem/product
 import { RetailerDetailsComponent } from './retailer-details/retailer-details.component';
 import { BillingComponent } from './billing/billing.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+<<<<<<< HEAD
 import { CategoriesComponent } from './categories/categories.component';
+=======
+import { ProductsComponent } from './products/products.component';
+>>>>>>> 75846dcf7508e1cfb6abedd91e93f13f43b59d33
 
 
 
@@ -36,11 +38,9 @@ const routes: Routes = [
   /*Admin Routes Start*/
   {path:'AdminRetailerAdd',component:AdminRetailerAddComponent},
   {path:'AdminRetailerDetails',component:AdminRetailerViewComponent},
-  {path:'AdminLogin',component:AdminLoginComponent},
   /*Admin Routes End*/
 
   /*Retailer Routes Start*/
-  {path:'RetailerHome',component:RetailerHomeComponent},
   {path:'RetailerProfile',component:RetailerProfileComponent},
   {path:'AddProduct',component:AddProductComponent},
   {path:'RetailerDetails',component:RetailerDetailsComponent},
@@ -65,7 +65,6 @@ const routes: Routes = [
   {path:'Homepage',component: HomepageComponent},
   {path:'AdminRetailerAdd',component:AdminRetailerAddComponent},
   {path:'AdminRetailerDetails',component:AdminRetailerViewComponent},
-  {path:'AdminLogin',component:AdminLoginComponent},
   {path:'Shopping',component:ShoppingComponent},
   {path:'Filter',component:FilterComponent},
   {path:'Cart',component:CartComponent},
@@ -75,6 +74,7 @@ const routes: Routes = [
   {path:'Registration',component:RegistrationComponent},
 
   {path:'ForgotPassword',component:ForgotpasswordComponent},
+  {path:'Products',component:ProductsComponent},
 
 
   {path:'Billing',component:BillingComponent},

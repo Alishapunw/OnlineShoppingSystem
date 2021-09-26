@@ -14,7 +14,7 @@ export class ProductlistComponent implements OnInit {
   productList:any;
   @Input() productItem:any
   ngOnInit(): void {
-    this.productList=this.service.getProducts();
+    
   }
   AddtoCart()
   {

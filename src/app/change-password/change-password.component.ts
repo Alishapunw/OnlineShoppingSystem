@@ -1,7 +1,7 @@
-import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { RetailerHomeComponent } from '../retailer-home/retailer-home.component';
+import { Router } from '@angular/router';
+import { AuthenticationService } from '../authentication.service';
 
 @Component({
   selector: 'app-change-password',
@@ -10,12 +10,16 @@ import { RetailerHomeComponent } from '../retailer-home/retailer-home.component'
 })
 export class ChangePasswordComponent implements OnInit {
 
+  IsLoading:boolean = false;
+  InvalidPassword:boolean = false;
+
   ChangePasswordForm=new FormGroup({
-    OldPassword:new FormControl("",[Validators.required,Validators.pattern("^(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,20}$")]),
-    NewPassword:new FormControl("",[Validators.required,Validators.pattern("^(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,20}$")]),
+    OldPassword:new FormControl("",[Validators.required,Validators.pattern("[A-Z](?=.*[a-z0-9A-Z])(?=.*?[!@#\$&*~]).{7,15}$")]),
+    NewPassword:new FormControl("",[Validators.required,Validators.pattern("[A-Z](?=.*[a-z0-9A-Z])(?=.*?[!@#\$&*~]).{7,15}$")]),
+    ConfirmPassword:new FormControl("",[Validators.required])
   });
   
-  constructor() { }
+  constructor(public service:AuthenticationService, public router:Router) { }
 
   ngOnInit(): void {
     //this.retailer=new Retailer();
@@ -27,10 +31,25 @@ export class ChangePasswordComponent implements OnInit {
   get NewPassword(){
     return this.ChangePasswordForm.get("NewPassword");
   }
-
-  Submitdata(){
-    console.log(this.ChangePasswordForm.value);
+  get ConfirmPassword(){
+    return this.ChangePasswordForm.get("ConfirmPassword");
   }
 
+  Submitdata(){
+    this.IsLoading=true;
+    this.InvalidPassword = false;
+    console.log(this.ChangePasswordForm.value);
+    this.service.Login(this.ChangePasswordForm.value).subscribe( (data:any) =>{ 
+      console.log(data);
+      
+      if(data["LoginMessage"] == "InvalidPassword"){
+        this.InvalidPassword=true;
+        this.IsLoading=false;
+      }
+    }
+    );
+  }
 }
+
+
 

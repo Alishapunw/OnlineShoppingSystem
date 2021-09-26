@@ -15,11 +15,11 @@ export class RegistrationComponent implements OnInit {
   PasswordMatch:boolean=true;
 
   RegistrationForm:FormGroup = new FormGroup({
+    Name: new FormControl("", [Validators.required]),
     Email: new FormControl("", [Validators.required, Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$")]),
     Password: new FormControl("", [Validators.required, Validators.pattern("[A-Z](?=.*[a-z0-9A-Z])(?=.*?[!@#\$&*~]).{7,15}$")]),
     ConfirmPassword: new FormControl("", [Validators.required, Validators.pattern("[A-Z](?=.*[a-z0-9A-Z])(?=.*?[!@#\$&*~]).{7,15}$")]),
-    City: new FormControl("", [Validators.required]),
-    Mobile: new FormControl("", [Validators.required, Validators.pattern("[789][0-9]{9}")]),
+    phoneNumber: new FormControl("", [Validators.required, Validators.pattern("[789][0-9]{9}")]),
   })
 
 
@@ -59,7 +59,9 @@ export class RegistrationComponent implements OnInit {
      }
   }
 
-  
+  public get Name()  {
+    return this.RegistrationForm.get('Name');
+  }
  public get Email2()  {
     return this.RegistrationForm.get('Email');
   }
@@ -69,11 +71,8 @@ export class RegistrationComponent implements OnInit {
   public get ConfirmPassword2()  {
     return this.RegistrationForm.get('Password');
   }
-  public get City2()  {
-    return this.RegistrationForm.get('City');
-  }
   public get Mobile2()  {
-    return this.RegistrationForm.get('Mobile');
+    return this.RegistrationForm.get('phoneNumber');
   }
   
 }

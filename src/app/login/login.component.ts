@@ -45,9 +45,11 @@ export class LoginComponent implements OnInit {
     this.UserDoesNotExist = false;
     this.InvalidPassword = false;
     console.log(this.LoginForm.value);
+if(this.userRole=='admin'){
     this.service.Login(this.LoginForm.value).subscribe( (data:any) =>{ 
       console.log(data);
-      
+
+    
       if(data["LoginMessage"] == "UserDoesNotExist"){
         this.UserDoesNotExist=true;
         this.IsLoading=false;
@@ -61,10 +63,54 @@ export class LoginComponent implements OnInit {
         sessionStorage.setItem("Email", this.LoginForm.value["Email"])
         this.router2.navigateByUrl('Home');
       }
-
-
      } 
      );
+    }
+    if(this.userRole=='customer'){
+      this.service.Login1(this.LoginForm.value).subscribe( (data:any) =>{ 
+        console.log(data);
+  
+      
+        if(data["LoginMessage"] == "UserDoesNotExist"){
+          this.UserDoesNotExist=true;
+          this.IsLoading=false;
+        }
+        else if(data["LoginMessage"] == "InvalidPassword"){
+          this.InvalidPassword=true;
+          this.IsLoading=false;
+        }
+        else if(data["LoginMessage"] == "Success"){
+          this.IsLoading=false;
+          sessionStorage.setItem("Email", this.LoginForm.value["Email"])
+          this.router2.navigateByUrl('Home');
+        }
+       } 
+       );
+      }
+  
+      if(this.userRole=='retailer'){
+        this.service.Login2(this.LoginForm.value).subscribe( (data:any) =>{ 
+          console.log(data);
+    
+        
+          if(data["LoginMessage"] == "UserDoesNotExist"){
+            this.UserDoesNotExist=true;
+            this.IsLoading=false;
+          }
+          else if(data["LoginMessage"] == "InvalidPassword"){
+            this.InvalidPassword=true;
+            this.IsLoading=false;
+          }
+          else if(data["LoginMessage"] == "Success"){
+            this.IsLoading=false;
+            sessionStorage.setItem("Email", this.LoginForm.value["Email"])
+            this.router2.navigateByUrl('Home');
+          }
+         } 
+         );
+        }
+
+
   }
 }
 

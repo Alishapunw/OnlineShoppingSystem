@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
+
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
@@ -9,14 +12,12 @@ import { RegistrationComponent } from './registration/registration.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { RetailerProfileComponent } from './retailer-profile/retailer-profile.component';
-import { RetailerHomeComponent } from './retailer-home/retailer-home.component';
 import { HomeComponent } from './home/home.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { NavpageComponent } from './homepage/navpage/navpage.component';
 import { AdminRetailerViewComponent } from './admin-retailer-view/admin-retailer-view.component';
 import { AdminRetailerAddComponent } from './admin-retailer-add/admin-retailer-add.component';
-import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { RetailerDetailsComponent } from './retailer-details/retailer-details.component';
 import { ShoppingComponent } from './shopping/shopping.component';
 import { FilterComponent } from './shopping/filter/filter.component';
@@ -29,8 +30,13 @@ import { CategorynavComponent } from './homepage/categorynav/categorynav.compone
 import { BillingComponent } from './billing/billing.component';
 import { ProductdetailviewComponent } from './productdetailview/productdetailview.component';
 import { HttpClientModule } from '@angular/common/http';
+<<<<<<< HEAD
 import { CategoriesComponent } from './categories/categories.component';
 import { CategoryComponent } from './category/category.component';
+=======
+import { ProductsComponent } from './products/products.component';
+import { RetailerSideNavComponent } from './retailer-side-nav/retailer-side-nav.component';
+>>>>>>> 75846dcf7508e1cfb6abedd91e93f13f43b59d33
 
 
 @NgModule({
@@ -39,7 +45,6 @@ import { CategoryComponent } from './category/category.component';
     LoginComponent,
     RegistrationComponent,
     ForgotpasswordComponent,
-    RetailerHomeComponent,
     RetailerProfileComponent,
     HomeComponent,
     AddProductComponent,
@@ -47,7 +52,6 @@ import { CategoryComponent } from './category/category.component';
     HomeComponent,
     AdminRetailerViewComponent,
     AdminRetailerAddComponent,
-    AdminLoginComponent,
     RetailerDetailsComponent,
     HomepageComponent,
     NavpageComponent,
@@ -61,15 +65,21 @@ import { CategoryComponent } from './category/category.component';
     CategorynavComponent,
     BillingComponent,
     ProductdetailviewComponent,
+<<<<<<< HEAD
     CategoriesComponent,
     CategoryComponent,
+=======
+    ProductsComponent,
+    RetailerSideNavComponent,
+>>>>>>> 75846dcf7508e1cfb6abedd91e93f13f43b59d33
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
