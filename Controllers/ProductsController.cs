@@ -45,6 +45,42 @@ namespace OnlineShopping.Controllers
             return Ok(a);
         }
 
+
+        [HttpGet("GetOneProduct")]
+        public async  Task<ActionResult<IEnumerable<Products>>> GetOneProduct()
+        {
+            var a = await _context.Products.Select(p => new Products
+            {
+                ProductId = p.ProductId,
+                ProductName = p.ProductName,
+                BrandName = p.BrandName,
+                CategoryId = p.CategoryId,
+                Description = p.Description,
+                PricePerUnit = p.PricePerUnit,
+                Quantity = p.Quantity,
+                RetailerId = p.RetailerId,
+                Status = p.Status,
+                ProductImages = p.ProductImages.Select(pi => new ProductImages { ProductId = pi.ProductId, ImagePath = pi.ImagePath }).ToList()
+            }).ToListAsync();
+
+            return Ok(a[0]);
+        }
+
+
+        // GET: api/Products/5
+        [HttpGet("getProductById/{id}")]
+        public async Task<ActionResult<Products>> getProductById(int id)
+        {
+            Products CurrentProduct = await _context.Products.FindAsync(id);
+            if (CurrentProduct == null)
+            {
+                return NotFound();
+            }
+            CurrentProduct.ProductImages = await _context.ProductImages.Select(pi => new ProductImages { ProductId = pi.ProductId, ImagePath = pi.ImagePath }   ).Where(pii => pii.ProductId == id).ToListAsync();
+            return Ok(CurrentProduct);
+        }
+
+
         // GET: api/Products/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Products>> GetProducts(int id)
