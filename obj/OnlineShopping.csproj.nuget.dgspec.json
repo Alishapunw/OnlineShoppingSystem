@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "H:\\LTI_TRAINING\\OnlineShoppingApplication\\ASP\\OnlineShoppingSystem\\OnlineShopping.csproj": {}
+    "C:\\Users\\LENOVO\\source\\repos\\OnlineShopping\\OnlineShopping.csproj": {}
   },
   "projects": {
-    "H:\\LTI_TRAINING\\OnlineShoppingApplication\\ASP\\OnlineShoppingSystem\\OnlineShopping.csproj": {
+    "C:\\Users\\LENOVO\\source\\repos\\OnlineShopping\\OnlineShopping.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "H:\\LTI_TRAINING\\OnlineShoppingApplication\\ASP\\OnlineShoppingSystem\\OnlineShopping.csproj",
+        "projectUniqueName": "C:\\Users\\LENOVO\\source\\repos\\OnlineShopping\\OnlineShopping.csproj",
         "projectName": "OnlineShopping",
-        "projectPath": "H:\\LTI_TRAINING\\OnlineShoppingApplication\\ASP\\OnlineShoppingSystem\\OnlineShopping.csproj",
-        "packagesPath": "C:\\Users\\vikas\\.nuget\\packages\\",
-        "outputPath": "H:\\LTI_TRAINING\\OnlineShoppingApplication\\ASP\\OnlineShoppingSystem\\obj\\",
+        "projectPath": "C:\\Users\\LENOVO\\source\\repos\\OnlineShopping\\OnlineShopping.csproj",
+        "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\LENOVO\\source\\repos\\OnlineShopping\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\vikas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\LENOVO\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -87,7 +87,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }
