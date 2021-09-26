@@ -25,6 +25,7 @@ import { ProductitemComponent } from './shopping/productlist/productitem/product
 import { RetailerDetailsComponent } from './retailer-details/retailer-details.component';
 import { BillingComponent } from './billing/billing.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { CategoriesComponent } from './categories/categories.component';
 
 
 
@@ -55,6 +56,8 @@ const routes: Routes = [
   {path:'Registration', component: RegistrationComponent},
   {path:'ForgotPassword',component: ForgotpasswordComponent},
   {path:'UserProfile',component:UserProfileComponent},
+  {path:'Categories',component: CategoriesComponent},
+
   /*User Routes End*/
   
   
