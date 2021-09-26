@@ -33,15 +33,23 @@ export class AuthenticationService {
     return this.client.post(this.url+"/Login", JSON.stringify(admin), this.httpOptions)
   }
 
+  CheckEmail(customer:Customer)
+  {
+    return this.client.post(this.url+"/EmailExists",JSON.stringify(customer) ,this.httpOptions);
+  }
+
   Login1(customer:Customer){
     console.log(customer);
     
     return this.client.post(this.url+"/Login1", JSON.stringify(customer), this.httpOptions)
   }
-  Login2(retailer:Retailer){
-    console.log(retailer);
-    
+
+  Login2(retailer:Retailer){    
     return this.client.post(this.url+"/Login2", JSON.stringify(retailer), this.httpOptions)
+  }
+
+  ForgotPassword(customer:Customer){    
+    return this.client.post(this.url+"/ForgotPassword", JSON.stringify(customer), this.httpOptions)
   }
 
 }

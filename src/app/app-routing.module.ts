@@ -25,6 +25,8 @@ import { BillingComponent } from './billing/billing.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { ProductsComponent } from './products/products.component';
+import { MailComponent } from './mail/mail.component';
+
 
 
 
@@ -72,7 +74,9 @@ const routes: Routes = [
 
   {path:'ForgotPassword',component:ForgotpasswordComponent},
 
-  //{path:'Products',component:ProductsComponent},
+  
+  {path:'Products',component:ProductsComponent},
+  {path:'Mail',component:MailComponent},
 
 
   {path:'Billing',component:BillingComponent},
