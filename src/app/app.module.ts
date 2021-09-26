@@ -30,13 +30,10 @@ import { CategorynavComponent } from './homepage/categorynav/categorynav.compone
 import { BillingComponent } from './billing/billing.component';
 import { ProductdetailviewComponent } from './productdetailview/productdetailview.component';
 import { HttpClientModule } from '@angular/common/http';
-<<<<<<< HEAD
 import { CategoriesComponent } from './categories/categories.component';
 import { CategoryComponent } from './category/category.component';
-=======
 import { ProductsComponent } from './products/products.component';
 import { RetailerSideNavComponent } from './retailer-side-nav/retailer-side-nav.component';
->>>>>>> 75846dcf7508e1cfb6abedd91e93f13f43b59d33
 
 
 @NgModule({
@@ -65,13 +62,10 @@ import { RetailerSideNavComponent } from './retailer-side-nav/retailer-side-nav.
     CategorynavComponent,
     BillingComponent,
     ProductdetailviewComponent,
-<<<<<<< HEAD
     CategoriesComponent,
     CategoryComponent,
-=======
     ProductsComponent,
     RetailerSideNavComponent,
->>>>>>> 75846dcf7508e1cfb6abedd91e93f13f43b59d33
   ],
   imports: [
     BrowserModule,
