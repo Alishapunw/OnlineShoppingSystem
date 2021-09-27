@@ -61,6 +61,7 @@ if(this.userRole=='admin'){
       else if(data["LoginMessage"] == "Success"){
         this.IsLoading=false;
         sessionStorage.setItem("Email", this.LoginForm.value["Email"])
+       
         this.router2.navigateByUrl('Home');
       }
      } 
@@ -103,14 +104,27 @@ if(this.userRole=='admin'){
           }
           else if(data["LoginMessage"] == "Success"){
             this.IsLoading=false;
-            sessionStorage.setItem("Email", this.LoginForm.value["Email"])
+            sessionStorage.setItem("Email", this.LoginForm.value["Email"]);
+
+            
             this.router2.navigateByUrl('Home');
           }
          } 
          );
         }
 
+  }
 
+redirectUserBasedOnRole(){
+    if(this.userRole == "admin"){
+        this.router2.navigateByUrl('AdminRetailerDetails');
+    }
+    else if(this.userRole == "retailer"){
+        this.router2.navigateByUrl('RetailerProfile');
+    }
+    else if(this.userRole == "customer"){
+        this.router2.navigateByUrl('Home');
+    }
   }
 }
 

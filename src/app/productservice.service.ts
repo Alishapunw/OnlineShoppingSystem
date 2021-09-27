@@ -11,7 +11,7 @@ import { IProduct } from './iproduct';
   providedIn: 'root'
 })
 export class ProductserviceService {
-    private url= 'http://localhost:65061/api/Products';
+  private url= 'http://localhost:65061/api/Products';
 
   constructor(private client:HttpClient) { }
 
