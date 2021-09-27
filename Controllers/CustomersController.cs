@@ -100,10 +100,26 @@ namespace OnlineShopping.Controllers
 
             return customer;
         }
-
+        [HttpPost("Email")]
+        public IActionResult EmailExists(Customer c)
+        {
+            Dictionary<string, bool> d = new Dictionary<string, bool>();
+            var res = _context.Customer.Where(x => x.Email == c.Email).FirstOrDefault();
+            if(res!=null)
+            {
+                d.Add("EmailExists", true);
+                return Ok(d);
+            }
+            else 
+            {
+                d.Add("EmailExists", false);
+                return BadRequest();
+            }
+        }
         private bool CustomerExists(int id)
         {
             return _context.Customer.Any(e => e.CustomerId == id);
         }
+        
     }
 }

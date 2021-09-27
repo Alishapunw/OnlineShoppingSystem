@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "t6+g8bxbda26kiw0cBe2dQpQIy9296jCR8JMvgKiK2QAqWwjVsL2NV6w3jJUmBlGG3PXY7/VAuqkgBdW70u66A==",
+  "dgSpecHash": "1r6jt+ui8rZHY6hggK4gFYiC5ZgOIISyln8aaZSs74fS9ro6Y8XD7kWtsI2OPP69cdlf5ybK2dAKoS6KTJMnBw==",
   "success": true,
   "projectFilePath": "C:\\Users\\DELL\\ASP\\OnlineShoppingSystem\\OnlineShopping.csproj",
   "expectedPackageFiles": [
@@ -27,8 +27,8 @@
     "C:\\Users\\DELL\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\3.1.19\\microsoft.entityframeworkcore.relational.3.1.19.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\microsoft.entityframeworkcore.sqlite\\3.1.19\\microsoft.entityframeworkcore.sqlite.3.1.19.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\microsoft.entityframeworkcore.sqlite.core\\3.1.19\\microsoft.entityframeworkcore.sqlite.core.3.1.19.nupkg.sha512",
-    "C:\\Users\\DELL\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\3.1.18\\microsoft.entityframeworkcore.sqlserver.3.1.18.nupkg.sha512",
-    "C:\\Users\\DELL\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\3.1.18\\microsoft.entityframeworkcore.tools.3.1.18.nupkg.sha512",
+    "C:\\Users\\DELL\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\3.1.19\\microsoft.entityframeworkcore.sqlserver.3.1.19.nupkg.sha512",
+    "C:\\Users\\DELL\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\3.1.19\\microsoft.entityframeworkcore.tools.3.1.19.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\3.1.19\\microsoft.extensions.caching.abstractions.3.1.19.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\microsoft.extensions.caching.memory\\3.1.19\\microsoft.extensions.caching.memory.3.1.19.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\microsoft.extensions.configuration\\3.1.19\\microsoft.extensions.configuration.3.1.19.nupkg.sha512",
