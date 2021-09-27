@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Customer} from './customer';
 import { Retailer } from './retailer';
 import { Admin } from './admin';
+import { RetailerChangePassword } from './retailer-change-password';
 
 
 @Injectable({
@@ -50,6 +51,10 @@ export class AuthenticationService {
 
   ForgotPassword(customer:Customer){    
     return this.client.post(this.url+"/ForgotPassword", JSON.stringify(customer), this.httpOptions)
+  }
+
+  ChangePassword(retailer:RetailerChangePassword){    
+    return this.client.post(this.url+"/ChangePassword", JSON.stringify(retailer), this.httpOptions)
   }
 
 }
