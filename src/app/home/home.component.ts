@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IProduct } from '../iproduct';
 import { Product } from '../product';
+import { ProductCartService } from '../product-cart.service';
 import { ProductserviceService } from '../productservice.service';
 
 @Component({
@@ -14,7 +15,7 @@ export class HomeComponent implements OnInit {
   ItopProducts:Product[] = [];
   oneProduct!:Product;
 
-  constructor(public ps:ProductserviceService) { }
+  constructor(public ps:ProductserviceService, public carts:ProductCartService) { }
 
   ngOnInit(): void {
 
@@ -27,6 +28,7 @@ export class HomeComponent implements OnInit {
 
     } ) 
 
+
     /* this.ps.getIProducts().subscribe( (Ipl:IProduct[]) => {
     console.log(Ipl);
 
@@ -34,4 +36,9 @@ export class HomeComponent implements OnInit {
     } )  */
 
   }
+
+  addtocart(product:Product){
+    //this.carts.AddtoCart(product)
+  }
+
 }

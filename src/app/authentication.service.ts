@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Customer} from './customer';
 import { Retailer } from './retailer';
 import { Admin } from './admin';
@@ -12,6 +12,7 @@ import { RetailerChangePassword } from './retailer-change-password';
 })
 export class AuthenticationService {
 
+  public subject = new Subject<boolean>();
   private url='http://localhost:65061/api/Authentication';
 
   
@@ -56,5 +57,11 @@ export class AuthenticationService {
   ChangePassword(retailer:RetailerChangePassword){    
     return this.client.post(this.url+"/ChangePassword", JSON.stringify(retailer), this.httpOptions)
   }
+
+  recievedStatus():Observable<boolean>
+  {
+    return this.subject.asObservable();
+  }
+
 
 }
