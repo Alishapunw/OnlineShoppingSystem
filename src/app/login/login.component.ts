@@ -44,6 +44,7 @@ export class LoginComponent implements OnInit {
     this.IsLoading=true;
     this.UserDoesNotExist = false;
     this.InvalidPassword = false;
+    
     console.log(this.LoginForm.value);
 if(this.userRole=='admin'){
     this.service.Login(this.LoginForm.value).subscribe( (data:any) =>{ 
@@ -60,9 +61,11 @@ if(this.userRole=='admin'){
       }
       else if(data["LoginMessage"] == "Success"){
         this.IsLoading=false;
-        sessionStorage.setItem("Email", this.LoginForm.value["Email"])
-       
-        this.router2.navigateByUrl('Home');
+        sessionStorage.setItem("Email", this.LoginForm.value["Email"]);
+        this.service.subject.next(true);
+        this.redirectUserBasedOnRole();
+        
+
       }
      } 
      );
@@ -83,7 +86,8 @@ if(this.userRole=='admin'){
         else if(data["LoginMessage"] == "Success"){
           this.IsLoading=false;
           sessionStorage.setItem("Email", this.LoginForm.value["Email"])
-          this.router2.navigateByUrl('Home');
+          this.service.subject.next(true);
+          this.redirectUserBasedOnRole();
         }
        } 
        );
@@ -104,10 +108,9 @@ if(this.userRole=='admin'){
           }
           else if(data["LoginMessage"] == "Success"){
             this.IsLoading=false;
-            sessionStorage.setItem("Email", this.LoginForm.value["Email"]);
-
-            
-            this.router2.navigateByUrl('Home');
+            sessionStorage.setItem("Email", this.LoginForm.value["Email"])
+            this.service.subject.next(true);
+            this.redirectUserBasedOnRole();
           }
          } 
          );
@@ -115,18 +118,32 @@ if(this.userRole=='admin'){
 
   }
 
-redirectUserBasedOnRole(){
+
+
+  redirectUserBasedOnRole(){
+
     if(this.userRole == "admin"){
+
         this.router2.navigateByUrl('AdminRetailerDetails');
+
     }
+
     else if(this.userRole == "retailer"){
+
         this.router2.navigateByUrl('RetailerProfile');
+
     }
+
     else if(this.userRole == "customer"){
+
         this.router2.navigateByUrl('Home');
+
     }
+
   }
+
 }
+
 
 class User{
   FirstName?: string;

@@ -26,6 +26,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { ProductsComponent } from './products/products.component';
 import { MailComponent } from './mail/mail.component';
+import { RetailerSideNavComponent } from './retailer-side-nav/retailer-side-nav.component';
 
 
 
@@ -80,6 +81,7 @@ const routes: Routes = [
 
 
   {path:'Billing',component:BillingComponent},
+  {path:"RetailerHome",component:RetailerSideNavComponent}
 
 
 ];

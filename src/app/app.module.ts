@@ -69,7 +69,7 @@ import { MailComponent } from './mail/mail.component';
     CategoryComponent,
     ProductsComponent,
     RetailerSideNavComponent,
-    MailComponent,
+    MailComponent
 
   ],
   imports: [
