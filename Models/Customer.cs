@@ -19,6 +19,7 @@ namespace OnlineShopping.Models
         public string Password { get; set; }
         public long PhoneNumber { get; set; }
         public string Name { get; set; }
+        public string Otp { get; set; }
 
         public virtual ICollection<Cart> Cart { get; set; }
     }

@@ -34,7 +34,7 @@ namespace OnlineShopping.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=DESKTOP-BLF1CHR;Database=DB_OnlineShopping;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=DESKTOP-JDQP71G;Database=DB_OnlineShopping;Trusted_Connection=True;");
             }
         }
 
@@ -43,7 +43,7 @@ namespace OnlineShopping.Models
             modelBuilder.Entity<Admin>(entity =>
             {
                 entity.HasKey(e => e.Email)
-                    .HasName("PK__Admin__A9D10535C0D87834");
+                    .HasName("PK__Admin__A9D105350B3803FE");
 
                 entity.Property(e => e.Email).HasMaxLength(40);
 
@@ -59,7 +59,7 @@ namespace OnlineShopping.Models
                 entity.HasOne(d => d.Customer)
                     .WithMany(p => p.Cart)
                     .HasForeignKey(d => d.CustomerId)
-                    .HasConstraintName("FK__Cart__CustomerId__36B12243");
+                    .HasConstraintName("FK__Cart__CustomerId__17036CC0");
             });
 
             modelBuilder.Entity<Category>(entity =>
@@ -72,11 +72,11 @@ namespace OnlineShopping.Models
             modelBuilder.Entity<Customer>(entity =>
             {
                 entity.HasIndex(e => e.Email)
-                    .HasName("UQ__Customer__A9D10534F12A5317")
+                    .HasName("UQ__Customer__A9D10534B3D4E4B6")
                     .IsUnique();
 
                 entity.HasIndex(e => e.PhoneNumber)
-                    .HasName("UQ__Customer__85FB4E38D4345B59")
+                    .HasName("UQ__Customer__85FB4E3827550A86")
                     .IsUnique();
 
                 entity.Property(e => e.Email)
@@ -87,15 +87,19 @@ namespace OnlineShopping.Models
                     .IsRequired()
                     .HasMaxLength(40);
 
+                entity.Property(e => e.Otp)
+                    .HasColumnName("OTP")
+                    .HasMaxLength(4);
+
                 entity.Property(e => e.Password)
                     .IsRequired()
-                    .HasMaxLength(40);
+                    .HasMaxLength(64);
             });
 
             modelBuilder.Entity<Orders>(entity =>
             {
                 entity.HasKey(e => e.OrderId)
-                    .HasName("PK__Orders__C3905BCF32DE51A0");
+                    .HasName("PK__Orders__C3905BCF120EFEDB");
 
                 entity.Property(e => e.OrderDate).HasColumnType("smalldatetime");
 
@@ -110,7 +114,7 @@ namespace OnlineShopping.Models
                 entity.HasOne(d => d.Cart)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.CartId)
-                    .HasConstraintName("FK__Orders__CartId__3F466844");
+                    .HasConstraintName("FK__Orders__CartId__22751F6C");
             });
 
             modelBuilder.Entity<ProductCart>(entity =>
@@ -122,18 +126,18 @@ namespace OnlineShopping.Models
                 entity.HasOne(d => d.Cart)
                     .WithMany(p => p.ProductCart)
                     .HasForeignKey(d => d.CartId)
-                    .HasConstraintName("FK__ProductCa__CartI__3A81B327");
+                    .HasConstraintName("FK__ProductCa__CartI__1DB06A4F");
 
                 entity.HasOne(d => d.Product)
                     .WithMany(p => p.ProductCart)
                     .HasForeignKey(d => d.ProductId)
-                    .HasConstraintName("FK__ProductCa__Produ__3B75D760");
+                    .HasConstraintName("FK__ProductCa__Produ__1EA48E88");
             });
 
             modelBuilder.Entity<ProductImages>(entity =>
             {
                 entity.HasKey(e => e.TbProductImageId)
-                    .HasName("PK__ProductI__264BA4278971E716");
+                    .HasName("PK__ProductI__264BA4277C629982");
 
                 entity.Property(e => e.TbProductImageId).HasColumnName("TB_ProductImageId");
 
@@ -142,13 +146,13 @@ namespace OnlineShopping.Models
                 entity.HasOne(d => d.Product)
                     .WithMany(p => p.ProductImages)
                     .HasForeignKey(d => d.ProductId)
-                    .HasConstraintName("FK__ProductIm__Produ__33D4B598");
+                    .HasConstraintName("FK__ProductIm__Produ__14270015");
             });
 
             modelBuilder.Entity<Products>(entity =>
             {
                 entity.HasKey(e => e.ProductId)
-                    .HasName("PK__Products__B40CC6CD43170247");
+                    .HasName("PK__Products__B40CC6CD40B76740");
 
                 entity.Property(e => e.BrandName)
                     .IsRequired()
@@ -165,23 +169,27 @@ namespace OnlineShopping.Models
                 entity.HasOne(d => d.Category)
                     .WithMany(p => p.Products)
                     .HasForeignKey(d => d.CategoryId)
-                    .HasConstraintName("FK__Products__Catego__2F10007B");
+                    .HasConstraintName("FK__Products__Catego__0F624AF8");
 
                 entity.HasOne(d => d.Retailer)
                     .WithMany(p => p.Products)
                     .HasForeignKey(d => d.RetailerId)
-                    .HasConstraintName("FK__Products__Retail__300424B4");
+                    .HasConstraintName("FK__Products__Retail__10566F31");
             });
 
             modelBuilder.Entity<Retailer>(entity =>
             {
                 entity.HasIndex(e => e.RetailerMobile)
-                    .HasName("UQ__Retailer__C8C25D54737724E0")
+                    .HasName("UQ__Retailer__C8C25D548639FE63")
                     .IsUnique();
 
                 entity.Property(e => e.Email)
                     .IsRequired()
                     .HasMaxLength(40);
+
+                entity.Property(e => e.Otp)
+                    .HasColumnName("OTP")
+                    .HasMaxLength(4);
 
                 entity.Property(e => e.Password)
                     .IsRequired()
