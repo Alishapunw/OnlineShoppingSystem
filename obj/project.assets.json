@@ -8823,16 +8823,11 @@
     ]
   },
   "packageFolders": {
-<<<<<<< HEAD
     "C:\\Users\\admin\\.nuget\\packages\\": {}
-=======
-    "C:\\Users\\vikas\\.nuget\\packages\\": {}
->>>>>>> ae3ae0ef8f8841b5a446710b6c7edd372288e9ee
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\admin\\Desktop\\OnlineShoppingAPI\\OnlineShoppingSystem\\OnlineShopping.csproj",
       "projectName": "OnlineShopping",
       "projectPath": "C:\\Users\\admin\\Desktop\\OnlineShoppingAPI\\OnlineShoppingSystem\\OnlineShopping.csproj",
@@ -8841,16 +8836,6 @@
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
-      "projectUniqueName": "H:\\LTI_TRAINING\\OnlineShoppingApplication\\ASP\\OnlineShoppingSystem\\OnlineShopping.csproj",
-      "projectName": "OnlineShopping",
-      "projectPath": "H:\\LTI_TRAINING\\OnlineShoppingApplication\\ASP\\OnlineShoppingSystem\\OnlineShopping.csproj",
-      "packagesPath": "C:\\Users\\vikas\\.nuget\\packages\\",
-      "outputPath": "H:\\LTI_TRAINING\\OnlineShoppingApplication\\ASP\\OnlineShoppingSystem\\obj\\",
-      "projectStyle": "PackageReference",
-      "configFilePaths": [
-        "C:\\Users\\vikas\\AppData\\Roaming\\NuGet\\NuGet.Config",
->>>>>>> ae3ae0ef8f8841b5a446710b6c7edd372288e9ee
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8926,5 +8911,13 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\admin\\Desktop\\OnlineShoppingAPI\\OnlineShoppingSystem\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

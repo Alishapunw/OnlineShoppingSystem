@@ -1,7 +1,6 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< HEAD
     "C:\\Users\\admin\\Desktop\\OnlineShoppingAPI\\OnlineShoppingSystem\\OnlineShopping.csproj": {}
   },
   "projects": {
@@ -16,22 +15,6 @@
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
-    "H:\\LTI_TRAINING\\OnlineShoppingApplication\\ASP\\OnlineShoppingSystem\\OnlineShopping.csproj": {}
-  },
-  "projects": {
-    "H:\\LTI_TRAINING\\OnlineShoppingApplication\\ASP\\OnlineShoppingSystem\\OnlineShopping.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "H:\\LTI_TRAINING\\OnlineShoppingApplication\\ASP\\OnlineShoppingSystem\\OnlineShopping.csproj",
-        "projectName": "OnlineShopping",
-        "projectPath": "H:\\LTI_TRAINING\\OnlineShoppingApplication\\ASP\\OnlineShoppingSystem\\OnlineShopping.csproj",
-        "packagesPath": "C:\\Users\\vikas\\.nuget\\packages\\",
-        "outputPath": "H:\\LTI_TRAINING\\OnlineShoppingApplication\\ASP\\OnlineShoppingSystem\\obj\\",
-        "projectStyle": "PackageReference",
-        "configFilePaths": [
-          "C:\\Users\\vikas\\AppData\\Roaming\\NuGet\\NuGet.Config",
->>>>>>> ae3ae0ef8f8841b5a446710b6c7edd372288e9ee
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
