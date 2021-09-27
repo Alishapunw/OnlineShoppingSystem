@@ -23,11 +23,8 @@ import { ProductitemComponent } from './shopping/productlist/productitem/product
 import { RetailerDetailsComponent } from './retailer-details/retailer-details.component';
 import { BillingComponent } from './billing/billing.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
-<<<<<<< HEAD
 import { CategoriesComponent } from './categories/categories.component';
-=======
 import { ProductsComponent } from './products/products.component';
->>>>>>> 75846dcf7508e1cfb6abedd91e93f13f43b59d33
 
 
 
