@@ -22,7 +22,9 @@
           <!-- <i class="fa fa-search" aria-hidden="true"></i> -->
         </form>
 
+       
         <div class="text-end">
+          <div *ngIf="!message">
           <a routerLink="Login"><button type="button" class="btn btn-primary">Login</button></a>
           <a routerLink="Registration"><button type="button" class="btn btn-secondary mx-2">Sign-up</button></a>
           <a routerLink="Shopping" >
@@ -31,6 +33,22 @@
             <!-- <div style="font-size: 10px;" class="badge bg-danger">{{total}}</div> -->
           </a>
         </div>
+
+        <div *ngIf="message">
+          <ul class="nav navbar-nav">  
+           <!--  <li><a routerLink="Home">Home</a>  </li> --> 
+              <li>
+                  <a [routerLink]=""  (click)='logout()'>Logout</a>
+             </li> 
+             </ul>  
+         </div> 
+
+         
+
+
+        </div>
+
+      
       </div>
     </div>
 </header>
