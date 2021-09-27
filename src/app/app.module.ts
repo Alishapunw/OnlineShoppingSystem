@@ -36,6 +36,7 @@ import { CategoryComponent } from './category/category.component';
 import { ProductsComponent } from './products/products.component';
 import { RetailerSideNavComponent } from './retailer-side-nav/retailer-side-nav.component';
 import { MailComponent } from './mail/mail.component';
+import { FilterPipe } from './filter.pipe';
 
 
 
@@ -70,6 +71,7 @@ import { MailComponent } from './mail/mail.component';
     ProductsComponent,
     RetailerSideNavComponent,
     MailComponent,
+    FilterPipe,
 
   ],
   imports: [

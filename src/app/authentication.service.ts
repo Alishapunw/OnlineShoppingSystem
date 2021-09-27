@@ -1,19 +1,22 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Customer} from './customer';
+import { UserDetails } from './user-details';
 import { Retailer } from './retailer';
 import { Admin } from './admin';
-
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
 
-  private url='http://localhost:65061/api/Authentication';
+  // private url='http://localhost:65061/api/Authentication';
+  private url='http://localhost:65061/api';
 
   
+
+  
+
   constructor(private client:HttpClient) { }
 
   
@@ -23,29 +26,27 @@ export class AuthenticationService {
     })
   }
 
-  Register(customers:Customer){
-    return this.client.post(this.url+"/Register", JSON.stringify(customers), this.httpOptions)
+  Register(userdetails:UserDetails){
+    return this.client.post(this.url+"/Register", JSON.stringify(userdetails), this.httpOptions)
   }
 
-  Login(admin:Admin){
-    console.log(admin);
+  Login(userdetails:UserDetails){
+    console.log(userdetails);
     
-    return this.client.post(this.url+"/Login", JSON.stringify(admin), this.httpOptions)
+    return this.client.post(this.url+"/Login", JSON.stringify(userdetails), this.httpOptions)
+  }
+  Login1(retailer:Retailer){
+    console.log(retailer);
+    
+    return this.client.post(this.url+"/Login", JSON.stringify(retailer), this.httpOptions)
+  }
+  Login2(userdetails:Admin){
+    console.log(userdetails);
+    
+    return this.client.post(this.url+"/Login", JSON.stringify(userdetails), this.httpOptions)
   }
   CheckEmail(email:any)
   {
-    return this.client.post(this.url+"/customers/Email",this.httpOptions);
+    return this.client.post(this.url+"/customers/Email",JSON.stringify(email),this.httpOptions);
   }
-
-  Login1(customer:Customer){
-    console.log(customer);
-    
-    return this.client.post(this.url+"/Login1", JSON.stringify(customer), this.httpOptions)
-  }
-  Login2(retailer:Retailer){
-    console.log(retailer);
-    
-    return this.client.post(this.url+"/Login2", JSON.stringify(retailer), this.httpOptions)
-  }
-
 }

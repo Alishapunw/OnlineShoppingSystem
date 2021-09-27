@@ -82,8 +82,7 @@
                             <span class="sr-only">Next</span>
                         </a>
                     </div>
-
-                <a [routerLink]="['/ProductDetail/', p.productId]">
+                    <a [routerLink]="['/ProductDetail/', p.productId]">
                     <div class="card-body" style="min-height: 140px;">
                         <h6 class="card-title">{{p.productName}}</h6>
                         <p class="card-text">{{p.description.slice(0,50).concat("...")}}</p>
@@ -94,7 +93,6 @@
             </div>
         </div>
     </div>
-
     <div>
         <h2></h2>
     </div>
