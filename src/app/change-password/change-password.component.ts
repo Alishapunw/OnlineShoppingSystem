@@ -12,6 +12,7 @@ export class ChangePasswordComponent implements OnInit {
 
   IsLoading:boolean = false;
   InvalidPassword:boolean = false;
+  PasswordMatch:boolean=true;
 
   ChangePasswordForm=new FormGroup({
     OldPassword:new FormControl("",[Validators.required,Validators.pattern("[A-Z](?=.*[a-z0-9A-Z])(?=.*?[!@#\$&*~]).{7,15}$")]),
@@ -39,7 +40,13 @@ export class ChangePasswordComponent implements OnInit {
     this.IsLoading=true;
     this.InvalidPassword = false;
     console.log(this.ChangePasswordForm.value);
-    this.service.Login(this.ChangePasswordForm.value).subscribe( (data:any) =>{ 
+    this.ChangePasswordForm.value["Email"]=sessionStorage.getItem('Email');
+
+    if(this.ChangePasswordForm.value["NewPassword"] != this.ChangePasswordForm.value["ConfirmPassword"] ){
+      this.PasswordMatch = false;
+      this.IsLoading=false;
+    }
+    this.service.ChangePassword(this.ChangePasswordForm.value).subscribe( (data:any) =>{ 
       console.log(data);
       
       if(data["LoginMessage"] == "InvalidPassword"){

@@ -2,5 +2,6 @@ export class Customer {
     email!:string;
     password!:string;
     phoneNumber!:number;
-    name!:string;    
+    name!:string; 
+    otp!:string;   
 }

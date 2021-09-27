@@ -70,8 +70,7 @@ import { FilterPipe } from './filter.pipe';
     CategoryComponent,
     ProductsComponent,
     RetailerSideNavComponent,
-    MailComponent,
-    FilterPipe,
+    MailComponent
 
   ],
   imports: [

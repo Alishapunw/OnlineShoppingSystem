@@ -87,7 +87,14 @@
                         <h6 class="card-title">{{p.productName}}</h6>
                         <p class="card-text">{{p.description.slice(0,50).concat("...")}}</p>
                     </div>
-                    <div class="card-footer bg-transparent border-primary"> <h6>{{p.pricePerUnit| currency:"INR"}}</h6> </div>
+                    <div class="card-footer bg-transparent border-primary">
+                        <div class="row">
+                        <h6>{{p.pricePerUnit| currency:"INR"}}</h6> 
+                        
+                        <button class="btn btn-primary" (click)="addtocart(p)">Add to Cart</button>
+                       
+                    </div>
+                </div>
                 </a>
                 </div>
             </div>

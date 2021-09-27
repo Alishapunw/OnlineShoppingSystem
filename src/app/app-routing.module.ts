@@ -23,10 +23,20 @@ import { ProductitemComponent } from './shopping/productlist/productitem/product
 import { RetailerDetailsComponent } from './retailer-details/retailer-details.component';
 import { BillingComponent } from './billing/billing.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+<<<<<<< HEAD
 
 import { CategoriesComponent } from './categories/categories.component';
 import { MailComponent } from './mail/mail.component';
 import { ProductsComponent } from './products/products.component';
+import { RetailerSideNavComponent } from './retailer-side-nav/retailer-side-nav.component';
+=======
+import { CategoriesComponent } from './categories/categories.component';
+import { ProductsComponent } from './products/products.component';
+import { MailComponent } from './mail/mail.component';
+import { RetailerSideNavComponent } from './retailer-side-nav/retailer-side-nav.component';
+
+
+>>>>>>> f3cb726501ae95ff167fa9600cfd5394f0803b5e
 
 
 
@@ -72,11 +82,14 @@ const routes: Routes = [
   {path:'Registration',component:RegistrationComponent},
 
   {path:'ForgotPassword',component:ForgotpasswordComponent},
+
+  
   {path:'Products',component:ProductsComponent},
   {path:'Mail',component:MailComponent},
 
 
   {path:'Billing',component:BillingComponent},
+  {path:"RetailerHome",component:RetailerSideNavComponent}
 
 
 ];

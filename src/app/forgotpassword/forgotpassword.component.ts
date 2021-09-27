@@ -11,13 +11,12 @@ import { AuthenticationService } from '../authentication.service';
 export class ForgotpasswordComponent implements OnInit {
 
   user!:User;
-  UserDoesNotExist:boolean = false;
+  IsOTPValid:boolean = false;
   IsLoading:boolean = false;
   PasswordMatch:boolean=true;
 
   ForgotPasswordForm=new FormGroup({
-    Email: new FormControl("", [Validators.required, Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$")]),
-    NewPassword:new FormControl("",[Validators.required,Validators.pattern("[A-Z](?=.*[a-z0-9A-Z])(?=.*?[!@#\$&*~]).{7,15}$")]),
+    Password:new FormControl("",[Validators.required,Validators.pattern("[A-Z](?=.*[a-z0-9A-Z])(?=.*?[!@#\$&*~]).{7,15}$")]),
     ConfirmPassword:new FormControl("",[Validators.required,Validators.pattern("[A-Z](?=.*[a-z0-9A-Z])(?=.*?[!@#\$&*~]).{7,15}$")]),
     Otp:new FormControl("",[Validators.required]),
   });
@@ -28,13 +27,14 @@ export class ForgotpasswordComponent implements OnInit {
 
   ngOnInit(): void {
     this.user=new User()
+    
   }
 
-  get Email(){
+  /*get Email(){
     return this.ForgotPasswordForm.get("Email");
-  }
-  get NewPassword(){
-    return this.ForgotPasswordForm.get("NewPassword");
+  }*/
+  get Password(){
+    return this.ForgotPasswordForm.get("Password");
   }
   get ConfirmPassword(){
     return this.ForgotPasswordForm.get("ConfirmPassword");
@@ -45,19 +45,25 @@ export class ForgotpasswordComponent implements OnInit {
 
   Submitdata(){
     this.IsLoading=true;
-    this.UserDoesNotExist = false;
-    console.log(this.ForgotPasswordForm.value["NewPassword"] );
-    console.log(this.ForgotPasswordForm.value["ConfirmPassword"]);    
+    this.IsOTPValid = true;
+    console.log(this.ForgotPasswordForm.value);
+    
+    this.ForgotPasswordForm.value["Email"]=sessionStorage.getItem('ForgotEmail');
+    console.log(this.ForgotPasswordForm.value);
+
     if(this.ForgotPasswordForm.value["Password"] != this.ForgotPasswordForm.value["ConfirmPassword"] ){
       this.PasswordMatch = false;
       this.IsLoading=false;
-      console.log(); 
     }
-    this.service.Login(this.ForgotPasswordForm.value).subscribe( (data:any) =>{ 
+    this.service.ForgotPassword(this.ForgotPasswordForm.value).subscribe( (data:any) =>{ 
       console.log(data);
-      
-      if(data["LoginMessage"] == "UserDoesNotExist"){
-        this.UserDoesNotExist=true;
+      if(data["IsOTPValid"] == true){
+        this.IsOTPValid=true;
+        this.IsLoading=false;
+        this.router.navigateByUrl("/Login")
+      }
+      else if(data["IsOTPValid"] == false){
+        this.IsOTPValid=false;
         this.IsLoading=false;
       }
      } 
