@@ -16,6 +16,10 @@
         <!--  <li><a href="#" class="nav-link px-2 text-black">Categories</a></li> -->
 
       </ul>
+        <form class="col-8 col-lg-auto mb-lg-0 me-lg-3" >
+          <input type="search" class="form-control form-control-dark"   name="search" [(ngModel)]="searchTerm" (keyup)="search($event)" placeholder="Search..." aria-label="Search">
+          <!-- <i class="fa fa-search" aria-hidden="true"></i> -->
+        </form>
 
       <form class="col-8 col-lg-auto mb-lg-0 me-lg-3">
         <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">

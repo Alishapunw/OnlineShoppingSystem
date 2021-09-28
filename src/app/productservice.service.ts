@@ -12,6 +12,7 @@ import { IProduct } from './iproduct';
 })
 export class ProductserviceService {
   private url= 'http://localhost:65061/api/Products';
+  public search=new BehaviorSubject<string>("");
 
   constructor(private client:HttpClient) { }
 
