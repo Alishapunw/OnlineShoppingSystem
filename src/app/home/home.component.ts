@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { IProduct } from '../iproduct';
+
 import { Product } from '../product';
-import { ProductCartService } from '../product-cart.service';
 import { ProductserviceService } from '../productservice.service';
+import { CartService } from '../services/cart.service';
+import { FilterPipe } from '../filter.pipe';
+
 
 @Component({
   selector: 'app-home',
@@ -14,8 +16,10 @@ export class HomeComponent implements OnInit {
   topProducts:Product[] = [];
   ItopProducts:Product[] = [];
   oneProduct!:Product;
+  searchKey:string="";
+  
 
-  constructor(public ps:ProductserviceService, public carts:ProductCartService) { }
+  constructor(public ps:ProductserviceService,public cart:CartService) { }
 
   ngOnInit(): void {
 
@@ -25,20 +29,22 @@ export class HomeComponent implements OnInit {
     console.log(pl);
     this.topProducts = pl;
     console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-
-    } ) 
-
+    })
 
     /* this.ps.getIProducts().subscribe( (Ipl:IProduct[]) => {
     console.log(Ipl);
 
       this.ItopProducts = Ipl;
     } )  */
+    this.ps.search.subscribe((val:any)=>{
+      this.searchKey=val;
+    })
+
+   
 
   }
-
-  addtocart(product:Product){
-    //this.carts.AddtoCart(product)
+  addtocart(p:any)
+  {
+    return this.cart.AddtoCart(p);
   }
-
 }

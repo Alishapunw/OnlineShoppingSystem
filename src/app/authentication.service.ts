@@ -14,7 +14,7 @@ import { UserDetails } from './user-details';
 })
 export class AuthenticationService {
 
-  public subject = new BehaviorSubject<boolean>(message);
+  public subject = new Subject<boolean>();
   private url='http://localhost:65061/api/Authentication';
 
   
@@ -28,12 +28,12 @@ export class AuthenticationService {
     })
   }
 
-  Register(userdetails:UserDetails){
-    return this.client.post(this.url+"/Register", JSON.stringify(userdetails), this.httpOptions)
+  Register(customers:Customer){
+    return this.client.post(this.url+"/Register", JSON.stringify(customers), this.httpOptions)
   }
 
-  Login(userdetails:UserDetails){
-    console.log(userdetails);
+  Login(admin:Admin){
+    console.log(admin);
     
     return this.client.post(this.url+"/Login", JSON.stringify(admin), this.httpOptions)
   }
@@ -42,10 +42,11 @@ export class AuthenticationService {
   {
     return this.client.post(this.url+"/EmailExists",JSON.stringify(customer) ,this.httpOptions);
   }
-  Login1(retailer:Retailer){
-    console.log(retailer);
+
+  Login1(customer:Customer){
+    console.log(customer);
     
-    return this.client.post(this.url+"/Login", JSON.stringify(retailer), this.httpOptions)
+    return this.client.post(this.url+"/Login1", JSON.stringify(customer), this.httpOptions)
   }
 
   Login2(retailer:Retailer){    
@@ -64,6 +65,8 @@ export class AuthenticationService {
   {
     return this.subject.asObservable();
   }
+  
 
 
 }
+
