@@ -27,6 +27,21 @@ namespace OnlineShopping.Controllers
             return await _context.ProductCart.ToListAsync();
         }
 
+
+        [HttpGet("GetProductCartByEmail/{email}")]
+        public async Task<ActionResult<IEnumerable<ProductCart>>> GetProductCartByEmail(string email)
+        {
+            Customer customer = _context.Customer.Where(x => x.Email == email).FirstOrDefault();
+            Cart cart = _context.Cart.Where(c => c.CustomerId == customer.CustomerId && c.Status == false).FirstOrDefault();
+            if(cart == null)
+            {
+                return Ok();
+            }
+
+            var productCart = _context.ProductCart.Select(pc => new ProductCart { Id = pc.Id , CartId = pc.CartId, ProductId = pc.ProductId , Amount = pc.Amount, Quantity = pc.Quantity , Product = _context.Products.Where(p => p.ProductId == pc.ProductId).FirstOrDefault() }  ).Where( pcc => pcc.CartId == cart.CartId ).ToList();
+            return Ok(productCart);
+        }
+
         // GET: api/ProductCarts/5
         [HttpGet("{id}")]
         public async Task<ActionResult<ProductCart>> GetProductCart(int id)
