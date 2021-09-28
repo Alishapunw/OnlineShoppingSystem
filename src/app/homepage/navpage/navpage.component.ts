@@ -9,28 +9,31 @@ import { CartService } from 'src/app/services/cart.service';
   styleUrls: ['./navpage.component.css']
 })
 export class NavpageComponent implements OnInit {
-  public total:number=0;
-  message:boolean=false;
-  constructor(private cart:CartService ,public auth:AuthenticationService, public router:Router) { }
+  public total: number = 0;
+  message!: boolean ;
+  CurrentUserEmail:any = "";
+
+  constructor(private cart: CartService, public auth: AuthenticationService, public router: Router) { }
 
   ngOnInit(): void {
-    this.cart.getProducts().subscribe((res:any)=>
-    {
-      this.total=res.length;
-      
+    
+    this.auth.recievedStatus().subscribe((data: any) => {
+      this.message = data;
     })
-this.auth.recievedStatus().subscribe((data:any)=>{
-  this.message=data;
-})
+
+    this.CurrentUserEmail = localStorage.getItem("Email");
+    if(this.CurrentUserEmail != null){
+          this.auth.subject.next(true);
+    }
   }
-  logout()
-  {
+
+  logout() {
     console.log("hi");
-    sessionStorage.removeItem('Email');
-    sessionStorage.clear();
+    localStorage.removeItem('Email');
+    localStorage.clear();
     this.auth.subject.next(false);
     //this.message=false;
-    this.router.navigate(['Login']); 
-  } 
+    this.router.navigate(['Login']);
+  }
 
 }

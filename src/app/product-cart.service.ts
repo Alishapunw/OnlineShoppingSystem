@@ -1,6 +1,7 @@
-import { isNull } from '@angular/compiler/src/output/output_ast';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { Cart, CartClass } from './cart';
 import { Product } from './product';
 import { ProductCart } from './product-cart';
 
@@ -9,37 +10,44 @@ import { ProductCart } from './product-cart';
 })
 export class ProductCartService {
 
-  productcart!:ProductCart[]
- // private basketSource = new BehaviorSubject<ProductCart>(null);
- // basket$ = this.basketSource.asObservable();
-  constructor() { }
 
- /* AddtoCart(product:Product){
-this.productcart.push(new ProductCart(product.productId,product.quantity,product.pricePerUnit));
-console.log(this.productcart);
-
-  } */
-
-  private mapProductToCart(p:Product,quantity:number):ProductCart{
-    return {
-     productId:p.productId,
-     amount:p.pricePerUnit,
-    };
-  }
-/*
-  addProductToCart(item:Product,quantity=1){
-  const itemToAdd:ProductCart=this.mapProductToCart(item,quantity);
-  const basket=this.getCurrentBasketValue() ?? this.
+  private url = 'http://localhost:65061/api/Carts';
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
   }
 
-  getCurrentBasketValue() {
-    return this.basketSource.value;
+
+  productcart!: ProductCart[]
+  /* private cartSource = new BehaviorSubject<ProductCart | null>(null);
+   cart$ = this.cartSource.asObservable();*/
+  constructor(private http: HttpClient) { }
+
+
+
+  AddtoCart(product: Product, LoggedInUserEmail: string) {
+    this.http.get(this.url + "/GetCartByUserEmail/" + LoggedInUserEmail).subscribe((data: any) => {
+      if (data["CartCreatedorExists"] == true) {
+        console.log("CartCreated");
+        this.http.post(this.url + "/AddProductToCart/" + LoggedInUserEmail, JSON.stringify(product), this.httpOptions).subscribe((data: any) => {
+          if (data["AddedProduct"] == true) {
+            console.log("AddedProduct");
+          }
+          else {
+            console.log("Not AddedProduct");
+          }
+        })
+      }
+      else if (data["CartCreatedorExists"] == false) {
+        console.log("CartNotCreated");
+      }
+      else {
+        console.log("In else");
+      }
+    });
+
   }
 
-  private createBasket():  {
-    const basket = new Basket();
-    localStorage.setItem('basket_id', basket.id);
-    return basket;
-  }
-  */
+
 }

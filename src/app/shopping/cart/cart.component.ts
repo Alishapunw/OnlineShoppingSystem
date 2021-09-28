@@ -20,6 +20,7 @@ export class CartComponent implements OnInit {
 
 
   ngOnInit(): void {
+    /*
     this.cart.getProducts().subscribe(res=>
       {
         this.productList=res;
@@ -33,7 +34,7 @@ export class CartComponent implements OnInit {
     emptyCart()
     {
       this.cart.removeAllCart();
-    }
+    }*/
 }
 
 
@@ -44,3 +45,4 @@ export class CartComponent implements OnInit {
         // quantity:1,
         // productName:this.product.ProductName,
         // price:this.product.PricePerUnit
+}

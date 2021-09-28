@@ -1,24 +1,105 @@
-<!-- <div class="row">
- <div class="col-sm-2"> -->
-        <!-- <app-filter></app-filter>
-    </div> --> 
-    <!-- <div class="col-sm-4">
-        <app-productlist></app-productlist>
-    </div> -->
-    <!-- <div class="col-sm-12"> -->
-        <!-- <app-cart></app-cart>
-    </div>
-</div> --> 
-<div class="row">
-    <!-- <div class="col-sm-4">
-        <app-products></app-products>
-    </div> -->
-    <div class="col-sm-12">
-        <app-cart></app-cart>
-    </div>
+<div class="row justify-content-center" *ngIf="IsLoading; else productCartDiv">
+
+    <div style="height: 80px;"></div>
+
+    <img style="width: 100px;" src="./assets/ezgif.com-gif-maker.gif" alt="">
+
+    <div style="height: 80px;"></div>
+
+
 </div>
 
 
+<ng-template #productCartDiv>
+
+
+    <div style="height: 40px;"></div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <ng-container *ngIf="productList.length!=0">
+                <div class="container">
+                    <div class="cardtable">
+                        <div class="card-product">
+                            <table class="table align-middle">
+                                <thead>
+                                    <tr>
+                                        <th>Sr.No</th>
+                                        <th>Product Name</th>
+                                        <th>Quantity</th>
+                                        <th>Price</th>
+                                        <th>Total</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let product of productList;let i=index">
+                                        <td>{{i+1}}</td>
+                                        <td>{{product.product.productName}}</td>
+                                        <td class="align-middle">
+                                            <div class="d-flex align-items-center">
+                                                <i  (click)="decrementItem(product.id)"
+                                                    class="fa fa-minus-circle text-warning mr-2"
+                                                    style="cursor: pointer; font-size: 2em;"></i>
+                                                <span class="font-weight-bold"
+                                                    style="font-size: 1.5em;">{{product.quantity}}</span>
+                                                <i (click)="incrementItem(product.id)"
+                                                    class="fa fa-plus-circle text-warning mx-2"
+                                                    style="cursor: pointer; font-size: 2em;"></i>
+                                            </div>
+                                        </td>
+                                        <td>{{product.product.pricePerUnit}}</td>
+                                        <td>{{product.amount}}</td>
+                                        <td><button (click)="DeleteProductCart(product.id)" class="btn btn-danger">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <!-- 
+                              <tr>
+                                    <td colspan="4"></td>
+                                    <td><button (click)="emptyCart()" class="btn btn-danger">EmptyCart</button></td>
+                                    <td><button routerLink="/Home" class="btn btn-primary">Shop-More</button></td>
+                                    <td><button class="btn btn-success">Checkout</button></td>
+                                    <td><strong>Grand Total:{{carttotal}}</strong></td>
+                                </tr>
+                                 -->
+                                </tbody>
+
+                            </table>
+                            <button type="submit" class="btn btn-primary btn-block ">
+                                <a routerLink="../Billing" class="text-white">Proceed to Payment</a></button>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
 
 
 
+
+
+
+            <ng-container *ngIf="productList.length==0">
+                <div class="container">
+                    <div>
+                        <h3 style="padding-top: 12px;padding-left:10px; text-align: center;">
+                            My cart
+                        </h3>
+                    </div>
+                    <div class="top mx-auto" style="width: 400px; height: 300px;">
+                        <img class="img-thumbnail" src="assets/EmptyCart.jpg" alt="">
+                    </div>
+
+                    <div>
+                        <h4 style="text-align:center">Your Cart is Empty</h4>
+                        <h6 style="text-align:center">Add items to the cart now</h6>
+                        <button routerLink="Products" class="btn btn-primary col text-center">Shop Now</button>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+
+    <div style="height: 40px;"></div>
+
+</ng-template>

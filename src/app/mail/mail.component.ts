@@ -30,7 +30,7 @@ export class MailComponent implements OnInit {
         //console.log("Email Exists");
         this.UserDoesNotExist=false;
         this.route.navigateByUrl("/ForgotPassword");
-        sessionStorage.setItem("ForgotEmail", this.ForgotPasswordForm1.value["Email"])
+        localStorage.setItem("ForgotEmail", this.ForgotPasswordForm1.value["Email"])
       }
       else if(data["EmailExists"] == false){
         this.UserDoesNotExist=true;

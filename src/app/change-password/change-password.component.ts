@@ -40,7 +40,7 @@ export class ChangePasswordComponent implements OnInit {
     this.IsLoading=true;
     this.InvalidPassword = false;
     console.log(this.ChangePasswordForm.value);
-    this.ChangePasswordForm.value["Email"]=sessionStorage.getItem('Email');
+    this.ChangePasswordForm.value["Email"]=localStorage.getItem('Email');
 
     if(this.ChangePasswordForm.value["NewPassword"] != this.ChangePasswordForm.value["ConfirmPassword"] ){
       this.PasswordMatch = false;

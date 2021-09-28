@@ -1,55 +1,55 @@
 <header class="p-3 bg-light navbar-light text-black">
-    <div class="container">
-      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-        <i class="fa fa-shopping-bag" style="font-size: 35px;"aria-hidden="true"></i>
-        <h3 class="my-0 mr-md-auto font-weight-normal px-3">
+  <div class="container">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+      <i class="fa fa-shopping-bag" style="font-size: 35px;" aria-hidden="true"></i>
+      <h3 class="my-0 mr-md-auto font-weight-normal px-3">
         Stop-&-Shop</h3>
-<!--         
+      <!--         
         <h3 class="my-0 mr-md-auto  navbar-brand px-5">
         Shopping App
         </h3> -->
-        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="#" routerLink="Home" class="nav-link px-2 text-black">Home</a></li>
+      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        <li><a href="#" routerLink="Home" class="nav-link px-2 text-black">Home</a></li>
         <!-- <li><a href="#" routerLink="Shopping" class="nav-link px-2 text-black">Cart</a></li>-->
-          <li><a routerLink="Categories" class="nav-link px-2 text-black">Categories</a></li>
-          <li><a href="#" routerLink="Products" class="nav-link px-2 text-black">Compare</a></li>
+        <li><a routerLink="Categories" class="nav-link px-2 text-black">Categories</a></li>
+        <li><a href="#" routerLink="Products" class="nav-link px-2 text-black">Compare</a></li>
         <!--  <li><a href="#" class="nav-link px-2 text-black">Categories</a></li> -->
-          
-        </ul>
 
-        <form class="col-8 col-lg-auto mb-lg-0 me-lg-3" >
-          <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
-          <!-- <i class="fa fa-search" aria-hidden="true"></i> -->
-        </form>
+      </ul>
 
-       
-        <div class="text-end">
-          <div *ngIf="!message">
+      <form class="col-8 col-lg-auto mb-lg-0 me-lg-3">
+        <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
+        <!-- <i class="fa fa-search" aria-hidden="true"></i> -->
+      </form>
+
+
+      <div class="text-end">
+        <div *ngIf="!message">
           <a routerLink="Login"><button type="button" class="btn btn-primary">Login</button></a>
           <a routerLink="Registration"><button type="button" class="btn btn-secondary mx-2">Sign-up</button></a>
-          <a routerLink="Shopping" >
-            <span class="text-danger"> {{total}}</span>
-            <i class="fa fa-fw fa-shopping-cart fa-lg"></i> 
-            <!-- <div style="font-size: 10px;" class="badge bg-danger">{{total}}</div> -->
-          </a>
+
         </div>
 
         <div *ngIf="message">
-          <ul class="nav navbar-nav">  
-           <!--  <li><a routerLink="Home">Home</a>  </li> --> 
-              <li>
-                  <a [routerLink]=""  (click)='logout()'>Logout</a>
-             </li> 
-             </ul>  
-         </div> 
+          <!--  <li><a routerLink="Home">Home</a>  </li> -->
+          <a  (click)='logout()'>Logout</a> &nbsp; &nbsp;
 
-         
+          <a routerLink="Shopping" style="text-decoration: none;">
+            <span class="text-danger"> {{total}}</span>
+            <i class="fa fa-fw fa-shopping-cart fa-lg"></i>
+            <!-- <div style="font-size: 10px;" class="badge bg-danger">{{total}}</div> -->
+          </a>
+
 
 
         </div>
 
-      
+
+
+
       </div>
+
+
     </div>
+  </div>
 </header>
-  

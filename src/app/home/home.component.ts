@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { IProduct } from '../iproduct';
 import { Product } from '../product';
 import { ProductCartService } from '../product-cart.service';
@@ -15,7 +16,7 @@ export class HomeComponent implements OnInit {
   ItopProducts:Product[] = [];
   oneProduct!:Product;
 
-  constructor(public ps:ProductserviceService, public carts:ProductCartService) { }
+  constructor(public ps:ProductserviceService, public carts:ProductCartService, public router:Router) { }
 
   ngOnInit(): void {
 
@@ -37,7 +38,15 @@ export class HomeComponent implements OnInit {
 
   }
 
-  addtocart(product:Product){
+  addProductToCart(product:Product){
+    var LoggedInUserEmail = localStorage.getItem("Email");
+    console.log(LoggedInUserEmail);  
+    if(LoggedInUserEmail == null){
+        this.router.navigateByUrl("/Login")
+    }
+    else{
+        this.carts.AddtoCart(product, LoggedInUserEmail)
+    }
     //this.carts.AddtoCart(product)
   }
 

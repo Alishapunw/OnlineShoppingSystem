@@ -48,7 +48,7 @@ export class ForgotpasswordComponent implements OnInit {
     this.IsOTPValid = true;
     console.log(this.ForgotPasswordForm.value);
     
-    this.ForgotPasswordForm.value["Email"]=sessionStorage.getItem('ForgotEmail');
+    this.ForgotPasswordForm.value["Email"]=localStorage.getItem('ForgotEmail');
     console.log(this.ForgotPasswordForm.value);
 
     if(this.ForgotPasswordForm.value["Password"] != this.ForgotPasswordForm.value["ConfirmPassword"] ){
