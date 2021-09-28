@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -33,12 +33,12 @@ namespace OnlineShopping.Controllers
         {
             Customer customer = _context.Customer.Where(x => x.Email == email).FirstOrDefault();
             Cart cart = _context.Cart.Where(c => c.CustomerId == customer.CustomerId && c.Status == false).FirstOrDefault();
-            if(cart == null)
+            if (cart == null)
             {
                 return Ok();
             }
 
-            var productCart = _context.ProductCart.Select(pc => new ProductCart { Id = pc.Id , CartId = pc.CartId, ProductId = pc.ProductId , Amount = pc.Amount, Quantity = pc.Quantity , Product = _context.Products.Where(p => p.ProductId == pc.ProductId).FirstOrDefault() }  ).Where( pcc => pcc.CartId == cart.CartId ).ToList();
+            var productCart = _context.ProductCart.Select(pc => new ProductCart { Id = pc.Id, CartId = pc.CartId, ProductId = pc.ProductId, Amount = pc.Amount, Quantity = pc.Quantity, Product = _context.Products.Where(p => p.ProductId == pc.ProductId).FirstOrDefault() }).Where(pcc => pcc.CartId == cart.CartId).ToList();
             return Ok(productCart);
         }
 
@@ -114,6 +114,52 @@ namespace OnlineShopping.Controllers
             await _context.SaveChangesAsync();
 
             return productCart;
+        }
+
+        [HttpPut ("increaseProductCartItem/{id}")]
+        public async Task<ActionResult<ProductCart>> increaseProductCartItem(int id)
+        {
+            //var productCart = await _context.ProductCart.FindAsync(id);
+            ProductCart p = _context.ProductCart.Where(pc => pc.Id == id).FirstOrDefault();
+            if (p == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                p.Quantity += 1;
+                Products a = _context.Products.Where(pcc => pcc.ProductId == p.ProductId).FirstOrDefault();
+                p.Amount += a.PricePerUnit;
+                _context.ProductCart.Update(p);
+                await _context.SaveChangesAsync();
+            }
+            return Ok();
+        }
+
+
+        [HttpPut("decreaseProductCartItem/{id}")]
+        public async Task<ActionResult<ProductCart>> decreaseProductCartItem(int id)
+        {
+            //var productCart = await _context.ProductCart.FindAsync(id);
+            ProductCart p = _context.ProductCart.Where(pc => pc.Id == id).FirstOrDefault();
+            if (p == null)
+            {
+                return NotFound();
+            }
+            if(p.Quantity>1)
+            {
+                p.Quantity -= 1;
+                Products a = _context.Products.Where(pcc => pcc.ProductId == p.ProductId).FirstOrDefault();
+                p.Amount -= a.PricePerUnit;
+                _context.ProductCart.Update(p);
+                await _context.SaveChangesAsync();
+            }
+            else
+            {
+                await DeleteProductCart(p.Id);
+                await _context.SaveChangesAsync();
+            }
+            return Ok();
         }
 
         private bool ProductCartExists(int id)
