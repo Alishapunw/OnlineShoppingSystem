@@ -1,7 +1,6 @@
 export class Retailer {
-  
         email!:string;
         password!:string;
-        retailerNumber!:number;
+        retailerName!:string;
         retailerMobile!:number;       
 }

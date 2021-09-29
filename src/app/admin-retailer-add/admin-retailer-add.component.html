@@ -30,65 +30,67 @@
   </style>
   </head>
          
-            <!--  <h1 style="text-align: center;">Register to explore amazing career opportunities</h1>-->
+             
   
               <body>
+                <h3 style="text-align: center;">Add Retailer Form</h3>
                   <div class="login-form">
                       <form [formGroup]="ContactForm" (ngSubmit)="SubmitInfo()">
+                        <div class="form-group">
+                            <label class="required">Email Address</label>
+                            <input type="text" class="form-control" id="email" name="email" formControlName="email" placeholder="Enter Email Address"
+                            required="required">
+                        </div>
+                        <div *ngIf="!email?.valid && (email ?.dirty || email?.touched)" class="error">
+                            <div *ngIf="email!.errors!.required">
+                                Email is required  
+                            </div>
+                            <div *ngIf="email!.errors!.pattern">
+                                Email Pattern Error
+                            </div>                      
+                            </div>
                          
                         <div class="form-group">
-                            <label>Retailer's ID*</label>
-                            <input type="text" name="id" id="id" class="form-control" placeholder="Name" required="required" formControlName="id">
-                            <div *ngIf="!id?.valid && (id?.dirty || id?.touched)" class="error">
-                              <div *ngIf="id!.errors!.required">
-                                ID is required
+                            <label class="required">Password</label>
+                            <input type="password" name="pass" id="pass" class="form-control" placeholder="Password" required="required" formControlName="password">
+                            <div *ngIf="!password?.valid && (password?.dirty || password?.touched)" class="error">
+                              <div *ngIf="password!.errors!.required">
+                                Password is required
                               </div>
                         </div>
                     </div>
                           <div class="form-group">
-                              <label>Retailer's Name*</label>
-                              <input type="text" name="fname" id="fname" class="form-control" placeholder="Name" required="required" formControlName="firstName">
-                              <div *ngIf="!fname?.valid && (fname?.dirty || fname?.touched)" class="error">
-                                <div *ngIf="fname!.errors!.required">
+                              <label class="required">Retailer's Name</label>
+                              <input type="text" name="fname" id="fname" class="form-control" placeholder="Name" required="required" formControlName="RetailerName">
+                              <div *ngIf="!RetailerName?.valid && (RetailerName?.dirty || RetailerName?.touched)" class="error">
+                                <div *ngIf="RetailerName!.errors!.required">
                                   First Name is required
                                 </div>
                           </div>
                       </div>
 
                       <div class="form-group">
-                        <label>Mobile No.*</label>
-                        <input type="text" class="form-control" placeholder="Enter Mobile No."
-                        name="mobileno" id="mobileno" required="required" formControlName="mobileno"> 
+                        <label class="required">Mobile No.</label>
+                        <input type="number" class="form-control" placeholder="Enter Mobile No."
+                        name="mobileno" id="mobileno" required="required" formControlName="RetailerMobile"> 
                     </div>
-                    <div *ngIf="!Mobileno?.valid && (Mobileno ?.dirty || Mobileno?.touched)" class="error">
-                        <div *ngIf="Mobileno!.errors!.required">
+                    <div *ngIf="!RetailerMobile?.valid && (RetailerMobile?.dirty || RetailerMobile?.touched)" class="error">
+                        <div *ngIf="RetailerMobile!.errors!.required">
                             Mobile Number is required  
                         </div>
-                        <div *ngIf="Mobileno!.errors!.minlength">
-                         Enter atleast 10 digits  
+                        <div *ngIf="RetailerMobile!.errors!.minlength">
+                            Enter atleast 10 digits  
                         </div>               
                     </div>
 
 
-                      <div class="form-group">
-                        <label>Email Address*</label>
-                        <input type="text" class="form-control" id="email" name="email" formControlName="email" placeholder="Enter Email Address"
-                        required="required">
-                    </div>
-                    <div *ngIf="!email?.valid && (email ?.dirty || email?.touched)" class="error">
-                        <div *ngIf="email!.errors!.required">
-                            Email is required  
-                        </div>
-                        <div *ngIf="email!.errors!.pattern">
-                            Email Pattern Error
-                        </div>                      
-                        </div>
+                      
 
                           
                         
                           <div class="form-group">
                               <button type="submit" class="btn btn-primary btn-block" [disabled]="!ContactForm.valid">
-                                  <a routerLink="../AdminRetailerDetails">Submit</a></button>
+                                  Add</button>
                           </div>
                         
                           <div class="clearfix">
@@ -98,4 +100,6 @@
                         </form>     
                   </div>
                 
-
+                 
+          
+          

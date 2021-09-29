@@ -5,6 +5,8 @@ import { Customer} from './customer';
 import { Retailer } from './retailer';
 import { Admin } from './admin';
 import { RetailerChangePassword } from './retailer-change-password';
+import { BehaviorSubject } from 'rxjs';
+import { UserDetails } from './user-details';
 
 
 @Injectable({
@@ -16,6 +18,7 @@ export class AuthenticationService {
   private url='http://localhost:65061/api/Authentication';
 
   
+
   constructor(private client:HttpClient) { }
 
   
@@ -62,6 +65,8 @@ export class AuthenticationService {
   {
     return this.subject.asObservable();
   }
+  
 
 
 }
+

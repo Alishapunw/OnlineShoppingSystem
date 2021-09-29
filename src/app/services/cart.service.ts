@@ -1,18 +1,48 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { ProductCart } from '../product-cart';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
+  
+  private url = 'http://localhost:65061/api/ProductCarts';
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  }
+
+
   public cartItemList:any=[]
   public productList=new BehaviorSubject<any>([]);
 
-  constructor() { }
-  getProducts()
+  constructor(private http:HttpClient) { }
+
+  getProducts(LoggedInUserEmail:string):Observable<ProductCart[]>
   {
-    return this.productList.asObservable();
+   return this.http.get<ProductCart[]>(this.url + "/GetProductCartByEmail/" + LoggedInUserEmail);
+    //return this.productList.asObservable();
   }
+
+
+  DeleteProductCartItem(Id:number){
+    return this.http.delete(this.url + "/" + Id);
+  }
+
+  increaseProductCartItem(Id:number){
+    return this.http.put(this.url + "/increaseProductCartItem/" + Id, this.httpOptions);
+  }
+
+  decreaseProductCartItem(Id:number){
+    return this.http.put(this.url + "/decreaseProductCartItem/" + Id, this.httpOptions);
+  }
+  
+
+
+
   setProduct(product:any)
   {
     this.cartItemList.push(...product);

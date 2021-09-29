@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
     this.InvalidPassword = false;
     
     console.log(this.LoginForm.value);
-if(this.userRole=='admin'){
+  if(this.userRole=='admin'){
     this.service.Login(this.LoginForm.value).subscribe( (data:any) =>{ 
       console.log(data);
 
@@ -61,7 +61,7 @@ if(this.userRole=='admin'){
       }
       else if(data["LoginMessage"] == "Success"){
         this.IsLoading=false;
-        sessionStorage.setItem("Email", this.LoginForm.value["Email"]);
+        localStorage.setItem("Email", this.LoginForm.value["Email"]);
         this.service.subject.next(true);
         this.redirectUserBasedOnRole();
         
@@ -85,7 +85,7 @@ if(this.userRole=='admin'){
         }
         else if(data["LoginMessage"] == "Success"){
           this.IsLoading=false;
-          sessionStorage.setItem("Email", this.LoginForm.value["Email"])
+          localStorage.setItem("Email", this.LoginForm.value["Email"])
           this.service.subject.next(true);
           this.redirectUserBasedOnRole();
         }
@@ -108,7 +108,7 @@ if(this.userRole=='admin'){
           }
           else if(data["LoginMessage"] == "Success"){
             this.IsLoading=false;
-            sessionStorage.setItem("Email", this.LoginForm.value["Email"])
+            localStorage.setItem("Email", this.LoginForm.value["Email"])
             this.service.subject.next(true);
             this.redirectUserBasedOnRole();
           }
@@ -116,8 +116,9 @@ if(this.userRole=='admin'){
          );
         }
 
-
   }
+
+
 
   redirectUserBasedOnRole(){
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/authentication.service';
+import { ProductserviceService } from 'src/app/productservice.service';
 import { CartService } from 'src/app/services/cart.service';
 
 @Component({
@@ -9,28 +10,37 @@ import { CartService } from 'src/app/services/cart.service';
   styleUrls: ['./navpage.component.css']
 })
 export class NavpageComponent implements OnInit {
-  public total:number=0;
-  message:boolean=false;
-  constructor(private cart:CartService ,public auth:AuthenticationService, public router:Router) { }
+  public total: number = 0;
+  message!: boolean ;
+  CurrentUserEmail:any = "";
+  public searchTerm:string='';
+  constructor(private cart:CartService ,public service:ProductserviceService,public auth:AuthenticationService, public router:Router) { }
 
   ngOnInit(): void {
-    this.cart.getProducts().subscribe((res:any)=>
-    {
-      this.total=res.length;
-      
+    
+    this.auth.recievedStatus().subscribe((data: any) => {
+      this.message = data;
     })
-this.auth.recievedStatus().subscribe((data:any)=>{
-  this.message=data;
-})
+
+    this.CurrentUserEmail = localStorage.getItem("Email");
+    if(this.CurrentUserEmail != null){
+          this.auth.subject.next(true);
+    }
   }
-  logout()
-  {
+
+  logout() {
     console.log("hi");
-    sessionStorage.removeItem('Email');
-    sessionStorage.clear();
+    localStorage.removeItem('Email');
+    localStorage.clear();
     this.auth.subject.next(false);
     //this.message=false;
     this.router.navigate(['Login']); 
   } 
+  search(event:any)
+  {
+    this.searchTerm=(event.target as HTMLInputElement ).value;
+    console.log(this.searchTerm);
+    this.service.search.next(this.searchTerm);
+  }
 
 }

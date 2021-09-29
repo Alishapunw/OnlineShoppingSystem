@@ -11,7 +11,8 @@ import { IProduct } from './iproduct';
   providedIn: 'root'
 })
 export class ProductserviceService {
-    private url= 'http://localhost:65061/api/Products';
+  private url= 'http://localhost:65061/api/Products';
+  public search=new BehaviorSubject<string>("");
 
   constructor(private client:HttpClient) { }
 
