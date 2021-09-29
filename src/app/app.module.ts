@@ -37,6 +37,7 @@ import { ProductsComponent } from './products/products.component';
 import { RetailerSideNavComponent } from './retailer-side-nav/retailer-side-nav.component';
 import { MailComponent } from './mail/mail.component';
 import { FilterPipe } from './filter.pipe';
+import { Retailer1Component } from './retailer1/retailer1.component';
 
 
 
@@ -71,7 +72,8 @@ import { FilterPipe } from './filter.pipe';
     ProductsComponent,
     RetailerSideNavComponent,
     MailComponent,
-    FilterPipe
+    FilterPipe,
+    Retailer1Component
   ],
   imports: [
     BrowserModule,

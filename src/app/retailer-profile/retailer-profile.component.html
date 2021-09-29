@@ -3,32 +3,55 @@
         <br><br>
         <div class="container">
             <div class="row">
-              <div class="col-sm-8" style="padding-left:100px">
+              <div class="col" style="padding-left:100px">
                 <div class="form-group">
                     <button type="submit" class="form-control" class="btn btn-outline-primary btn-lg" id="addproduct"><a routerLink="../AddProduct">Add Product</a></button>
                   </div>
-
-                  <!-- 
                 <div *ngFor="let item of RetailerProducts">
-                  <div class="card" style="width: 45rem;">
-                    <img src={{item.ImageUrls[0]}} class="card-img-top" alt="...">
+                  <div class="card" style="width: 50rem;">
+                    <!-- <div class="card-deck"> -->
+                      <!-- <div class="card border border-primary"  *ngFor="let p of productImages| slice:1:p.productImages.length"> -->
+                        <div class="card-img-top">
+                          <div [id]="'carouselExampleControls'+item.productId" class="carousel slide"   data-ride="carousel">
+                              <div class="carousel-inner">
+                                  <div class="carousel-item active">
+                                      <img class="card-img-top" style="height: 300px;width: 300px;"  [src]="item.productImages[0].imagePath" alt="First slide">
+                                  </div>
+                                  <div class="carousel-item" *ngFor="let ii of item.productImages | slice:1:item.productImages.length">
+                                      <img class="card-img-top" style="height: 300px;width: 300px;"   src="{{ii.imagePath}}" alt="slide">
+                                  </div>
+                              </div>
+                              <a class="carousel-control-prev" [href]="'#carouselExampleControls'+item.productId" role="button"
+                                  data-slide="prev">
+                                  <span class="carousel-control-prev-icon carousel-aria-button" aria-hidden="true"></span>
+                                  <span class="sr-only">Previous</span>
+                              </a>
+                              <a class="carousel-control-next" [href]="'#carouselExampleControls'+item.productId" role="button"
+                                  data-slide="next">
+                                  <span class="carousel-control-next-icon carousel-aria-button" aria-hidden="true"></span>
+                                  <span class="sr-only">Next</span>
+                              </a>
+                          </div>
+                      </div>
+                  <!-- </div> -->
+
+                  
                     <div class="card-body">
-                      <h5 class="card-title">{{item.ProductName}}</h5>
-                      <h6 class="card-subtitle mb-2 text-muted">Product ID: {{item.ProductId}}</h6>
-                      <p class="card-text">Brand Name: {{item.BrandName}}</p>
-                      <p class="card-text">Price Per Unit {{item.PricePerUnit}}</p>
-                      <p class="card-text">Description: {{item.Description}}</p>
-                      <a href="#" class="card-link">Edit</a>
-                    </div>
+                      <h5 class="card-title">{{item.productName}}</h5>
+                      <!-- <h6 class="card-subtitle mb-2 text-muted">Product ID: {{item.ProductId}}</h6> -->
+                      <p class="card-text">Brand Name: {{item.brandName}}</p>
+                      <p class="card-text">Price Per Unit {{item.pricePerUnit}}</p>
+                      <p class="card-text">Description: {{item.description}}</p>
+                      <!-- <a href="#" class="card-link">Edit</a> -->
+                    
+                  </div>
                   </div>
                   <br>
                 </div>
-
-                 -->
-
-
               </div>
             </div>
-          </div>
+          <!-- </div> -->
+          <!-- </div> -->
+        </div>
     </body>
 </html>
