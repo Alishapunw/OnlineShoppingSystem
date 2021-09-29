@@ -129,7 +129,7 @@ if(this.userRole=='admin'){
 
     else if(this.userRole == "retailer"){
 
-        this.router2.navigateByUrl('RetailerProfile');
+        this.router2.navigateByUrl('RetailerHome');
 
     }
 

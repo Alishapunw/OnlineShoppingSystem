@@ -10,7 +10,8 @@
         </div>
         <div class="form-group">
             <label for="productimg"><b>Product Image </b></label>
-            <input type="text" class="form-control" placeholder="Product Image URL" id="productimgtxt"/>
+          <!--  <input type="text" class="form-control" placeholder="Product Image URL" id="productimgtxt"/> -->
+            <input type="file" class="form-control" id="productimage" />
         </div>
         <div class="form-group">
             <label for="productdesc"><b>Product Description </b></label>
@@ -27,3 +28,10 @@
         </div>
     </body>
 </html>
+<script type="text/javascript">
+    var loadFile = function(event) {
+	var image = document.getElementById('productimage');
+	image.src = URL.createObjectURL(event.target.files[0]);
+    alert("Image uploaded");
+};
+</script>

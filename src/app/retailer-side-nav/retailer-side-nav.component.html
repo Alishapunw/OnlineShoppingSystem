@@ -2,12 +2,13 @@
 <div class="wrapper">
     <!-- Sidebar  -->
     <nav class="na navbar-light" id="sidebar">
-        <button type="button" id="sidebarCollapse" class="btn btn-outline-secondary active">
-            <i class="fas fa-align-left"></i>
-            <span>  Menu</span>
+       <button type="button" id="sidebarCollapse" class="btn btn-outline-secondary active">
+            <!--<i class="fas fa-align-left"></i>-->
+            <!--<span>  Menu</span>-->
+            <span class="navbar-toggler-icon"></span>
         </button>
         <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="fas fa-align-justify"></i>
+           <!-- <i class="fas fa-align-justify"></i> -->
         </button>
         <br>
         <div class="sidebar-header">
@@ -37,10 +38,11 @@
         </ul>
     </nav>
 
-    <!-- Page Content  -->
+  <!--   Page Content  -->
     <div id="content">
+        <app-retailer-details></app-retailer-details>
         <router-outlet></router-outlet>
-    <div class="line"></div>
+    <!--<div class="line"></div>-->
     </div>
 </div>
 
