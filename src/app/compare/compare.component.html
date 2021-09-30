@@ -1,0 +1,59 @@
+<br>
+
+
+<div class="dropdown" >
+    <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" 
+    aria-expanded="false" >
+     Select Category to Compare
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" >
+
+      <a class="dropdown-item"  *ngFor="let c of categoriesList" (click)="changeCategory(c.categoryId)">
+          {{c.categoryName}}</a>    
+    </div>  
+</div>
+    <hr>
+<br>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col" >
+            <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Select Product 
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item"  *ngFor="let c of currentproductsList">{{c.productName}}</a>    
+            </div>  
+        </div>
+
+        <div class="col" >
+            <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Select Product 
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item"  *ngFor="let c of currentproductsList">{{c.productName}}</a>   
+            </div>  
+        </div>
+
+        <div class="col" >
+            <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Select Product 
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item"  *ngFor="let c of currentproductsList">{{c.productName}}</a>   
+            </div>  
+        </div>
+        <div class="col" >
+            <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Select Product 
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item"  *ngFor="let c of currentproductsList">{{c.productName}}</a>   
+            </div>  
+        </div>
+
+    </div>
+</div>
+
+ 

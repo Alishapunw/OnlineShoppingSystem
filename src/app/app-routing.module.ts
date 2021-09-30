@@ -27,7 +27,8 @@ import { CategoriesComponent } from './categories/categories.component';
 import { ProductsComponent } from './products/products.component';
 import { MailComponent } from './mail/mail.component';
 import { RetailerSideNavComponent } from './retailer-side-nav/retailer-side-nav.component';
-
+import { OrderSuccessfulComponent} from './order-successful/order-successful.component';
+import {CompareComponent} from './compare/compare.component';
 
 
 
@@ -57,7 +58,8 @@ const routes: Routes = [
   {path:'ForgotPassword',component: ForgotpasswordComponent},
   {path:'UserProfile',component:UserProfileComponent},
   {path:'Categories',component: CategoriesComponent},
-
+  {path:'OrderSuccesful',component:OrderSuccessfulComponent},
+  {path:'Compare',component:CompareComponent},
   /*User Routes End*/
   
   
