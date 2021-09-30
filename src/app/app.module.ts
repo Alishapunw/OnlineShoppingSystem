@@ -32,13 +32,14 @@ import { ProductdetailviewComponent } from './productdetailview/productdetailvie
 import { HttpClientModule } from '@angular/common/http';
 
 import { CategoriesComponent } from './categories/categories.component';
-import { CategoryComponent } from './category/category.component';
 import { ProductsComponent } from './products/products.component';
 import { RetailerSideNavComponent } from './retailer-side-nav/retailer-side-nav.component';
 import { MailComponent } from './mail/mail.component';
 import { FilterPipe } from './filter.pipe';
 import { Retailer1Component } from './retailer1/retailer1.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
+import { OrderSuccessfulComponent } from './order-successful/order-successful.component';
+import { CompareComponent } from './compare/compare.component';
 
 
 
@@ -69,13 +70,14 @@ import { WishlistComponent } from './wishlist/wishlist.component';
     BillingComponent,
     ProductdetailviewComponent,
     CategoriesComponent,
-    CategoryComponent,
     ProductsComponent,
     RetailerSideNavComponent,
     MailComponent,
     FilterPipe,
     Retailer1Component,
-    WishlistComponent
+    WishlistComponent,
+    OrderSuccessfulComponent,
+    CompareComponent
   ],
   imports: [
     BrowserModule,
