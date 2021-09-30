@@ -49,6 +49,7 @@ namespace OnlineShopping.Controllers
             return cart;
         }
 
+
         [HttpGet("GetCartByUserEmail/{email}")]
         public async Task<ActionResult<Cart>> GetCartByUserEmail(string email)
         {
@@ -109,18 +110,23 @@ namespace OnlineShopping.Controllers
                         pc.CartId = cart.CartId;
                         pc.ProductId = product.ProductId;
                         pc.Amount = product.PricePerUnit;
-                        _context.ProductCart.Add(pc);
-                        _context.SaveChanges();
+                        await _context.ProductCart.AddAsync(pc);
+                        await _context.SaveChangesAsync();
                     }
                     else
                     {
                         existingProductCart.Quantity += 1;
                         existingProductCart.Amount += product.PricePerUnit;
                         _context.ProductCart.Update(existingProductCart);
-                        _context.SaveChanges();
+                        await _context.SaveChangesAsync();
 
                     }
-                    
+                    Wishlist wishListedProduct = _context.Wishlist.Where(wlp => wlp.CustomerId == customer.CustomerId && wlp.ProductId == product.ProductId).FirstOrDefault();
+                    if(wishListedProduct != null)
+                    {
+                        _context.Wishlist.Remove(wishListedProduct);
+                        await _context.SaveChangesAsync();
+                    }
                     status.Add("AddedProduct", true);
                     return Ok(status);
                 }
@@ -133,6 +139,67 @@ namespace OnlineShopping.Controllers
             }
 
         }
+
+
+
+        [HttpPost("AddtoCartAsyncMethod/{email}")]
+        public async Task<ActionResult<Cart>> AddtoCartAsyncMethod(string email, Products product)
+        {
+            Customer customer = _context.Customer.Where(x => x.Email == email).FirstOrDefault();
+
+            Cart cart = _context.Cart.Where(c => c.CustomerId == customer.CustomerId && c.Status == false).FirstOrDefault();
+            Dictionary<string, bool> status = new Dictionary<string, bool>();
+
+            if (cart == null)
+            {
+                cart = new Cart();
+                cart.CustomerId = customer.CustomerId;
+                await _context.Cart.AddAsync(cart);
+                await _context.SaveChangesAsync();
+            }
+
+
+            if (customer != null)
+            {
+                    ProductCart existingProductCart = _context.ProductCart.Where(pc => pc.CartId == cart.CartId && pc.ProductId == product.ProductId).FirstOrDefault();
+                    if (existingProductCart == null)
+                    {
+                        ProductCart pc = new ProductCart();
+                        pc.CartId = cart.CartId;
+                        pc.ProductId = product.ProductId;
+                        pc.Amount = product.PricePerUnit;
+                        await _context.ProductCart.AddAsync(pc);
+                        await _context.SaveChangesAsync();
+                    }
+                    else
+                    {
+                        existingProductCart.Quantity += 1;
+                        existingProductCart.Amount += product.PricePerUnit;
+                        _context.ProductCart.Update(existingProductCart);
+                        await _context.SaveChangesAsync();
+
+                    }
+                    Wishlist wishListedProduct = _context.Wishlist.Where(wlp => wlp.CustomerId == customer.CustomerId && wlp.ProductId == product.ProductId).FirstOrDefault();
+                    if (wishListedProduct != null)
+                    {
+                        _context.Wishlist.Remove(wishListedProduct);
+                        await _context.SaveChangesAsync();
+                    }
+                    status.Add("AddedProduct", true);
+                    return Ok(status);
+                
+
+            }
+            else
+            {
+                status.Add("AddedProduct", false);
+                return Ok(status);
+            }
+
+        }
+
+
+
 
         // PUT: api/Carts/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for

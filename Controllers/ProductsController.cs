@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
+using fileManager.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -159,5 +163,80 @@ namespace OnlineShopping.Controllers
         {
             return _context.Products.Any(e => e.ProductId == id);
         }
+
+        /*
+
+
+        private readonly string AppDirectory = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot");
+        private static List<FileRecord> fileDB = new List<FileRecord>();
+
+        [HttpPost("uploadImage")]
+        [Consumes("multipart/form-data")]
+        public async Task<HttpResponseMessage> PostAsync([FromForm] FileModel model)
+        {
+            try
+            {
+                FileRecord file = await SaveFileAsync(model.MyFile);
+
+                if (!string.IsNullOrEmpty(file.FilePath))
+                {
+                    //file.AltText = model.AltText;
+                    //file.Description = model.Description;
+                    //Save to Inmemory object
+                    //fileDB.Add(file);
+                    //Save to SQL Server DB
+                    SaveToDB(file);
+                    return new HttpResponseMessage(HttpStatusCode.OK);
+                }
+                else
+                    return new HttpResponseMessage(HttpStatusCode.BadRequest);
+            }
+            catch (Exception ex)
+            {
+                return new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                {
+                    Content = new StringContent(ex.Message),
+                };
+            }
+        }
+
+        private async Task<FileRecord> SaveFileAsync(IFormFile myFile)
+        {
+            FileRecord file = new FileRecord();
+            if (myFile != null)
+            {
+                if (!Directory.Exists(AppDirectory))
+                    Directory.CreateDirectory(AppDirectory);
+
+                var fileName = DateTime.Now.Ticks.ToString() + Path.GetExtension(myFile.FileName);
+                var path = Path.Combine(AppDirectory, fileName);
+
+                file.Id = fileDB.Count() + 1;
+                file.FilePath = path;
+              
+
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    await myFile.CopyToAsync(stream);
+                }
+
+                return file;
+            }
+            return file;
+        }
+
+        private void SaveToDB(FileRecord record)
+        {
+            if (record == null)
+                throw new ArgumentNullException($"{nameof(record)}");
+
+            Timages fileData = new Timages();
+            fileData.FilePath = record.FilePath;
+
+            _context.Timages.Add(fileData);
+            _context.SaveChanges();
+        }*/
+
+
     }
 }

@@ -28,6 +28,8 @@ namespace OnlineShopping.Models
         public virtual DbSet<ProductImages> ProductImages { get; set; }
         public virtual DbSet<Products> Products { get; set; }
         public virtual DbSet<Retailer> Retailer { get; set; }
+        public virtual DbSet<Timages> Timages { get; set; }
+        public virtual DbSet<Wishlist> Wishlist { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -198,6 +200,28 @@ namespace OnlineShopping.Models
                 entity.Property(e => e.RetailerName)
                     .IsRequired()
                     .HasMaxLength(40);
+            });
+
+            modelBuilder.Entity<Timages>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.Property(e => e.FilePath).HasMaxLength(500);
+
+                entity.Property(e => e.Id).ValueGeneratedOnAdd();
+            });
+
+            modelBuilder.Entity<Wishlist>(entity =>
+            {
+                entity.HasOne(d => d.Customer)
+                    .WithMany(p => p.Wishlist)
+                    .HasForeignKey(d => d.CustomerId)
+                    .HasConstraintName("FK__Wishlist__Custom__4F47C5E3");
+
+                entity.HasOne(d => d.Product)
+                    .WithMany(p => p.Wishlist)
+                    .HasForeignKey(d => d.ProductId)
+                    .HasConstraintName("FK__Wishlist__Produc__503BEA1C");
             });
 
             OnModelCreatingPartial(modelBuilder);
