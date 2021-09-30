@@ -27,6 +27,7 @@ import { CategoriesComponent } from './categories/categories.component';
 import { ProductsComponent } from './products/products.component';
 import { MailComponent } from './mail/mail.component';
 import { RetailerSideNavComponent } from './retailer-side-nav/retailer-side-nav.component';
+import { WishlistComponent } from './wishlist/wishlist.component';
 
 
 
@@ -81,7 +82,10 @@ const routes: Routes = [
 
 
   {path:'Billing',component:BillingComponent},
-  {path:"RetailerHome",component:RetailerSideNavComponent}
+  {path:"RetailerHome",component:RetailerSideNavComponent},
+
+  {path:'WishList',component:WishlistComponent},
+
 
 
 ];

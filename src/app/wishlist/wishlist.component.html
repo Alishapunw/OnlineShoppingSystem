@@ -1,0 +1,87 @@
+<div class="row justify-content-center" *ngIf="IsLoading; else productCartDiv">
+
+    <div style="height: 80px;"></div>
+
+    <img style="width: 100px;" src="./assets/ezgif.com-gif-maker.gif" alt="">
+
+    <div style="height: 80px;"></div>
+
+
+</div>
+
+
+<ng-template #productCartDiv>
+
+
+    <div style="height: 40px;"></div>
+
+
+    <div class="row ">
+        <div class="col-sm-12">
+            <ng-container *ngIf="wishList.length!=0">
+                <div class="container">
+                    <div class="cardtable">
+                        <div class="card-product">
+                            <table class="table align-middle">
+                                <thead>
+                                    <tr>
+                                        <th>Sr.No</th>
+                                        <th>Product Name</th>
+                                        <th>Price</th>
+                                        <th>Action</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let product of wishList;let i=index">
+                                        <td>{{i+1}}</td>
+                                        <td>{{product.product.productName}}</td>
+                                        <td>{{product.product.pricePerUnit}}</td>
+                                        <td><button (click)="addProductToCart(product.product)" class="btn btn-success">
+                                                <i class="fas fa-cart-plus"></i>
+                                            </button>
+                                        </td>
+                                        <td><button (click)="DeleteProductFromWishlist(product.product.productId)" class="btn btn-danger">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </button>
+                                        </td>
+                                        
+                                    </tr>
+                                   
+                                </tbody>
+
+                            </table>
+                          
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+
+
+            <ng-container *ngIf="wishList.length==0">
+                <div class="container">
+                    <div>
+                        <h3 style="padding-top: 12px;padding-left:10px; text-align: center;">
+                            My Wishlist
+                        </h3>
+                    </div>
+                    <div class="top mx-auto" style="width: 400px; height: 300px;">
+                        <img class="img-thumbnail" src="assets/EmptyCart.jpg" alt="">
+                    </div>
+
+                    <div>
+                        <h4 style="text-align:center">Your WishList is Empty</h4>
+                        <h6 style="text-align:center">Add items to the wishlist now</h6>
+                        <button routerLink="Products" class="btn btn-primary col text-center">Shop Now</button>
+                    </div>
+                </div>
+            </ng-container>
+
+
+        </div>
+    </div>
+    
+
+    <div style="height: 40px;"></div>
+
+</ng-template>
