@@ -9,6 +9,7 @@ import { CommonModule } from "@angular/common";
 })
 export class UserProfileComponent implements OnInit {
 
+  email!:any;
   RetailerProducts?:Product[]=[
    /* new Product(1, 'HP 14s Core i3 11th Gen' , 'HP', 40000, 'HP 14s Core i3 11th Gen - (8 GB/256 GB SSD/Windows 10 Home) 14s- DY2501TU Thin and Light Laptop  (14 inch, Natural Silver, 1.46 kg, With MS Office)', ["assets/images/1/0.jpg","assets/images/1/1.jpg", "assets/images/1/2.jpg", "assets/images/1/3.jpg"]),
     new Product(2, 'HP 15-ec1105AX Ryzen 5 Hexa Core 4600H' , 'HP', 60000, 'HP 15-ec1105AX Ryzen 5 Hexa Core 4600H - (8 GB/512 GB SSD/Windows 10 Home/4 GB Graphics/NVIDIA GeForce GTX 1650) 15-ec1105AX Gaming Laptop  (15.6 inch, Shadow Black & Ultra Violet, 1.98 Kg)', ["assets/images/2/0.jpg","assets/images/2/1.jpg", "assets/images/2/2.jpg", "assets/images/2/3.jpg"]),
@@ -18,6 +19,7 @@ export class UserProfileComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.email=localStorage.getItem("Email");
   }
 
 }

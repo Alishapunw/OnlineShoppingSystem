@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { RetailerService } from '../retailer.service';
+import { Retailer1 } from '../retailer1';
 
 @Component({
   selector: 'app-add-product',
@@ -7,37 +10,39 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@ang
   styleUrls: ['./add-product.component.css']
 })
 export class AddProductComponent implements OnInit {
-  AddProductForm:FormGroup = new FormGroup({
+  /*AddProductForm:FormGroup = new FormGroup({
     ProductName: new FormControl("", [Validators.required]),
     BrandName: new FormControl("", [Validators.required]),
     Description: new FormControl("", [Validators.required]),
     PricePerUnit: new FormControl("", [Validators.required]),
     Quantity: new FormControl("", [Validators.required]),
     CategoryId:new FormControl("",[Validators.required])
+    //ProductImages: this.formBuilder.array( [  ] )
     
-  })
+  })*/
+
   // constructor(public service:RetailerService,public route:Router) { }
 
   ProductForm!: FormGroup;
   ProductImages!:FormArray;
+  email?:any;
+  retailer?:Retailer1;
+  id?:number;
 
-  constructor( private formBuilder:FormBuilder) { }
+  constructor( private formBuilder:FormBuilder, public service:RetailerService,public route:Router) { }
 
   ngOnInit(): void {
     this.ProductForm = this.formBuilder.group( {
-      ProductName: new FormControl("", [Validators.required]),
-      BrandName: new FormControl("", [Validators.required]),
-      PricePerUnit: new FormControl("", [Validators.required]),
-      Description: new FormControl("", [Validators.required]),
-      Quantity: new FormControl("", [Validators.required]),
-      CategoryId: new FormControl("", [Validators.required]),
-      ProductImages: this.formBuilder.array( [  ] )
+      ProductName: new FormControl(""),
+      BrandName: new FormControl(""),
+      PricePerUnit: new FormControl(""),
+      Description: new FormControl(""),
+      Quantity: new FormControl(""),
+      CategoryId: new FormControl(""),
+      RetailerId: new FormControl(""),
+      //ProductImages: this.formBuilder.array( [  ] )
 
     } )
-  }
-
-  SubmitForm(){
-
   }
 
   createNewProductImageField(){
@@ -55,35 +60,51 @@ export class AddProductComponent implements OnInit {
 
   get ProductName()
   {
-    return this.AddProductForm.get('ProductName');
+    return this.ProductForm.get('ProductName');
   }
   get BrandName()
   {
-    return this.AddProductForm.get('BrandName');
+    return this.ProductForm.get('BrandName');
   }
   get Description()
   {
-    return this.AddProductForm.get('Description');
+    return this.ProductForm.get('Description');
   }
   get PricePerUnit()
   {
-    return this.AddProductForm.get('PricePerUnit');
+    return this.ProductForm.get('PricePerUnit');
   }
   get Quantity()
   {
-    return this.AddProductForm.get('Quantity');
+    return this.ProductForm.get('Quantity');
   }
   get CategoryId()
   {
-    return this.AddProductForm.get('CategoryId');
+    return this.ProductForm.get('CategoryId');
   }
+  get RetailerId()
+  {
+    return this.ProductForm.get('CategoryId');
+  }
+
   SubmitProduct()
   {
-    this.service.AddProduct(this.AddProductForm.value).subscribe((data:any)=>
+    this.email=localStorage.getItem("Email");
+    this.service.GetRetailerByEmail(this.email).subscribe((data:Retailer1)=>
+    {
+      console.log(data);
+      this.retailer=data;
+      this.id=this.retailer.retailerId;
+      console.log(this.id);
+
+    this.ProductForm.controls["RetailerId"].setValue(this.id);
+    this.service.AddProduct(this.ProductForm.value).subscribe((data:any)=>
     {
       console.log(data);
       this.route.navigateByUrl("../RetailerHome");
     })
+
+  })
 
   }
 
