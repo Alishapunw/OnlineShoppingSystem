@@ -15,6 +15,7 @@ import { UserDetails } from './user-details';
 export class AuthenticationService {
 
   public subject = new Subject<boolean>();
+  public userRole = new Subject<string>();
   private url='http://localhost:65061/api/Authentication';
 
   
@@ -64,6 +65,11 @@ export class AuthenticationService {
   recievedStatus():Observable<boolean>
   {
     return this.subject.asObservable();
+  }
+
+  getUserStatus():Observable<string>
+  {
+    return this.userRole.asObservable();
   }
   
 

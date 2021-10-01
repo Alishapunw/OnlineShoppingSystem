@@ -19,8 +19,8 @@
         background-size: cover;
     }
 </style>
-<app-categorynav></app-categorynav>
-<div style="height: 8px;"></div>
+
+<div style="height: 20px;"></div>
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -61,7 +61,7 @@
         <h2 class="text text-primary text-center pt-2">Top Products</h2>
         <div class="card-body">
             <div class="card-deck">
-                <div class="card border border-primary" *ngFor="let p of topProducts | filter:searchKey:'productName'">
+                <div class="card border border-primary" *ngFor="let p of topProducts  | filter:searchKey:'productName'">
 
 
                     <div [id]="'carouselExampleControls'+p.productId" class="carousel slide" data-ride="carousel">
@@ -69,11 +69,12 @@
                             <div class="carousel-item active">
                                 <img class="card-img-top" [src]="p.productImages[0].imagePath" alt="First slide">
                             </div>
+                            <!--  
                             <div class="carousel-item"
-                                *ngFor="let ii of p.productImages | slice:1:p.productImages.length">
-
-                                <!--  <img class="card-img-top"   src="{{ii.imagePath}}" alt="slide"> -->
+                                *ngFor="let ii of p.productImages | slice:1:p.productImages.length ">
+                                 <img class="card-img-top"   [src]="ii.imagePath" alt="slide">  
                             </div>
+                            -->
                         </div>
                         <a class="carousel-control-prev" [href]="'#carouselExampleControls'+p.productId" role="button"
                             data-slide="prev">

@@ -5,6 +5,7 @@ import { Category } from '../category';
 import { Product } from '../product';
 import { ProductCartService } from '../product-cart.service';
 import { ProductserviceService } from '../productservice.service';
+import { WishlistService } from '../wishlist.service';
 
 @Component({
   selector: 'app-categories',
@@ -27,7 +28,7 @@ export class CategoriesComponent implements OnInit {
   ];
 
 
-  constructor(public cs: CategoriesService, public ps: ProductserviceService , public carts:ProductCartService, public router:Router) { }
+  constructor(public cs: CategoriesService, public ps: ProductserviceService , public carts:ProductCartService, public router:Router,  public wls:WishlistService) { }
 
   ngOnInit(): void {
     this.cs.getCategories().subscribe((data) => {
@@ -82,6 +83,18 @@ export class CategoriesComponent implements OnInit {
       this.currentproductsList.sort((a, b) => (a.pricePerUnit > b.pricePerUnit ? -1 : 1));
 
     }
+  }
+
+  addProductToWishlist(productId:number){
+    var LoggedInUserEmail = localStorage.getItem("Email");
+    console.log(LoggedInUserEmail);  
+    if(LoggedInUserEmail == null){
+        this.router.navigateByUrl("/Login")
+    }
+    else{
+        this.wls.AddtoWishlist(productId, LoggedInUserEmail)
+    }
+    //this.carts.AddtoCart(product)
   }
 
 }

@@ -34,11 +34,7 @@ export class HomeComponent implements OnInit {
     console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
     })
 
-    /* this.ps.getIProducts().subscribe( (Ipl:IProduct[]) => {
-    console.log(Ipl);
-
-      this.ItopProducts = Ipl;
-    } )  */
+  
     this.ps.search.subscribe((val:any)=>{
       this.searchKey=val;
     })

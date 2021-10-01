@@ -4,58 +4,67 @@
       <i class="fa fa-shopping-bag" style="font-size: 35px;" aria-hidden="true"></i>
       <h3 class="my-0 mr-md-auto font-weight-normal px-3">
         Stop-&-Shop</h3>
-      <!--         
-        <h3 class="my-0 mr-md-auto  navbar-brand px-5">
-        Shopping App
-        </h3> -->
-      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="#" routerLink="Home" class="nav-link px-2 text-black">Home</a></li>
-        <!-- <li><a href="#" routerLink="Shopping" class="nav-link px-2 text-black">Cart</a></li>-->
-        <li><a routerLink="Categories" class="nav-link px-2 text-black">Categories</a></li>
-        <li><a routerLink="Compare" class="nav-link px-2 text-black">Compare</a></li>
+
         
-        <!--  <li><a href="#" class="nav-link px-2 text-black">Categories</a></li> -->
 
-      </ul>
-        <form class="col-8 col-lg-auto mb-lg-0 me-lg-3" >
-          <input type="search" class="form-control form-control-dark"   name="search" [(ngModel)]="searchTerm" (keyup)="search($event)" placeholder="Search..." aria-label="Search">
-          <!-- <i class="fa fa-search" aria-hidden="true"></i> -->
+
+
+      <ng-container *ngIf="userRole==='customer' ">
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+
+          <li><a routerLink="Home" class="nav-link px-2 text-black">Home</a></li>
+          <li><a routerLink="Categories" class="nav-link px-2 text-black">Categories</a></li>
+          <li><a routerLink="Compare" class="nav-link px-2 text-black">Compare</a></li>
+        </ul>
+
+        <form class="col-8 col-lg-auto mb-lg-0 me-lg-3">
+          <input type="search" class="form-control form-control-dark" name="search" [(ngModel)]="searchTerm"
+            (keyup)="search($event)" placeholder="Search..." aria-label="Search">
         </form>
-<!--
-      <form class="col-8 col-lg-auto mb-lg-0 me-lg-3">
-        <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
-        <i class="fa fa-search" aria-hidden="true"></i> 
-      </form>
-    -->
+        
+      </ng-container>
 
-      <div class="text-end">
+     
+
+      <ng-container *ngIf="userRole==='admin'">
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+
+          <li><a routerLink="Home" class="nav-link px-2 text-black">Home</a></li>
+          <li><a routerLink="AdminRetailerAdd" class="nav-link px-2 text-black">Add Retailer</a></li>
+          <li><a routerLink="AdminRetailerDetails" class="nav-link px-2 text-black">Retailers</a></li>
+        </ul>
+
+      </ng-container>
+
+      <ng-container *ngIf="userRole==='retailer'">
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a routerLink="RetailerProfile" class="nav-link px-2 text-black">Home</a></li>
+          <li><a routerLink="AddProduct" class="nav-link px-2 text-black">Add Product</a></li>
+          <li><a routerLink="RetailerDetails" class="nav-link px-2 text-black">Profile</a></li>
+        </ul>
+      </ng-container>
+
+
+
+      <div class="text-end pt-2">
+
         <div *ngIf="!message">
           <a routerLink="Login"><button type="button" class="btn btn-primary">Login</button></a>
           <a routerLink="Registration"><button type="button" class="btn btn-secondary mx-2">Sign-up</button></a>
-
         </div>
 
         <div *ngIf="message">
-          <!--  <li><a routerLink="Home">Home</a>  </li> -->
-          <a  (click)='logout()'>Logout</a> &nbsp; &nbsp;
-
+          <a (click)='logout()'><button type="button" class="btn btn-primary">Logout</button></a> &nbsp; &nbsp;
           <a routerLink="Shopping" style="text-decoration: none;">
             <span class="text-danger"> {{total}}</span>
-            <i class="fa fa-fw fa-shopping-cart fa-lg"></i> 
-            <!-- <div style="font-size: 10px;" class="badge bg-danger">{{total}}</div> -->
-          </a>   &nbsp; &nbsp;
+            <i class="fa fa-fw fa-shopping-cart fa-lg"></i>
+          </a> &nbsp; &nbsp;
 
           <a routerLink="WishList" style="text-decoration: none;">
             <span class="text-danger"> {{total}}</span>
             <i class="fa fa-fw fa-heart fa-lg"></i>
-            <!-- <div style="font-size: 10px;" class="badge bg-danger">{{total}}</div> -->
           </a>
-
-
-
         </div>
-
-
 
 
       </div>

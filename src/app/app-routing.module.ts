@@ -48,7 +48,6 @@ const routes: Routes = [
   {path:'AddProduct',component:AddProductComponent},
   {path:'RetailerDetails',component:RetailerDetailsComponent},
   {path:'ChangePassword',component:ChangePasswordComponent},
-  {path:'RetailerDetails',component:RetailerDetailsComponent},
   /*Retailer Routes End*/
   {path:'Login',component:LoginComponent},
   {path:'Registration',component:RegistrationComponent},
