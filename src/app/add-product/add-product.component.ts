@@ -87,6 +87,7 @@ export class AddProductComponent implements OnInit {
     return this.ProductForm.get('CategoryId');
   }
 
+  
   SubmitProduct()
   {
     this.email=localStorage.getItem("Email");
@@ -107,6 +108,7 @@ export class AddProductComponent implements OnInit {
   })
 
   }
+  
 
 }
 

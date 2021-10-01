@@ -1,134 +1,161 @@
 <br>
 
 
-<div class="dropdown" >
-    <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" 
-    aria-expanded="false" >
-     Select Category to Compare
-    </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  >
+<div class="row">
+    <div class="col-lg-2">
+    <select class="custom-select mb-2" #sortSelect (change)="changeCategory(sortSelect.value)">
+        <option *ngFor="let c of categoriesList" [value]="c.categoryId">{{c.categoryName}} </option>
+    </select>
+    </div>
 
-      <a class="dropdown-item"  *ngFor="let c of categoriesList" (click)="changeCategory(c.categoryId)">
-          {{c.categoryName}}</a>    
-    </div>  
 </div>
-    <hr>
+<hr>
 <br>
 
 
 <div class="container">
     <div class="row">
-        <div class="col" >
-            <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Select Product 
+
+        <div class="col">
+
+            <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                Select Product
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item"  *ngFor="let c of currentproductsList" (click)="changeProduct(c.productId)">{{c.productName}}</a>    
+                <a class="dropdown-item" *ngFor="let c of currentproductsList"
+                    (click)="changeProduct1(c.productId)">{{c.productName}}</a>
             </div>
 
-            <div [id]="'carouselExampleControls'+p.productId" class="carousel slide"
-                                    data-ride="carousel">
-                                    <div class="carousel-inner">
-                                        <div class="carousel-item active">
-                                            <img class="card-img-top" [src]="p.productImages[0].imagePath"
-                                                alt="First slide">
-                                        </div>
-                                        <div class="carousel-item"
-                                            *ngFor="let ii of p.productImages | slice:1:p.productImages.length">
-                                            <img class="card-img-top" src="{{ii.imagePath}}" alt="slide">
-                                        </div>
-                                    </div>
-                                    <a class="carousel-control-prev" [href]="'#carouselExampleControls'+p.productId"
-                                        role="button" data-slide="prev">
-                                        <span class="carousel-control-prev-icon carousel-aria-button"
-                                            aria-hidden="true"></span>
-                                        <span class="sr-only">Previous</span>
-                                    </a>
-                                    <a class="carousel-control-next" [href]="'#carouselExampleControls'+p.productId"
-                                        role="button" data-slide="next">
-                                        <span class="carousel-control-next-icon carousel-aria-button"
-                                            aria-hidden="true"></span>
-                                        <span class="sr-only">Next</span>
-                                    </a>
-                                </div>
-
-                                <a [routerLink]="['/ProductDetail/', p.productId]">
-                                    <div class="card-body" >
-                                        <h6 class="card-title">{{p.productName}}</h6>
-                                        <p class="card-text">{{p.description.slice(0,50).concat("...")}}</p>
-                                    </div>
-                                </a>
-
-                                <div class="card-footer bg-transparent border-primary">
-                                        <div class="row">
-                                            <div class="col-lg-6 my-auto">
-                                                <h6 class="text-center">{{p.pricePerUnit| currency:"INR"}}</h6>
-
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div class="row justify-content-center">
-                                                <button class="btn btn-primary" (click)="addProductToCart(p)">Add to
-                                                Cart</button>
-                                                </div>
-                                               
-                                            </div>
-                                        </div>
-                                    </div>
-                           
-        </div>
-
-        <div class="col" >
-            <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Select Product 
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item"  *ngFor="let c of currentproductsList" (click)="changeProduct(c.productId)">{{c.productName}}</a>   
-            </div>  
-            <div [id]="'carouselExampleControls'+p.productId" class="carousel slide"
-            data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img class="card-img-top" [src]="p.productImages[0].imagePath"
-                        alt="First slide">
-                </div>
-                <div class="carousel-item"
-                    *ngFor="let ii of p.productImages | slice:1:p.productImages.length">
-                    <img class="card-img-top" src="{{ii.imagePath}}" alt="slide">
-                </div>
-            </div>
-            <a class="carousel-control-prev" [href]="'#carouselExampleControls'+p.productId"
-                role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon carousel-aria-button"
-                    aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" [href]="'#carouselExampleControls'+p.productId"
-                role="button" data-slide="next">
-                <span class="carousel-control-next-icon carousel-aria-button"
-                    aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
-
-        <a [routerLink]="['/ProductDetail/', p.productId]">
-            <div class="card-body" >
-                <h6 class="card-title">{{p.productName}}</h6>
-                <p class="card-text">{{p.description.slice(0,50).concat("...")}}</p>
-            </div>
-        </a>
-
-        <div class="card-footer bg-transparent border-primary">
-                <div class="row">
-                    <div class="col-lg-6 my-auto">
-                        <h6 class="text-center">{{p.pricePerUnit| currency:"INR"}}</h6>
-
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="row justify-content-center">
-                        <button class="btn btn-primary" (click)="addProductToCart(p)">Add to
-                        Cart</button>
+            <div *ngIf="product1!=null">
+                <div [id]="'carouselExampleControls'+product1.productId" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <hr>
+                        <h6 class="card-title text-primary "> {{product1.productName}} - {{product1.brandName}}</h6>
+                        <div class="carousel-item active">
+                            <img class="card-img-top" [src]="product1.productImages[0].imagePath" alt="First slide">
                         </div>
+                        <div class="carousel-item"
+                            *ngFor="let ii of product1.productImages | slice:1:product1.productImages.length">
+                            <img class="card-img-top" src="{{ii.imagePath}}" alt="slide">
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" [href]="'#carouselExampleControls'+product1.productId"
+                        role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon carousel-aria-button" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" [href]="'#carouselExampleControls'+product1.productId"
+                        role="button" data-slide="next">
+                        <span class="carousel-control-next-icon carousel-aria-button" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+               
+                <a [routerLink]="['/ProductDetail/', product1.productId]">
+                    <div class="card-body">
                        
+                        <p class="card-text">{{product1.description}}</p>
+                    </div>
+                </a>
+                <div class="col-lg-6 my-auto">
+                    <h6 class="text-center">{{product1.pricePerUnit| currency:"INR"}}</h6>
+
+                </div>
+                <div class="card-footer bg-transparent border-primary">
+                    <div class="row">
+                       
+                        
+                        <div class="col-3">
+                            <i (click)="addProductToWishlist(product1.productId)" style="color: #0275d8;"  onmouseover="this.style.color = '#8dbee9'" onmouseout="this.style.color = '#0275d8'" class="fas fa-heart fa-lg"></i>
+                        </div>
+
+                        <div class="col-3">
+                            <i (click)="addProductToCart(product1)" style="color: #0275d8; " onmouseover="this.style.color = '#8dbee9'" onmouseout="this.style.color = '#0275d8'"
+                                class="fas  fa-cart-plus fa-lg"></i>
+                        </div>
+
+                        <div class="col-3">
+
+                            <i [routerLink]="['/ProductDetail/', product1.productId]" class="fas fa-eye" style="color: #0275d8; " onmouseover="this.style.color = '#8dbee9'" onmouseout="this.style.color = '#0275d8'"></i>
+                        </div>
+                    
+
+                      
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+        <div class="col">
+            <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                Select Product
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" *ngFor="let c of currentproductsList"
+                    (click)="changeProduct2(c.productId)">{{c.productName}}</a>
+            </div>
+
+            <div *ngIf="product2!=null">
+
+                <div [id]="'carouselExampleControls'+product2.productId" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <hr>
+                        <h6 class="card-title text-primary "> {{product2.productName}} - {{product2.brandName}}</h6>
+                        <div class="carousel-item active">
+                            <img class="card-img-top" [src]="product2.productImages[0].imagePath" alt="First slide">
+                        </div>
+                        <div class="carousel-item"
+                            *ngFor="let ii of product2.productImages | slice:1:product2.productImages.length">
+                            <img class="card-img-top" src="{{ii.imagePath}}" alt="slide">
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" [href]="'#carouselExampleControls'+product2.productId"
+                        role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon carousel-aria-button" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" [href]="'#carouselExampleControls'+product2.productId"
+                        role="button" data-slide="next">
+                        <span class="carousel-control-next-icon carousel-aria-button" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+               
+                <a [routerLink]="['/ProductDetail/', product2.productId]">
+                    <div class="card-body">
+                       
+                        <p class="card-text">{{product2.description}}</p>
+                    </div>
+                </a>
+                <div class="col-lg-6 my-auto">
+                    <h6 class="text-center">{{product2.pricePerUnit| currency:"INR"}}</h6>
+
+                </div>
+                <div class="card-footer bg-transparent border-primary">
+                    <div class="row">
+                       
+                        
+                        <div class="col-3">
+                            <i (click)="addProductToWishlist(product2.productId)" style="color: #0275d8;"  onmouseover="this.style.color = '#8dbee9'" onmouseout="this.style.color = '#0275d8'" class="fas fa-heart fa-lg"></i>
+                        </div>
+
+                        <div class="col-3">
+                            <i (click)="addProductToCart(product2)" style="color: #0275d8; " onmouseover="this.style.color = '#8dbee9'" onmouseout="this.style.color = '#0275d8'"
+                                class="fas  fa-cart-plus fa-lg"></i>
+                        </div>
+
+                        <div class="col-3">
+
+                            <i [routerLink]="['/ProductDetail/', product2.productId]" class="fas fa-eye" style="color: #0275d8; " onmouseover="this.style.color = '#8dbee9'" onmouseout="this.style.color = '#0275d8'"></i>
+                        </div>
+                    
+
+                      
                     </div>
                 </div>
             </div>
@@ -137,24 +164,147 @@
 
         </div>
 
-        <div class="col" >
-            <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Select Product 
+        <div class="col">
+            <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                Select Product
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item"  *ngFor="let c of currentproductsList">{{c.productName}}</a>   
-            </div>  
+                <a class="dropdown-item" *ngFor="let c of currentproductsList"
+                    (click)="changeProduct3(c.productId)">{{c.productName}}</a>
+            </div>
+            <div *ngIf="product3!=null">
+
+                <div [id]="'carouselExampleControls'+product3.productId" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <hr>
+                        <h6 class="card-title text-primary "> {{product3.productName}} - {{product3.brandName}}</h6>
+                        <div class="carousel-item active">
+                            <img class="card-img-top" [src]="product3.productImages[0].imagePath" alt="First slide">
+                        </div>
+                        <div class="carousel-item"
+                            *ngFor="let ii of product3.productImages | slice:1:product3.productImages.length">
+                            <img class="card-img-top" src="{{ii.imagePath}}" alt="slide">
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" [href]="'#carouselExampleControls'+product3.productId"
+                        role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon carousel-aria-button" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" [href]="'#carouselExampleControls'+product3.productId"
+                        role="button" data-slide="next">
+                        <span class="carousel-control-next-icon carousel-aria-button" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+               
+                <a [routerLink]="['/ProductDetail/', product3.productId]">
+                    <div class="card-body">
+                       
+                        <p class="card-text">{{product3.description}}</p>
+                    </div>
+                </a>
+                <div class="col-lg-6 my-auto">
+                    <h6 class="text-center">{{product3.pricePerUnit| currency:"INR"}}</h6>
+
+                </div>
+                <div class="card-footer bg-transparent border-primary">
+                    <div class="row">
+                       
+                        
+                        <div class="col-3">
+                            <i (click)="addProductToWishlist(product3.productId)" style="color: #0275d8;"  onmouseover="this.style.color = '#8dbee9'" onmouseout="this.style.color = '#0275d8'" class="fas fa-heart fa-lg"></i>
+                        </div>
+
+                        <div class="col-3">
+                            <i (click)="addProductToCart(product3)" style="color: #0275d8; " onmouseover="this.style.color = '#8dbee9'" onmouseout="this.style.color = '#0275d8'"
+                                class="fas  fa-cart-plus fa-lg"></i>
+                        </div>
+
+                        <div class="col-3">
+
+                            <i [routerLink]="['/ProductDetail/', product3.productId]" class="fas fa-eye" style="color: #0275d8; " onmouseover="this.style.color = '#8dbee9'" onmouseout="this.style.color = '#0275d8'"></i>
+                        </div>
+                    
+
+                      
+                    </div>
+                </div>
+            </div>
+
         </div>
-        <div class="col" >
-            <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Select Product 
+
+        <div class="col">
+            <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                Select Product
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item"  *ngFor="let c of currentproductsList">{{c.productName}}</a>   
-            </div>  
+                <a class="dropdown-item" *ngFor="let c of currentproductsList"
+                    (click)="changeProduct4(c.productId)">{{c.productName}}</a>
+            </div>
+            <div *ngIf="product4!=null">
+
+                <div [id]="'carouselExampleControls'+product4.productId" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <hr>
+                        <h6 class="card-title text-primary "> {{product4.productName}} - {{product4.brandName}}</h6>
+                        <div class="carousel-item active">
+                            <img class="card-img-top" [src]="product4.productImages[0].imagePath" alt="First slide">
+                        </div>
+                        <div class="carousel-item"
+                            *ngFor="let ii of product4.productImages | slice:1:product4.productImages.length">
+                            <img class="card-img-top" src="{{ii.imagePath}}" alt="slide">
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" [href]="'#carouselExampleControls'+product4.productId"
+                        role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon carousel-aria-button" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" [href]="'#carouselExampleControls'+product4.productId"
+                        role="button" data-slide="next">
+                        <span class="carousel-control-next-icon carousel-aria-button" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+               
+                <a [routerLink]="['/ProductDetail/', product4.productId]">
+                    <div class="card-body">
+                       
+                        <p class="card-text">{{product4.description}}</p>
+                    </div>
+                </a>
+                <div class="col-lg-6 my-auto">
+                    <h6 class="text-center">{{product4.pricePerUnit| currency:"INR"}}</h6>
+
+                </div>
+                <div class="card-footer bg-transparent border-primary">
+                    <div class="row">
+                       
+                        
+                        <div class="col-3">
+                            <i (click)="addProductToWishlist(product4.productId)" style="color: #0275d8;"  onmouseover="this.style.color = '#8dbee9'" onmouseout="this.style.color = '#0275d8'" class="fas fa-heart fa-lg"></i>
+                        </div>
+
+                        <div class="col-3">
+                            <i (click)="addProductToCart(product4)" style="color: #0275d8; " onmouseover="this.style.color = '#8dbee9'" onmouseout="this.style.color = '#0275d8'"
+                                class="fas  fa-cart-plus fa-lg"></i>
+                        </div>
+
+                        <div class="col-3">
+
+                            <i [routerLink]="['/ProductDetail/', product2.productId]" class="fas fa-eye" style="color: #0275d8; " onmouseover="this.style.color = '#8dbee9'" onmouseout="this.style.color = '#0275d8'"></i>
+                        </div>
+                    
+
+                      
+                    </div>
+                </div>
+            </div>
+
         </div>
 
     </div>
 </div>
-
- 
