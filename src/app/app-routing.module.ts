@@ -34,6 +34,7 @@ import { WishlistComponent } from './wishlist/wishlist.component';
 
 import { OrderSuccessfulComponent} from './order-successful/order-successful.component';
 import {CompareComponent} from './compare/compare.component';
+import { TestImageComponent } from './test-image/test-image.component';
 
 
 
@@ -96,6 +97,7 @@ const routes: Routes = [
   {path:"RetailerHome",component:RetailerSideNavComponent},
 
   {path:'WishList',component:WishlistComponent},
+  {path:'TestImage',component:TestImageComponent},
 
 
 

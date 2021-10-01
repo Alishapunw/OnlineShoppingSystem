@@ -1,0 +1,13 @@
+<p>test-image works!</p>
+<form [formGroup]="fileForm"  (ngSubmit)="saveFileInfo()">
+  <div class="form-group">
+    <label for="exampleFormControlFile1">Example file input</label>
+    <input type="file" class="form-control-file"  (change)="handleFileInput($event)" name="exampleFormControlFile1" id="exampleFormControlFile1">
+  </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+    
+</form>
+
+<img [src]="'http://localhost:65061/'+trustedDashboardUrl" alt="Image">

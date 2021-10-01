@@ -43,6 +43,7 @@ import { ChangePasswordCustomerComponent } from './change-password-customer/chan
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { OrderSuccessfulComponent } from './order-successful/order-successful.component';
 import { CompareComponent } from './compare/compare.component';
+import { TestImageComponent } from './test-image/test-image.component';
 
 
 
@@ -83,7 +84,8 @@ import { CompareComponent } from './compare/compare.component';
     ChangePasswordCustomerComponent,
     WishlistComponent,
     OrderSuccessfulComponent,
-    CompareComponent
+    CompareComponent,
+    TestImageComponent
   ],
   imports: [
     BrowserModule,
