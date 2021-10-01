@@ -1,29 +1,48 @@
-<html>
+<div class="row">
+    <div class="col-sm-2">
+<app-retailer-side-nav></app-retailer-side-nav>
+</div>
+<div class="col-sm-10">
     <body>
+        <form [formGroup]="AddProductForm" (ngSubmit)="SubmitProduct()">
         <br>
         <h4 style="text-align: center;">Add Product</h4>
         <br>
-        <div class="container">
+        <div class="container" style="margin-left: 45px;">
         <div class="form-group">
             <label for="productname"><b>Product Name </b></label>
-            <input type="text" class="form-control" placeholder="Product name" id="productnametxt"/>
+            <input type="text" style="width: 900px;" class="form-control" placeholder="Product name" id="productnametxt"  formControlName="ProductName" />
         </div>
         <div class="form-group">
-            <label for="productimg"><b>Product Image </b></label>
-            <input type="text" class="form-control" placeholder="Product Image URL" id="productimgtxt"/>
+            <label for="brandname"><b>Brand Name</b></label>
+            <input type="text"  style="width: 900px;"  class="form-control" placeholder="Brand Name" id="productimgtxt" formControlName="BrandName" />
         </div>
         <div class="form-group">
             <label for="productdesc"><b>Product Description </b></label>
-            <textarea rows="10" class="form-control" placeholder="Product Description" id="productdesctxt"></textarea>
+            <textarea rows="10" style="width: 900px;"  class="form-control" placeholder="Product Description" id="productdesctxt" formControlName="Description" ></textarea>
         </div>
         <div class="form-group">
             <label for="productprice"><b>Product Price </b></label>
-            <input type="text" class="form-control" placeholder="Product PricePerUnit" id="productpricetxt"/>
+            <input type="number" style="width: 900px;"  class="form-control" placeholder="Product PricePerUnit" id="productpricetxt" formControlName="PricePerUnit" />
         </div>
+        <div class="form-group">
+            <label for="productprice"><b>Product Quantity </b></label>
+            <input type="number" style="width: 900px;"  class="form-control" placeholder="Product Quantity" id="productpricetxt" formControlName="Quantity" />
+        </div>
+        
+        <div class="form-group">
+            <label for="productprice"><b>Category Id</b></label>
+            <input type="number" style="width: 900px;"  class="form-control" placeholder="Product CategoryId" id="productpricetxt" formControlName="CategoryId" />
+        </div>
+       
         <br>
         <div>
             <button type="submit" class="form-control" class="btn btn-primary btn-md" id="addproduct" routerLink="../RetailerProfile">Add Product</button>
         </div>
         </div>
+    </form>
     </body>
-</html>
+</div>
+</div>
+
+

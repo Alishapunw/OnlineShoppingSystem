@@ -4,12 +4,11 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from '../authentication.service';
 
 @Component({
-  selector: 'app-change-password',
-  templateUrl: './change-password.component.html',
-  styleUrls: ['./change-password.component.css']
+  selector: 'app-change-password-customer',
+  templateUrl: './change-password-customer.component.html',
+  styleUrls: ['./change-password-customer.component.css']
 })
-export class ChangePasswordComponent implements OnInit {
-
+export class ChangePasswordCustomerComponent implements OnInit {
   IsLoading:boolean = false;
   InvalidPassword:boolean = false;
   PasswordMatch:boolean=true;
@@ -19,13 +18,11 @@ export class ChangePasswordComponent implements OnInit {
     NewPassword:new FormControl("",[Validators.required,Validators.pattern("[A-Z](?=.*[a-z0-9A-Z])(?=.*?[!@#\$&*~]).{7,15}$")]),
     ConfirmPassword:new FormControl("",[Validators.required])
   });
-  
+
   constructor(public service:AuthenticationService, public router:Router) { }
 
   ngOnInit(): void {
-    //this.retailer=new Retailer();
   }
-
   get OldPassword(){
     return this.ChangePasswordForm.get("OldPassword");
   }
@@ -46,19 +43,18 @@ export class ChangePasswordComponent implements OnInit {
       this.PasswordMatch = false;
       this.IsLoading=false;
     }
-    this.service.ChangePassword(this.ChangePasswordForm.value).subscribe( (data:any) =>{ 
+    this.service.ChangePasswordCustomer(this.ChangePasswordForm.value).subscribe( (data:any) =>{ 
       console.log(data);
+
       
       if(data["LoginMessage"] == "InvalidPassword"){
         this.InvalidPassword=true;
         this.IsLoading=false;
       }
+      this.router.navigateByUrl("../Home");
     }
     );
   }
   
-  
+
 }
-
-
-

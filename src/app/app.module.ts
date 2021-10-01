@@ -38,6 +38,9 @@ import { RetailerSideNavComponent } from './retailer-side-nav/retailer-side-nav.
 import { MailComponent } from './mail/mail.component';
 import { FilterPipe } from './filter.pipe';
 import { Retailer1Component } from './retailer1/retailer1.component';
+import { AdminapprovalComponent } from './adminapproval/adminapproval.component';
+import { UserdetailsComponent } from './userdetails/userdetails.component';
+import { ChangePasswordCustomerComponent } from './change-password-customer/change-password-customer.component';
 
 
 
@@ -73,7 +76,10 @@ import { Retailer1Component } from './retailer1/retailer1.component';
     RetailerSideNavComponent,
     MailComponent,
     FilterPipe,
-    Retailer1Component
+    Retailer1Component,
+    AdminapprovalComponent,
+    UserdetailsComponent,
+    ChangePasswordCustomerComponent
   ],
   imports: [
     BrowserModule,
