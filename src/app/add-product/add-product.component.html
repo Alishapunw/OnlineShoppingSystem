@@ -29,7 +29,9 @@
 
         <div class="form-group">
             <label for="Category"><b>Category </b></label>
-            <input type="number" class="form-control" placeholder="Category" id="Category" formControlName="CategoryId" />
+            <select class="custom-select mb-2" id="Category" formControlName="CategoryId">
+                <option *ngFor="let c of categoriesList" [value]="c.categoryId">{{c.categoryName}} </option>
+            </select>
         </div>
         
 

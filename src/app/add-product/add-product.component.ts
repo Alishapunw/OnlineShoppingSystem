@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CategoriesService } from '../categories.service';
+import { Category } from '../category';
 import { RetailerService } from '../retailer.service';
 import { Retailer1 } from '../retailer1';
 
@@ -28,10 +30,17 @@ export class AddProductComponent implements OnInit {
   email?:any;
   retailer?:Retailer1;
   id?:number;
+  categoriesList: Category[] = [];
 
-  constructor( private formBuilder:FormBuilder, public service:RetailerService,public route:Router) { }
+  constructor( private formBuilder:FormBuilder, public service:RetailerService,public cs: CategoriesService,public route:Router) { }
 
   ngOnInit(): void {
+
+    this.cs.getCategories().subscribe((data) => {
+      this.categoriesList = data;
+      console.log(data);
+    });
+
     this.ProductForm = this.formBuilder.group( {
       ProductName: new FormControl(""),
       BrandName: new FormControl(""),
@@ -90,6 +99,7 @@ export class AddProductComponent implements OnInit {
   
   SubmitProduct()
   {
+    console.log(this.ProductForm.value);
     this.email=localStorage.getItem("Email");
     this.service.GetRetailerByEmail(this.email).subscribe((data:Retailer1)=>
     {
@@ -99,10 +109,11 @@ export class AddProductComponent implements OnInit {
       console.log(this.id);
 
     this.ProductForm.controls["RetailerId"].setValue(this.id);
+    this.ProductForm.controls["CategoryId"].setValue( parseInt(this.ProductForm.value["CategoryId"]  ) )
     this.service.AddProduct(this.ProductForm.value).subscribe((data:any)=>
     {
       console.log(data);
-      this.route.navigateByUrl("../RetailerHome");
+      this.route.navigateByUrl("/RetailerHome");
     })
 
   })

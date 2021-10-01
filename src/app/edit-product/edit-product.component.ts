@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CategoriesService } from '../categories.service';
+import { Category } from '../category';
 import { Product } from '../product';
 import { RetailerService } from '../retailer.service';
 
@@ -14,6 +16,7 @@ export class EditProductComponent implements OnInit {
   //EditProductForm!: FormGroup;
   product?:Product;
   ProductImages!:FormArray;
+  categoriesList: Category[] = [];
 
   EditProductForm=new FormGroup({
     ProductName: new FormControl(""),
@@ -27,14 +30,14 @@ export class EditProductComponent implements OnInit {
   constructor(private formBuilder:FormBuilder,private router:ActivatedRoute, public service:RetailerService,public route:Router) { }
 
   ngOnInit(): void {
+
     this.service.GetProductByID(this.router.snapshot.params['productId']).subscribe((data:any)=>
     this.EditProductForm=new FormGroup({
       ProductName: new FormControl(data["productName"]),
       BrandName: new FormControl(data["brandName"]),
       PricePerUnit: new FormControl(data["pricePerUnit"]),
       Description: new FormControl(data["description"]),
-      Quantity: new FormControl(data["quantity"]),
-      CategoryId: new FormControl(data["categoryId"])
+      Quantity: new FormControl(data["quantity"])
       //ProductImages: this.formBuilder.array( [  ] )   
     })       
     )
@@ -59,10 +62,7 @@ export class EditProductComponent implements OnInit {
   {
     return this.EditProductForm.get('Quantity');
   }
-  get CategoryId()
-  {
-    return this.EditProductForm.get('CategoryId');
-  }
+  
 
   EditProduct(){
       this.service.UpdateProduct(this.router.snapshot.params['productId'],this.EditProductForm.value).subscribe((data:any)=>{
