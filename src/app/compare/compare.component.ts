@@ -14,12 +14,18 @@ import { ProductserviceService } from '../productservice.service';
 })
 export class CompareComponent implements OnInit {
   categoriesList: Category[] = [];
-  productList:Product[]=[];
   currentproductsList: Product[] = [];
   allproductsList: Product[] = [];
   selectedCategotyId: number = 0;
-  selectedProductId:number=0;
-  p!:Product;
+  selectedProductId1:number=0;
+  selectedProductId2:number=0;
+  selectedProductId3:number=0;
+  selectedProductId4:number=0;
+
+  product1!:Product;
+  product2!:Product;
+  product3!:Product;
+  product4!:Product;
 
 
   constructor(public cs: CategoriesService, public ps:ProductserviceService,public router:Router,public carts:ProductCartService) { }
@@ -35,16 +41,17 @@ export class CompareComponent implements OnInit {
       console.log(this.allproductsList);
     })
   }
-  changeCategory(cId: number) {
-    console.log(cId);
-    this.selectedCategotyId = cId;
-    if(cId == 0){
+
+  changeCategory(cId: string) {
+    
+    this.selectedCategotyId = parseInt(cId) ;
+    if(this.selectedCategotyId == 0){
       this.currentproductsList = this.allproductsList;
     }
     else{
       this.currentproductsList = [];
       this.allproductsList.forEach(element => {
-        if(element.categoryId==cId){
+        if(element.categoryId==this.selectedCategotyId){
         this.currentproductsList.push( element );
         }
       });
@@ -52,17 +59,53 @@ export class CompareComponent implements OnInit {
   }
 
 
-changeProduct(pId: number) {
+changeProduct1(pId: number) {
   console.log(pId);
- 
-  this.selectedProductId = pId;
+  this.selectedProductId1 = pId;
   this.allproductsList.forEach(element=> {
     if(element.productId==pId){
-      this.p=element;
+      this.product1=element;
   }
   });
-  
 }
+
+
+
+changeProduct2(pId: number) {
+  console.log(pId);
+  this.selectedProductId2 = pId;
+  this.allproductsList.forEach(element=> {
+    if(element.productId==pId){
+      this.product2=element;
+  }
+  });
+}
+
+
+changeProduct3(pId: number) {
+  console.log(pId);
+  this.selectedProductId3 = pId;
+  this.allproductsList.forEach(element=> {
+    if(element.productId==pId){
+      this.product3=element;
+  }
+  });
+}
+
+
+changeProduct4(pId: number) {
+  console.log(pId);
+  this.selectedProductId4 = pId;
+  this.allproductsList.forEach(element=> {
+    if(element.productId==pId){
+      this.product4=element;
+  }
+  });
+}
+
+
+
+
 
 addProductToCart(product:Product){
   var LoggedInUserEmail = localStorage.getItem("Email");
@@ -75,5 +118,7 @@ addProductToCart(product:Product){
   }
   //this.carts.AddtoCart(product)
 }
+
+
 }
 
