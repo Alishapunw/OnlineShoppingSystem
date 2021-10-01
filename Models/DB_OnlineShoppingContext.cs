@@ -87,9 +87,13 @@ namespace OnlineShopping.Models
                     .IsRequired()
                     .HasMaxLength(40);
 
+                entity.Property(e => e.Otp)
+                    .HasColumnName("OTP")
+                    .HasMaxLength(4);
+
                 entity.Property(e => e.Password)
                     .IsRequired()
-                    .HasMaxLength(40);
+                    .HasMaxLength(64);
             });
 
             modelBuilder.Entity<Orders>(entity =>
@@ -182,6 +186,10 @@ namespace OnlineShopping.Models
                 entity.Property(e => e.Email)
                     .IsRequired()
                     .HasMaxLength(40);
+
+                entity.Property(e => e.Otp)
+                    .HasColumnName("OTP")
+                    .HasMaxLength(4);
 
                 entity.Property(e => e.Password)
                     .IsRequired()

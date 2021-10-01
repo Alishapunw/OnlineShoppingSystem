@@ -41,9 +41,47 @@ namespace OnlineShopping.Controllers
                 Status = p.Status,
                 ProductImages = p.ProductImages.Select(pi => new ProductImages { ProductId = pi.ProductId,  ImagePath = pi.ImagePath }).ToList()
             } ).ToList();
+            var b = a.Where(i => i.Status == true).ToList();
 
-            return Ok(a);
+            return Ok(b);
         }
+        
+
+        [HttpGet("GetOneProduct")]
+        public async  Task<ActionResult<IEnumerable<Products>>> GetOneProduct()
+        {
+            var a = await _context.Products.Select(p => new Products
+            {
+                ProductId = p.ProductId,
+                ProductName = p.ProductName,
+                BrandName = p.BrandName,
+                CategoryId = p.CategoryId,
+                Description = p.Description,
+                PricePerUnit = p.PricePerUnit,
+                Quantity = p.Quantity,
+                RetailerId = p.RetailerId,
+                Status = p.Status,
+                ProductImages = p.ProductImages.Select(pi => new ProductImages { ProductId = pi.ProductId, ImagePath = pi.ImagePath }).ToList()
+            }).ToListAsync();
+
+            return Ok(a[0]);
+        }
+       
+
+
+        // GET: api/Products/5
+        [HttpGet("getProductById/{id}")]
+        public async Task<ActionResult<Products>> getProductById(int id)
+        {
+            Products CurrentProduct = await _context.Products.FindAsync(id);
+            if (CurrentProduct == null)
+            {
+                return NotFound();
+            }
+            CurrentProduct.ProductImages = await _context.ProductImages.Select(pi => new ProductImages { ProductId = pi.ProductId, ImagePath = pi.ImagePath }   ).Where(pii => pii.ProductId == id).ToListAsync();
+            return Ok(CurrentProduct);
+        }
+
 
         // GET: api/Products/5
         [HttpGet("{id}")]
@@ -61,7 +99,7 @@ namespace OnlineShopping.Controllers
 
         // PUT: api/Products/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        // more details, see  https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
         public async Task<IActionResult> PutProducts(int id, Products products)
         {
@@ -99,9 +137,12 @@ namespace OnlineShopping.Controllers
         {
             _context.Products.Add(products);
             await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetProducts", new { id = products.ProductId }, products);
+            return Ok(_context.Products);
         }
+
+
+        
+
 
         // DELETE: api/Products/5
         [HttpDelete("{id}")]

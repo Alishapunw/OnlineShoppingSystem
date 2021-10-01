@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -114,10 +116,71 @@ namespace OnlineShopping.Controllers
 
             return admin;
         }
+        [HttpGet("getRetailers")]
+        public async Task<ActionResult<IEnumerable<Retailer>>> GetRetailers()
+        {
+            return await _context.Retailer.ToListAsync();
+        }
+        [HttpPost("addRetailer")]
+
+        public async Task<ActionResult<Retailer>> AddRetailer(Retailer retailer)
+        {
+            retailer.Password = ComputeSha256Hash(retailer.Password);
+            _context.Retailer.Add(retailer);
+            await _context.SaveChangesAsync();
+
+            //return CreatedAtAction("GetRetailer", new { id = retailer.RetailerId }, retailer);
+            return Ok();
+        }
+        [HttpDelete("del/{email}")]
+        public async Task<ActionResult<Retailer>> DeleteRetailer(string email)
+        {
+            var retailer = _context.Retailer.Where(x => x.Email == email).FirstOrDefault();
+            if (retailer == null)
+            {
+                return NotFound();
+            }
+
+            _context.Retailer.Remove(retailer);
+            await _context.SaveChangesAsync();
+
+            return Ok();
+        }
+        [HttpPost("status/{id}")]
+        public IActionResult PostStatus(int id)
+        {
+            var a = _context.Products.Where(x => x.ProductId == id).FirstOrDefault();
+            a.Status = true;
+            _context.SaveChanges();
+            return Ok(_context.Products);
+        }
 
         private bool AdminExists(string id)
         {
             return _context.Admin.Any(e => e.Email == id);
+        }
+        [HttpGet("adminproducts")]
+        public async Task<ActionResult<IEnumerable<Products>>> GetAdminProducts()
+        {
+            return await _context.Products.ToListAsync();
+        }
+        [NonAction]
+        static string ComputeSha256Hash(string rawData)
+        {
+            // Create a SHA256   
+            using (SHA256 sha256Hash = SHA256.Create())
+            {
+                // ComputeHash - returns byte array  
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(rawData));
+
+                // Convert byte array to a string   
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2"));
+                }
+                return builder.ToString();
+            }
         }
     }
 }
