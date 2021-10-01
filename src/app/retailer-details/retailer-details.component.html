@@ -1,8 +1,13 @@
+<div class="row">
+    <div class="col-sm-2">
+<app-retailer-side-nav></app-retailer-side-nav>
+</div>
+<div class="col-sm-10">
 <br>
-<div class="container">
+<div class="container" style="margin-left: 45px;margin-top: 20px;">
     <div class="row">
-        <div class="col-12">
-            <div class="card">
+        <div class="col-10">
+            <div class="card" >
                 <div class="card-body">
                     <div class="card-title mb-4">
                         <div class="d-flex justify-content-start">
@@ -13,9 +18,9 @@
                                 </div>
                             </div>
                             <div class="userData ml-3">
-                                <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold">Retailer Name</h2>
-                                <h6 class="d-block"><a routerLink="../AddProduct"></a> Add product</h6>
-                                <h6 class="d-block">Company name</h6>
+                                <!-- <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold">{{r.retailerName}}</h2> -->
+                                <!-- <h6 class="d-block"><a routerLink="../AddProduct"></a> Add product</h6> -->
+                                <!-- <h6 class="d-block">Company name</h6> -->
                             </div>
                             <div class="ml-auto">
                                 <input type="button" class="btn btn-primary d-none" id="btnDiscard" value="Discard Changes" />
@@ -32,7 +37,7 @@
                                             <label style="font-weight:bold;">Full Name</label>
                                         </div>
                                         <div class="col-md-8 col-6">
-                                            Retailer name
+                                            {{r.retailerName}}
                                         </div>
                                     </div>
                                     <hr />
@@ -42,7 +47,7 @@
                                             <label style="font-weight:bold;">Email ID</label>
                                         </div>
                                         <div class="col-md-8 col-6">
-                                            Retailer Email
+                                            {{r.email}}
                                         </div>
                                     </div>
                                     <hr />
@@ -53,7 +58,7 @@
                                             <label style="font-weight:bold;">Phone Number</label>
                                         </div>
                                         <div class="col-md-8 col-6">
-                                            Retailer Phone number
+                                            {{r.retailerMobile}}
                                         </div>
                                     </div>
                                     <hr />
@@ -62,7 +67,7 @@
                                             <label style="font-weight:bold;">Products Uploaded</label>
                                         </div>
                                         <div class="col-md-8 col-6">
-                                            200
+                                            20
                                         </div>
                                     </div>
                                     <hr />
@@ -74,5 +79,7 @@
             </div>
         </div>
     </div>
+</div>
+</div>
 </div>
 <br>

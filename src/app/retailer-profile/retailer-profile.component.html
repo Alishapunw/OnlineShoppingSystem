@@ -1,12 +1,15 @@
-<html>
+
+<div class="row">
+  <div class="col-sm-2">
+<app-retailer-side-nav></app-retailer-side-nav>
+</div>
+<div class="col-sm-10">
     <body>
         <br><br>
         <div class="container">
             <div class="row">
               <div class="col" style="padding-left:100px">
-                <div class="form-group">
-                    <button type="submit" class="form-control" class="btn btn-outline-primary btn-lg" id="addproduct"><a routerLink="../AddProduct">Add Product</a></button>
-                  </div>
+                
                 <div *ngFor="let item of RetailerProducts">
                   <div class="card" style="width: 50rem;">
                     <!-- <div class="card-deck"> -->
@@ -54,4 +57,7 @@
           <!-- </div> -->
         </div>
     </body>
-</html>
+</div>
+</div>
+
+

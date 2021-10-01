@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { OrdersService } from '../orders.service';
 import { ProductCart } from '../product-cart';
 import { ProductCartService } from '../product-cart.service';
 import { CartService } from '../services/cart.service';
@@ -16,7 +17,7 @@ export class ShoppingComponent implements OnInit {
 
   productList: ProductCart[] = [];
 
-  constructor(private cs: CartService) { }
+  constructor(private cs: CartService,public o:OrdersService) { }
 
   ngOnInit() {
     this.IsLoading = true;
@@ -56,6 +57,7 @@ export class ShoppingComponent implements OnInit {
     this.IsLoading = false;
 
   }
+
 
 
 }

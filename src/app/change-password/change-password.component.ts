@@ -56,6 +56,8 @@ export class ChangePasswordComponent implements OnInit {
     }
     );
   }
+  
+  
 }
 
 

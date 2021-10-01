@@ -1,0 +1,27 @@
+<!-- <p>adminapproval works!</p> -->
+<table class="table">
+    <thead>
+        <tr>
+            <th>ProductName</th>
+            <th>BrandName</th>
+            <th>Quantity</th>
+            <th>PricePerUnit</th>
+            <th>RetailerId</th>
+            <th>Status</th>
+            <th>Approval</th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let product of products"> 
+        <tr>
+            <td>{{product.productName}}</td>
+            <td>{{product.brandName}}</td>
+            <td>{{product.quantity}}</td>
+            <td>{{product.pricePerUnit}}</td>
+            <td>{{product.retailerId}}</td>
+            <td>{{product.status?'Approved':'Pending for Approval'}}</td>
+            <td>
+                <button class="btn btn-primary btn-sn" (click)="ApproveProduct(product.productId)">{{product.status?'Approved':'Approve'}}</button>
+            </td>
+        </tr>   
+    </tbody>
+</table>

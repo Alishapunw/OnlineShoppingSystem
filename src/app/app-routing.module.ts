@@ -27,7 +27,13 @@ import { CategoriesComponent } from './categories/categories.component';
 import { ProductsComponent } from './products/products.component';
 import { MailComponent } from './mail/mail.component';
 import { RetailerSideNavComponent } from './retailer-side-nav/retailer-side-nav.component';
+import { AdminapprovalComponent } from './adminapproval/adminapproval.component';
+import { UserdetailsComponent } from './userdetails/userdetails.component';
+import { ChangePasswordCustomerComponent } from './change-password-customer/change-password-customer.component';
+import { WishlistComponent } from './wishlist/wishlist.component';
 
+import { OrderSuccessfulComponent} from './order-successful/order-successful.component';
+import {CompareComponent} from './compare/compare.component';
 
 
 
@@ -38,6 +44,8 @@ const routes: Routes = [
   /*Admin Routes Start*/
   {path:'AdminRetailerAdd',component:AdminRetailerAddComponent},
   {path:'AdminRetailerDetails',component:AdminRetailerViewComponent},
+  {path:'Adminapproval',component:AdminapprovalComponent},
+
   /*Admin Routes End*/
 
   /*Retailer Routes Start*/
@@ -45,7 +53,6 @@ const routes: Routes = [
   {path:'AddProduct',component:AddProductComponent},
   {path:'RetailerDetails',component:RetailerDetailsComponent},
   {path:'ChangePassword',component:ChangePasswordComponent},
-  {path:'RetailerDetails',component:RetailerDetailsComponent},
   /*Retailer Routes End*/
   {path:'Login',component:LoginComponent},
   {path:'Registration',component:RegistrationComponent},
@@ -57,7 +64,11 @@ const routes: Routes = [
   {path:'ForgotPassword',component: ForgotpasswordComponent},
   {path:'UserProfile',component:UserProfileComponent},
   {path:'Categories',component: CategoriesComponent},
+  {path:'Userdetails',component:UserdetailsComponent},
 
+
+  {path:'OrderSuccesful',component:OrderSuccessfulComponent},
+  {path:'Compare',component:CompareComponent},
   /*User Routes End*/
   
   
@@ -74,6 +85,7 @@ const routes: Routes = [
   {path:'Registration',component:RegistrationComponent},
 
   {path:'ForgotPassword',component:ForgotpasswordComponent},
+  {path:'ChangePasswordCustomer',component:ChangePasswordCustomerComponent},
 
   
   {path:'Products',component:ProductsComponent},
@@ -81,7 +93,10 @@ const routes: Routes = [
 
 
   {path:'Billing',component:BillingComponent},
-  {path:"RetailerHome",component:RetailerSideNavComponent}
+  {path:"RetailerHome",component:RetailerSideNavComponent},
+
+  {path:'WishList',component:WishlistComponent},
+
 
 
 ];

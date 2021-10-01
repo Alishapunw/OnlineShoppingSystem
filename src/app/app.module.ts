@@ -32,12 +32,17 @@ import { ProductdetailviewComponent } from './productdetailview/productdetailvie
 import { HttpClientModule } from '@angular/common/http';
 
 import { CategoriesComponent } from './categories/categories.component';
-import { CategoryComponent } from './category/category.component';
 import { ProductsComponent } from './products/products.component';
 import { RetailerSideNavComponent } from './retailer-side-nav/retailer-side-nav.component';
 import { MailComponent } from './mail/mail.component';
 import { FilterPipe } from './filter.pipe';
 import { Retailer1Component } from './retailer1/retailer1.component';
+import { AdminapprovalComponent } from './adminapproval/adminapproval.component';
+import { UserdetailsComponent } from './userdetails/userdetails.component';
+import { ChangePasswordCustomerComponent } from './change-password-customer/change-password-customer.component';
+import { WishlistComponent } from './wishlist/wishlist.component';
+import { OrderSuccessfulComponent } from './order-successful/order-successful.component';
+import { CompareComponent } from './compare/compare.component';
 
 
 
@@ -68,12 +73,17 @@ import { Retailer1Component } from './retailer1/retailer1.component';
     BillingComponent,
     ProductdetailviewComponent,
     CategoriesComponent,
-    CategoryComponent,
     ProductsComponent,
     RetailerSideNavComponent,
     MailComponent,
     FilterPipe,
-    Retailer1Component
+    Retailer1Component,
+    AdminapprovalComponent,
+    UserdetailsComponent,
+    ChangePasswordCustomerComponent,
+    WishlistComponent,
+    OrderSuccessfulComponent,
+    CompareComponent
   ],
   imports: [
     BrowserModule,

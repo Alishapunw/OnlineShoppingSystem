@@ -32,10 +32,10 @@ export class ProductCartService {
         console.log("CartCreated");
         this.http.post(this.url + "/AddProductToCart/" + LoggedInUserEmail, JSON.stringify(product), this.httpOptions).subscribe((data: any) => {
           if (data["AddedProduct"] == true) {
-            console.log("AddedProduct");
+            console.log("AddedProduct to Cart");
           }
           else {
-            console.log("Not AddedProduct");
+            console.log("Not AddedProduct  to Cart");
           }
         })
       }
@@ -48,6 +48,17 @@ export class ProductCartService {
     });
 
   }
+
+
+  AddtoCartAsyncMethod(product: Product, LoggedInUserEmail: string) {
+    return this.http.post(this.url + "/AddtoCartAsyncMethod/" + LoggedInUserEmail, JSON.stringify(product), this.httpOptions);
+  }
+
+
+
+
+
+
   
 
 
