@@ -6,6 +6,7 @@ import { Category } from '../category';
 import { Product } from '../product';
 import { ProductCartService } from '../product-cart.service';
 import { ProductserviceService } from '../productservice.service';
+import { WishlistService } from '../wishlist.service';
 
 @Component({
   selector: 'app-compare',
@@ -28,7 +29,7 @@ export class CompareComponent implements OnInit {
   product4!:Product;
 
 
-  constructor(public cs: CategoriesService, public ps:ProductserviceService,public router:Router,public carts:ProductCartService) { }
+  constructor(public cs: CategoriesService, public ps:ProductserviceService,public router:Router,public carts:ProductCartService,public wls:WishlistService) { }
 
   ngOnInit(): void {
     this.cs.getCategories().subscribe((data) => {
@@ -115,6 +116,18 @@ addProductToCart(product:Product){
   }
   else{
       this.carts.AddtoCart(product, LoggedInUserEmail)
+  }
+  //this.carts.AddtoCart(product)
+}
+
+addProductToWishlist(productId:number){
+  var LoggedInUserEmail = localStorage.getItem("Email");
+  console.log(LoggedInUserEmail);  
+  if(LoggedInUserEmail == null){
+      this.router.navigateByUrl("/Login")
+  }
+  else{
+      this.wls.AddtoWishlist(productId, LoggedInUserEmail)
   }
   //this.carts.AddtoCart(product)
 }

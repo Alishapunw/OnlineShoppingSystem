@@ -77,6 +77,7 @@ export class AddProductComponent implements OnInit {
   {
     return this.AddProductForm.get('CategoryId');
   }
+  /*
   SubmitProduct()
   {
     this.service.AddProduct(this.AddProductForm.value).subscribe((data:any)=>
@@ -86,6 +87,7 @@ export class AddProductComponent implements OnInit {
     })
 
   }
+  */
 
 }
 
