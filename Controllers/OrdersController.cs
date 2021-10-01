@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -76,13 +76,34 @@ namespace OnlineShopping.Controllers
         // POST: api/Orders
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPost]
-        public async Task<ActionResult<Orders>> PostOrders(Orders orders)
+        [HttpPost("{id}")]
+        public async Task<ActionResult<Orders>> PostOrders(int id)
         {
-            _context.Orders.Add(orders);
-            await _context.SaveChangesAsync();
+           var totalamount= _context.ProductCart.Where(x => x.CartId == id).Sum(x => x.Amount);
+            if (id != 0)
+            {
+                Orders order = new Orders();
+                order.CartId = id;
+                order.OrderDate = DateTime.Now;
+                order.TotalAmount = totalamount;
+                order.ShippingAddress = "2051 Goldcliff Circle,Washington,Province abbr DC,Province full Washington DC: 20011";
+                order.OrderStatus = "dispatched";
+                order.ShippingDate = DateTime.Today;
+                _context.Orders.Add(order);
 
-            return CreatedAtAction("GetOrders", new { id = orders.OrderId }, orders);
+                Cart cart = _context.Cart.Where(x => x.CartId == id).FirstOrDefault();
+                cart.Status = true;
+                _context.Cart.Update(cart);
+
+
+                await _context.SaveChangesAsync();
+
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
 
         // DELETE: api/Orders/5

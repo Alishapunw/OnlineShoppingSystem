@@ -12,6 +12,7 @@ namespace OnlineShopping.Models
         public Customer()
         {
             Cart = new HashSet<Cart>();
+            Wishlist = new HashSet<Wishlist>();
         }
 
         public int CustomerId { get; set; }
@@ -22,5 +23,6 @@ namespace OnlineShopping.Models
         public string Otp { get; set; }
 
         public virtual ICollection<Cart> Cart { get; set; }
+        public virtual ICollection<Wishlist> Wishlist { get; set; }
     }
 }

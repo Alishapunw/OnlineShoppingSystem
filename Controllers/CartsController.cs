@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -10,12 +11,15 @@ using OnlineShopping.Models;
 namespace OnlineShopping.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
+    [ApiController] 
     public class CartsController : ControllerBase
     {
         private readonly DB_OnlineShoppingContext _context;
+        //private readonly IMapper _mapper;
+        //IMapper mapper
 
-        public CartsController(DB_OnlineShoppingContext context)
+
+        public CartsController(DB_OnlineShoppingContext context )
         {
             _context = context;
         }
@@ -26,6 +30,10 @@ namespace OnlineShopping.Controllers
         {
             return await _context.Cart.ToListAsync();
         }
+
+
+
+
 
         // GET: api/Carts/5
         [HttpGet("{id}")]
@@ -40,6 +48,158 @@ namespace OnlineShopping.Controllers
 
             return cart;
         }
+
+
+        [HttpGet("GetCartByUserEmail/{email}")]
+        public async Task<ActionResult<Cart>> GetCartByUserEmail(string email)
+        {
+            Customer customer = _context.Customer.Where(x => x.Email == email).FirstOrDefault();
+
+            Cart cart = _context.Cart.Where(c => c.CustomerId == customer.CustomerId && c.Status == false).FirstOrDefault();
+            Dictionary<string, bool> status = new Dictionary<string, bool>();
+
+
+            if (customer != null)
+            {
+                if (cart == null)
+                {
+                    Cart newcart = new Cart();
+                    newcart.CustomerId = customer.CustomerId;
+                    _context.Cart.Add(newcart);
+                    _context.SaveChanges();
+                    status.Add("CartCreatedorExists", true);
+                    return Ok(status);
+                }
+                else
+                {
+                    status.Add("CartCreatedorExists", true);
+                    return Ok(status);
+                }
+               
+                }
+            else
+            {
+                status.Add("CartCreatedorExists", false);
+                return Ok(status);
+            }
+
+        }
+
+        [HttpPost("AddProductToCart/{email}")]
+        public async Task<ActionResult<Cart>> AddProductToCart(string email, Products product)
+        {
+            Customer customer = _context.Customer.Where(x => x.Email == email).FirstOrDefault();
+
+            Cart cart = _context.Cart.Where(c => c.CustomerId == customer.CustomerId && c.Status == false).FirstOrDefault();
+            Dictionary<string, bool> status = new Dictionary<string, bool>();
+
+
+            if (customer != null)
+            {
+                if (cart == null)
+                {
+                    status.Add("AddedProduct", false);
+                    return Ok(status);
+                }
+                else
+                {
+                    ProductCart existingProductCart = _context.ProductCart.Where(pc => pc.CartId == cart.CartId && pc.ProductId == product.ProductId).FirstOrDefault();
+                    if (existingProductCart == null)
+                    {
+                        ProductCart pc = new ProductCart();
+                        pc.CartId = cart.CartId;
+                        pc.ProductId = product.ProductId;
+                        pc.Amount = product.PricePerUnit;
+                        await _context.ProductCart.AddAsync(pc);
+                        await _context.SaveChangesAsync();
+                    }
+                    else
+                    {
+                        existingProductCart.Quantity += 1;
+                        existingProductCart.Amount += product.PricePerUnit;
+                        _context.ProductCart.Update(existingProductCart);
+                        await _context.SaveChangesAsync();
+
+                    }
+                    Wishlist wishListedProduct = _context.Wishlist.Where(wlp => wlp.CustomerId == customer.CustomerId && wlp.ProductId == product.ProductId).FirstOrDefault();
+                    if(wishListedProduct != null)
+                    {
+                        _context.Wishlist.Remove(wishListedProduct);
+                        await _context.SaveChangesAsync();
+                    }
+                    status.Add("AddedProduct", true);
+                    return Ok(status);
+                }
+
+            }
+            else
+            {
+                status.Add("AddedProduct", false);
+                return Ok(status);
+            }
+
+        }
+
+
+
+        [HttpPost("AddtoCartAsyncMethod/{email}")]
+        public async Task<ActionResult<Cart>> AddtoCartAsyncMethod(string email, Products product)
+        {
+            Customer customer = _context.Customer.Where(x => x.Email == email).FirstOrDefault();
+
+            Cart cart = _context.Cart.Where(c => c.CustomerId == customer.CustomerId && c.Status == false).FirstOrDefault();
+            Dictionary<string, bool> status = new Dictionary<string, bool>();
+
+            if (cart == null)
+            {
+                cart = new Cart();
+                cart.CustomerId = customer.CustomerId;
+                await _context.Cart.AddAsync(cart);
+                await _context.SaveChangesAsync();
+            }
+
+
+            if (customer != null)
+            {
+                    ProductCart existingProductCart = _context.ProductCart.Where(pc => pc.CartId == cart.CartId && pc.ProductId == product.ProductId).FirstOrDefault();
+                    if (existingProductCart == null)
+                    {
+                        ProductCart pc = new ProductCart();
+                        pc.CartId = cart.CartId;
+                        pc.ProductId = product.ProductId;
+                        pc.Amount = product.PricePerUnit;
+                        await _context.ProductCart.AddAsync(pc);
+                        await _context.SaveChangesAsync();
+                    }
+                    else
+                    {
+                        existingProductCart.Quantity += 1;
+                        existingProductCart.Amount += product.PricePerUnit;
+                        _context.ProductCart.Update(existingProductCart);
+                        await _context.SaveChangesAsync();
+
+                    }
+                    Wishlist wishListedProduct = _context.Wishlist.Where(wlp => wlp.CustomerId == customer.CustomerId && wlp.ProductId == product.ProductId).FirstOrDefault();
+                    if (wishListedProduct != null)
+                    {
+                        _context.Wishlist.Remove(wishListedProduct);
+                        await _context.SaveChangesAsync();
+                    }
+                    status.Add("AddedProduct", true);
+                    return Ok(status);
+                
+
+            }
+            else
+            {
+                status.Add("AddedProduct", false);
+                return Ok(status);
+            }
+
+        }
+
+
+
 
         // PUT: api/Carts/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
@@ -76,14 +236,46 @@ namespace OnlineShopping.Controllers
         // POST: api/Carts
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPost]
-        public async Task<ActionResult<Cart>> PostCart(Cart cart)
-        {
-            _context.Cart.Add(cart);
-            await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetCart", new { id = cart.CartId }, cart);
+        /*
+        [HttpPost]
+        public async Task<ActionResult<Cart>> PostCart(CartDTO cart)
+        {
+            //cart.CartId = 1002;
+            cart.CustomerId = 1001;
+            cart.Status = true;
+
+            Cart cart2 = new Cart();
+            cart2.CustomerId = 1001;
+            cart2.Status = true;
+
+           //var customerBasket = _mapper.Map<CartDTO, Cart>(cart);
+           //var updatedBasket = await _basketRepository.UpdateBasketAsync(customerBasket);
+
+            _context.Cart.Add(cart2);
+            await _context.SaveChangesAsync();
+            return Ok(cart2);
+           // return CreatedAtAction("GetCart", new { id = cart.CartId }, cart);
+        }*/
+
+        public class CartDTO
+        {
+            public int? CustomerId { get; set; }
+            public bool? Status { get; set; }
+
         }
+
+        /*
+
+        [HttpPost]
+        public async Task<ActionResult<CustomerBasket>> UpdateBasket(CustomerBasketDTO basket)
+        {
+            var customerBasket = _mapper.Map<CustomerBasketDTO, CustomerBasket>(basket);
+            var updatedBasket = await _basketRepository.UpdateBasketAsync(customerBasket);
+            return Ok(updatedBasket);
+        }*/
+
+
 
         // DELETE: api/Carts/5
         [HttpDelete("{id}")]
