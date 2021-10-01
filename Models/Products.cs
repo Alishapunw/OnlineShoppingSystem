@@ -13,6 +13,7 @@ namespace OnlineShopping.Models
         {
             ProductCart = new HashSet<ProductCart>();
             ProductImages = new HashSet<ProductImages>();
+            Wishlist = new HashSet<Wishlist>();
         }
 
         public int ProductId { get; set; }
@@ -29,5 +30,6 @@ namespace OnlineShopping.Models
         public virtual Retailer Retailer { get; set; }
         public virtual ICollection<ProductCart> ProductCart { get; set; }
         public virtual ICollection<ProductImages> ProductImages { get; set; }
+        public virtual ICollection<Wishlist> Wishlist { get; set; }
     }
 }
