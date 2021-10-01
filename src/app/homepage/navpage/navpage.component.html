@@ -3,10 +3,10 @@
     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
       <i class="fa fa-shopping-bag" style="font-size: 35px;" aria-hidden="true"></i>
       <h3 class="my-0 mr-md-auto font-weight-normal px-3">
-        <a routerLink="../Home"  class="text-dark" > Stop-&-Shop</a>
-       </h3>
+        <a routerLink="../Home" class="text-dark"> Stop-&-Shop</a>
+      </h3>
 
-        
+
 
 
 
@@ -23,10 +23,46 @@
           <input type="search" class="form-control form-control-dark" name="search" [(ngModel)]="searchTerm"
             (keyup)="search($event)" placeholder="Search..." aria-label="Search">
         </form>
-        
+        <div class="text-end pt-2">
+          <div *ngIf="message" class="row">
+             &nbsp;
+              &nbsp;
+
+            <a routerLink="Shopping" style="text-decoration: none; padding-top: 8px;">
+             <!-- <span class="text-danger"> {{total}}</span>  --> 
+              <i class="fa fa-fw fa-shopping-cart fa-2x"></i>
+              &nbsp;
+              &nbsp;
+
+              <!-- <div style="font-size: 10px;" class="badge bg-danger">{{total}}</div> -->
+            </a>
+
+            <a routerLink="WishList" style="text-decoration: none; padding-top: 8px;">
+             <!-- <span class="text-danger"> {{total}}</span>  --> 
+              <i class="fa fa-fw fa-heart fa-2x"></i>
+            </a>&nbsp;&nbsp;&nbsp;
+
+
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false" style="padding-top: 5px;">
+              <img src="assets/boy.jpg" class="img-fluid" width="40" height="40" alt="">
+
+            </a>
+
+            <a class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" routerLink="Userdetails">My Profile</a>
+              <a class="dropdown-item" routerLink="OrderDetails">My Orders</a>
+              <a class="dropdown-item" routerLink="ChangePasswordCustomer"> Change Password</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" (click)='logout()' routerLink="Categories">Logout</a>
+            </a>
+
+
+          </div>
+        </div>
       </ng-container>
 
-     
+
 
       <ng-container *ngIf="userRole==='admin'">
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
@@ -43,6 +79,8 @@
           <li><a routerLink="RetailerProfile" class="nav-link px-2 text-black">Home</a></li>
           <li><a routerLink="AddProduct" class="nav-link px-2 text-black">Add Product</a></li>
           <li><a routerLink="RetailerDetails" class="nav-link px-2 text-black">Profile</a></li>
+              <a class="dropdown-item" (click)='logout()' routerLink="Categories">Logout</a>
+
         </ul>
       </ng-container>
 
@@ -55,44 +93,7 @@
           <a routerLink="Registration"><button type="button" class="btn btn-secondary mx-2">Sign-up</button></a>
         </div>
 
-        <div *ngIf="message" class="row">
-          <!--  <li><a routerLink="Home">Home</a>  </li> -->
-          &nbsp;&nbsp;
-          &nbsp; &nbsp;
-          
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fa fa-user fa-2x" aria-hidden="true"></i>
-          </a>
-          <a class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" routerLink="../Userdetails">View Profile</a>
-            <a class="dropdown-item"  routerLink="../UserProfile"> Order History</a>
-            <a class="dropdown-item"  routerLink="../ChangePasswordCustomer"> Change Password</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" routerLink="../Categories">View Products</a>
-          </a>
-          <a  (click)='logout()' >  
-            <button  class="btn btn-primary my-2">Logout</button>  
-            </a>
-            &nbsp;&nbsp;
-            &nbsp; &nbsp;
 
-          <a routerLink="Shopping" style="text-decoration: none;">
-            <span class="text-danger"> {{total}}</span>
-            <i class="fa fa-fw fa-shopping-cart fa-2x"></i>
-            &nbsp;
-            &nbsp;
-            
-            <!-- <div style="font-size: 10px;" class="badge bg-danger">{{total}}</div> -->
-          </a>
-
-          <a routerLink="WishList" style="text-decoration: none;">
-            <span class="text-danger"> {{total}}</span>
-            <i class="fa fa-fw fa-heart fa-2x"></i>
-          </a>&nbsp;&nbsp;&nbsp;
-         
-        
-        </div>
- 
 
       </div>
 

@@ -1,3 +1,4 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -12,18 +13,7 @@ import { Retailer1 } from '../retailer1';
   styleUrls: ['./add-product.component.css']
 })
 export class AddProductComponent implements OnInit {
-  /*AddProductForm:FormGroup = new FormGroup({
-    ProductName: new FormControl("", [Validators.required]),
-    BrandName: new FormControl("", [Validators.required]),
-    Description: new FormControl("", [Validators.required]),
-    PricePerUnit: new FormControl("", [Validators.required]),
-    Quantity: new FormControl("", [Validators.required]),
-    CategoryId:new FormControl("",[Validators.required])
-    //ProductImages: this.formBuilder.array( [  ] )
-    
-  })*/
 
-  // constructor(public service:RetailerService,public route:Router) { }
 
   ProductForm!: FormGroup;
   ProductImages!:FormArray;
@@ -31,8 +21,13 @@ export class AddProductComponent implements OnInit {
   retailer?:Retailer1;
   id?:number;
   categoriesList: Category[] = [];
+  fileToUpload1: any;
+  fileToUpload2: any;
+  fileToUpload3: any;
+  fileToUpload4: any;
 
-  constructor( private formBuilder:FormBuilder, public service:RetailerService,public cs: CategoriesService,public route:Router) { }
+
+  constructor( private formBuilder:FormBuilder, public service:RetailerService,public cs: CategoriesService,public route:Router, public http:HttpClient) { }
 
   ngOnInit(): void {
 
@@ -52,7 +47,11 @@ export class AddProductComponent implements OnInit {
       //ProductImages: this.formBuilder.array( [  ] )
 
     } )
+
+    //this.addNewProductImageField();
   }
+
+  
 
   createNewProductImageField(){
     return this.formBuilder.control("")
@@ -65,6 +64,22 @@ export class AddProductComponent implements OnInit {
   addNewProductImageField():void{
     this.ProductImages = this.ProductForm.get("ProductImages") as FormArray;
     this.ProductImages.push( this.createNewProductImageField() );
+  }
+
+   handleFileInput1(e: any) {
+    this.fileToUpload1 = e?.target?.files[0];
+  }
+
+   handleFileInput2(e: any) {
+    this.fileToUpload2 = e?.target?.files[0];
+  }
+
+   handleFileInput3(e: any) {
+    this.fileToUpload3 = e?.target?.files[0];
+  }
+
+   handleFileInput4(e: any) {
+    this.fileToUpload4 = e?.target?.files[0];
   }
 
   get ProductName()
@@ -110,11 +125,29 @@ export class AddProductComponent implements OnInit {
 
     this.ProductForm.controls["RetailerId"].setValue(this.id);
     this.ProductForm.controls["CategoryId"].setValue( parseInt(this.ProductForm.value["CategoryId"]  ) )
-    this.service.AddProduct(this.ProductForm.value).subscribe((data:any)=>
+    const formData: FormData = new FormData();
+    formData.append('productName', this.ProductForm.value["ProductName"]); 
+    formData.append('brandName', this.ProductForm.value["BrandName"]); 
+    formData.append('pricePerUnit', this.ProductForm.value["PricePerUnit"]); 
+    formData.append('description', this.ProductForm.value["Description"]); 
+    formData.append('quantity', this.ProductForm.value["Quantity"]); 
+    formData.append('categoryId', this.ProductForm.value["CategoryId"]); 
+    formData.append('retailerId', this.ProductForm.value["RetailerId"]); 
+    formData.append('myFile1', this.fileToUpload1); 
+    formData.append('myFile2', this.fileToUpload2); 
+    formData.append('myFile3', this.fileToUpload3); 
+    formData.append('myFile4', this.fileToUpload4); 
+
+    return this.http.post('http://localhost:65061/api/retailers/AddProducts', formData, {  headers : new HttpHeaders()  }).subscribe( (data) => {  alert("File uploaded"); console.log(data) }) ;
+
+
+
+
+    /*this.service.AddProduct(this.ProductForm.value).subscribe((data:any)=>
     {
       console.log(data);
       this.route.navigateByUrl("/RetailerHome");
-    })
+    }) */
 
   })
 

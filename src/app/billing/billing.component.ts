@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { OrdersService } from '../orders.service';
 import { ProductCart } from '../product-cart';
 import { CartService } from '../services/cart.service';
@@ -15,10 +16,12 @@ export class BillingComponent implements OnInit {
   IsLoading: boolean = false;
   private value:any;  
   total=0;
+
+  orderPlacingStatus:any;
  
   productList: ProductCart[] = [];
 
-  constructor(public o:OrdersService,private cs: CartService) { }
+  constructor(public o:OrdersService,private cs: CartService, private router:Router) { }
 
   ngOnInit(): void {
     this.IsLoading = true;
@@ -49,6 +52,14 @@ export class BillingComponent implements OnInit {
 
 
   async CreateOrder(p:number){  
-    this.o.PostOrderbyCartID(p).toPromise();
+    this.orderPlacingStatus = await this.o.PostOrderbyCartID(p).toPromise();
+    console.log(this.orderPlacingStatus);
+    if(this.orderPlacingStatus["OrderPlaced"] === true ){
+      this.router.navigateByUrl("/OrderSuccesful")
+    }
+    else{
+      alert("Failed")
+    }
+    
   }
 }
