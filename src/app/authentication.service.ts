@@ -7,6 +7,7 @@ import { Admin } from './admin';
 import { RetailerChangePassword } from './retailer-change-password';
 import { BehaviorSubject } from 'rxjs';
 import { UserDetails } from './user-details';
+import { CustomerChangePassword } from './customer-change-password';
 
 
 @Injectable({
@@ -65,6 +66,10 @@ export class AuthenticationService {
   recievedStatus():Observable<boolean>
   {
     return this.subject.asObservable();
+  }
+  ChangePasswordCustomer(customer:CustomerChangePassword)
+  {
+    return this.client.post(this.url+'/ChangePasswordCustomer/',JSON.stringify(customer),this.httpOptions);
   }
 
   getUserStatus():Observable<string>

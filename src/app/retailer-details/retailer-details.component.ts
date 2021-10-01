@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Retailer } from '../retailer';
+import { RetailerService } from '../retailer.service';
 
 @Component({
   selector: 'app-retailer-details',
@@ -6,10 +8,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./retailer-details.component.css']
 })
 export class RetailerDetailsComponent implements OnInit {
-
-  constructor() { }
+  email:any;
+  r!:Retailer;
+  constructor(public service:RetailerService) { }
 
   ngOnInit(): void {
+    this.email=localStorage.getItem("Email");
+    this.service.GetRetailerByEmail(this.email).subscribe((data:Retailer)=>
+    {
+      console.log(data);
+      this.r=data;
+    })
   }
 
 }

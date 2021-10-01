@@ -37,6 +37,9 @@ import { RetailerSideNavComponent } from './retailer-side-nav/retailer-side-nav.
 import { MailComponent } from './mail/mail.component';
 import { FilterPipe } from './filter.pipe';
 import { Retailer1Component } from './retailer1/retailer1.component';
+import { AdminapprovalComponent } from './adminapproval/adminapproval.component';
+import { UserdetailsComponent } from './userdetails/userdetails.component';
+import { ChangePasswordCustomerComponent } from './change-password-customer/change-password-customer.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { OrderSuccessfulComponent } from './order-successful/order-successful.component';
 import { CompareComponent } from './compare/compare.component';
@@ -75,6 +78,9 @@ import { CompareComponent } from './compare/compare.component';
     MailComponent,
     FilterPipe,
     Retailer1Component,
+    AdminapprovalComponent,
+    UserdetailsComponent,
+    ChangePasswordCustomerComponent,
     WishlistComponent,
     OrderSuccessfulComponent,
     CompareComponent

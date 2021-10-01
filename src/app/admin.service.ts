@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { Product } from './product';
 import { Retailer } from './retailer';
 
 @Injectable({
@@ -28,5 +29,13 @@ export class AdminService {
   DeleteRetailer(email:any)
   {
     return this.httpClient.delete(this.url+'/del/'+email);
+  }
+  GetAllProducts():Observable<Product[]>
+  {
+    return this.httpClient.get<Product[]>(this.url+'/adminproducts');
+  }
+  Approve(id:number)
+  {
+    return this.httpClient.post(this.url+'/status/'+id,JSON.stringify(id),this.httpOptions);
   }
 }

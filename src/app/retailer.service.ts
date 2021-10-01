@@ -49,4 +49,8 @@ export class RetailerService
   {
     return  this.httpClient.get<Retailer1>(this.url+'/retailerbyemail/'+email);
   }
+  AddProduct(product:Product)
+  {
+    return this.httpClient.post(this.url+"/AddProducts",JSON.stringify(product),this.httpOptions);
+  }
 }
