@@ -23,8 +23,8 @@ export class OrdersService {
     return this.client.post(this.url+'/'+ cartId,JSON.stringify(cartId),this.httpOptions)
   }
 
-  GetOrderby(){
-    
+  GetOrders():Observable<Orders[]> {
+    return this.client.get<Orders[]>(this.url);
   }
 
 }
