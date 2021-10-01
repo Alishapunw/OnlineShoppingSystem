@@ -54,27 +54,27 @@
 
 
 <div style="height: 20px;"></div>
-
+<!-- | filter:searchKey:'productName' -->
 
 <div>
     <div class="card border">
         <h2 class="text text-primary text-center pt-2">Top Products</h2>
         <div class="card-body">
             <div class="card-deck">
-                <div class="card border border-primary" *ngFor="let p of topProducts  | filter:searchKey:'productName'">
+                <div class="card border border-primary col-lg-3" *ngFor="let p of topProducts  ">
 
 
                     <div [id]="'carouselExampleControls'+p.productId" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img class="card-img-top" [src]="p.productImages[0].imagePath" alt="First slide">
+                                <img class="card-img-top" [src]="'http://localhost:65061/'+p.productImages[0].imagePath" alt="First slide">
                             </div>
-                            <!--  
+                            
                             <div class="carousel-item"
                                 *ngFor="let ii of p.productImages | slice:1:p.productImages.length ">
-                                 <img class="card-img-top"   [src]="ii.imagePath" alt="slide">  
+                                 <img class="card-img-top"   [src]="'http://localhost:65061/'+ii.imagePath" alt="slide">  
                             </div>
-                            -->
+                            
                         </div>
                         <a class="carousel-control-prev" [href]="'#carouselExampleControls'+p.productId" role="button"
                             data-slide="prev">
@@ -93,22 +93,27 @@
                     <div class="card-footer bg-transparent border-primary">
                         <div class="row">
                             <div class="col-6 my-auto">
-                                <h6 class="text-center " >{{p.pricePerUnit| currency:"INR"}}</h6>
+                                <h6 class="text-center ">{{p.pricePerUnit| currency:"INR"}}</h6>
 
                             </div>
                             <div class="row">
-                            <div class="col-3">
-                                <i (click)="addProductToWishlist(p.productId)" style="color: #0275d8;"  onmouseover="this.style.color = '#8dbee9'" onmouseout="this.style.color = '#0275d8'" class="fas fa-heart fa-lg"></i>
-                            </div>
+                                <div class="col-3">
+                                    <i (click)="addProductToWishlist(p.productId)" style="color: #0275d8;"
+                                        onmouseover="this.style.color = '#8dbee9'"
+                                        onmouseout="this.style.color = '#0275d8'" class="fas fa-heart fa-lg"></i>
+                                </div>
 
-                            <div class="col-3">
-                                <i (click)="addProductToCart(p)" style="color: #0275d8; " onmouseover="this.style.color = '#8dbee9'" onmouseout="this.style.color = '#0275d8'"
-                                    class="fas  fa-cart-plus fa-lg"></i>
+                                <div class="col-3">
+                                    <i (click)="addProductToCart(p)" style="color: #0275d8; "
+                                        onmouseover="this.style.color = '#8dbee9'"
+                                        onmouseout="this.style.color = '#0275d8'" class="fas  fa-cart-plus fa-lg"></i>
+                                </div>
+                                <div class="col-3">
+                                    <i [routerLink]="['/ProductDetail/', p.productId]" class="fas fa-eye"
+                                        style="color: #0275d8; " onmouseover="this.style.color = '#8dbee9'"
+                                        onmouseout="this.style.color = '#0275d8'"></i>
+                                </div>
                             </div>
-                            <div class="col-3">
-                                <i [routerLink]="['/ProductDetail/', p.productId]" class="fas fa-eye" style="color: #0275d8; " onmouseover="this.style.color = '#8dbee9'" onmouseout="this.style.color = '#0275d8'"></i>
-                            </div>
-                        </div>
                         </div>
                     </div>
 
@@ -117,16 +122,27 @@
             </div>
         </div>
         <div>
-        <h2></h2>
-        </div>
+            <h2></h2>
         </div>
     </div>
+</div>
 
 
 
 
 
-<!--  
+
+
+
+
+
+<!-- 
+
+    <ul>
+    <li *ngFor="let p of topProducts ">  {{p.productName}}   <p *ngFor="let ii of p.productImages" > {{ii.imagePath}}  </p>  </li>
+</ul>
+
+
     <div class=" border border-primary p-2 " style="width: 280px; height: 240px;" >
         <div class="row justify-content-center">
        <img src="assets/images/apple.jpeg" class="text-center" style="max-width: 400px;max-height: 200px;" alt="Iphone">
@@ -142,4 +158,6 @@
     </div>
     
     <div style="height: 20px;"></div>
-    -->
+
+     -->
+

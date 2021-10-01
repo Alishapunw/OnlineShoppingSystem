@@ -35,6 +35,7 @@ import { OrderSuccessfulComponent} from './order-successful/order-successful.com
 import {CompareComponent} from './compare/compare.component';
 import { TestImageComponent } from './test-image/test-image.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
+import { EditProductComponent } from './edit-product/edit-product.component';
 
 
 
@@ -52,6 +53,7 @@ const routes: Routes = [
   /*Retailer Routes Start*/
   {path:'RetailerProfile',component:RetailerProfileComponent},
   {path:'AddProduct',component:AddProductComponent},
+  {path:'EditProduct/:productId',component:EditProductComponent},
   {path:'RetailerDetails',component:RetailerDetailsComponent},
   {path:'ChangePassword',component:ChangePasswordComponent},
   /*Retailer Routes End*/

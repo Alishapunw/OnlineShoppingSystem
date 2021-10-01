@@ -41,12 +41,11 @@
                   
                     <div class="card-body">
                       <h5 class="card-title">{{item.productName}}</h5>
-                      <!-- <h6 class="card-subtitle mb-2 text-muted">Product ID: {{item.ProductId}}</h6> -->
+                     <h6 class="card-subtitle mb-2 text-muted">Product ID: {{item.productId}}</h6> 
                       <p class="card-text">Brand Name: {{item.brandName}}</p>
                       <p class="card-text">Price Per Unit {{item.pricePerUnit}}</p>
                       <p class="card-text">Description: {{item.description}}</p>
-                      <!-- <a href="#" class="card-link">Edit</a> -->
-                    
+                      <a [routerLink]="['../EditProduct/',item.productId]" ><button class="btn btn-primary">Edit</button></a> &nbsp;
                   </div>
                   </div>
                   <br>

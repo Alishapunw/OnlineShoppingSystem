@@ -44,6 +44,7 @@ import { OrderSuccessfulComponent } from './order-successful/order-successful.co
 import { CompareComponent } from './compare/compare.component';
 import { TestImageComponent } from './test-image/test-image.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
+import { EditProductComponent } from './edit-product/edit-product.component';
 
 
 
@@ -85,7 +86,8 @@ import { OrderDetailsComponent } from './order-details/order-details.component';
     OrderSuccessfulComponent,
     CompareComponent,
     TestImageComponent,
-    OrderDetailsComponent
+    OrderDetailsComponent,
+    EditProductComponent
   ],
   imports: [
     BrowserModule,
