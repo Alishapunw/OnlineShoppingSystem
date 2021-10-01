@@ -30,6 +30,10 @@ import { RetailerSideNavComponent } from './retailer-side-nav/retailer-side-nav.
 import { AdminapprovalComponent } from './adminapproval/adminapproval.component';
 import { UserdetailsComponent } from './userdetails/userdetails.component';
 import { ChangePasswordCustomerComponent } from './change-password-customer/change-password-customer.component';
+import { WishlistComponent } from './wishlist/wishlist.component';
+
+import { OrderSuccessfulComponent} from './order-successful/order-successful.component';
+import {CompareComponent} from './compare/compare.component';
 
 
 
@@ -49,7 +53,6 @@ const routes: Routes = [
   {path:'AddProduct',component:AddProductComponent},
   {path:'RetailerDetails',component:RetailerDetailsComponent},
   {path:'ChangePassword',component:ChangePasswordComponent},
-  {path:'RetailerDetails',component:RetailerDetailsComponent},
   /*Retailer Routes End*/
   {path:'Login',component:LoginComponent},
   {path:'Registration',component:RegistrationComponent},
@@ -64,6 +67,8 @@ const routes: Routes = [
   {path:'Userdetails',component:UserdetailsComponent},
 
 
+  {path:'OrderSuccesful',component:OrderSuccessfulComponent},
+  {path:'Compare',component:CompareComponent},
   /*User Routes End*/
   
   
@@ -88,7 +93,10 @@ const routes: Routes = [
 
 
   {path:'Billing',component:BillingComponent},
-  {path:"RetailerHome",component:RetailerSideNavComponent}
+  {path:"RetailerHome",component:RetailerSideNavComponent},
+
+  {path:'WishList',component:WishlistComponent},
+
 
 
 ];

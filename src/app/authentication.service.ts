@@ -16,6 +16,7 @@ import { CustomerChangePassword } from './customer-change-password';
 export class AuthenticationService {
 
   public subject = new Subject<boolean>();
+  public userRole = new Subject<string>();
   private url='http://localhost:65061/api/Authentication';
 
   
@@ -69,6 +70,11 @@ export class AuthenticationService {
   ChangePasswordCustomer(customer:CustomerChangePassword)
   {
     return this.client.post(this.url+'/ChangePasswordCustomer/',JSON.stringify(customer),this.httpOptions);
+  }
+
+  getUserStatus():Observable<string>
+  {
+    return this.userRole.asObservable();
   }
   
 

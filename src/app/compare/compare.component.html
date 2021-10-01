@@ -1,0 +1,160 @@
+<br>
+
+
+<div class="dropdown" >
+    <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" 
+    aria-expanded="false" >
+     Select Category to Compare
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  >
+
+      <a class="dropdown-item"  *ngFor="let c of categoriesList" (click)="changeCategory(c.categoryId)">
+          {{c.categoryName}}</a>    
+    </div>  
+</div>
+    <hr>
+<br>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col" >
+            <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Select Product 
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item"  *ngFor="let c of currentproductsList" (click)="changeProduct(c.productId)">{{c.productName}}</a>    
+            </div>
+
+            <div [id]="'carouselExampleControls'+p.productId" class="carousel slide"
+                                    data-ride="carousel">
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active">
+                                            <img class="card-img-top" [src]="p.productImages[0].imagePath"
+                                                alt="First slide">
+                                        </div>
+                                        <div class="carousel-item"
+                                            *ngFor="let ii of p.productImages | slice:1:p.productImages.length">
+                                            <img class="card-img-top" src="{{ii.imagePath}}" alt="slide">
+                                        </div>
+                                    </div>
+                                    <a class="carousel-control-prev" [href]="'#carouselExampleControls'+p.productId"
+                                        role="button" data-slide="prev">
+                                        <span class="carousel-control-prev-icon carousel-aria-button"
+                                            aria-hidden="true"></span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                    <a class="carousel-control-next" [href]="'#carouselExampleControls'+p.productId"
+                                        role="button" data-slide="next">
+                                        <span class="carousel-control-next-icon carousel-aria-button"
+                                            aria-hidden="true"></span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </div>
+
+                                <a [routerLink]="['/ProductDetail/', p.productId]">
+                                    <div class="card-body" >
+                                        <h6 class="card-title">{{p.productName}}</h6>
+                                        <p class="card-text">{{p.description.slice(0,50).concat("...")}}</p>
+                                    </div>
+                                </a>
+
+                                <div class="card-footer bg-transparent border-primary">
+                                        <div class="row">
+                                            <div class="col-lg-6 my-auto">
+                                                <h6 class="text-center">{{p.pricePerUnit| currency:"INR"}}</h6>
+
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="row justify-content-center">
+                                                <button class="btn btn-primary" (click)="addProductToCart(p)">Add to
+                                                Cart</button>
+                                                </div>
+                                               
+                                            </div>
+                                        </div>
+                                    </div>
+                           
+        </div>
+
+        <div class="col" >
+            <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Select Product 
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item"  *ngFor="let c of currentproductsList" (click)="changeProduct(c.productId)">{{c.productName}}</a>   
+            </div>  
+            <div [id]="'carouselExampleControls'+p.productId" class="carousel slide"
+            data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="card-img-top" [src]="p.productImages[0].imagePath"
+                        alt="First slide">
+                </div>
+                <div class="carousel-item"
+                    *ngFor="let ii of p.productImages | slice:1:p.productImages.length">
+                    <img class="card-img-top" src="{{ii.imagePath}}" alt="slide">
+                </div>
+            </div>
+            <a class="carousel-control-prev" [href]="'#carouselExampleControls'+p.productId"
+                role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon carousel-aria-button"
+                    aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" [href]="'#carouselExampleControls'+p.productId"
+                role="button" data-slide="next">
+                <span class="carousel-control-next-icon carousel-aria-button"
+                    aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+        <a [routerLink]="['/ProductDetail/', p.productId]">
+            <div class="card-body" >
+                <h6 class="card-title">{{p.productName}}</h6>
+                <p class="card-text">{{p.description.slice(0,50).concat("...")}}</p>
+            </div>
+        </a>
+
+        <div class="card-footer bg-transparent border-primary">
+                <div class="row">
+                    <div class="col-lg-6 my-auto">
+                        <h6 class="text-center">{{p.pricePerUnit| currency:"INR"}}</h6>
+
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="row justify-content-center">
+                        <button class="btn btn-primary" (click)="addProductToCart(p)">Add to
+                        Cart</button>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+
+        <div class="col" >
+            <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Select Product 
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item"  *ngFor="let c of currentproductsList">{{c.productName}}</a>   
+            </div>  
+        </div>
+        <div class="col" >
+            <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Select Product 
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item"  *ngFor="let c of currentproductsList">{{c.productName}}</a>   
+            </div>  
+        </div>
+
+    </div>
+</div>
+
+ 

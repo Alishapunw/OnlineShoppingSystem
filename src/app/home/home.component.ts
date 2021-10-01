@@ -6,6 +6,7 @@ import { ProductserviceService } from '../productservice.service';
 import { CartService } from '../services/cart.service';
 import { FilterPipe } from '../filter.pipe';
 import { ProductCartService } from '../product-cart.service';
+import { WishlistService } from '../wishlist.service';
 
 
 @Component({
@@ -21,7 +22,7 @@ export class HomeComponent implements OnInit {
   searchKey:string="";
   
 
-  constructor(public ps:ProductserviceService, public carts:ProductCartService, public router:Router) { }
+  constructor(public ps:ProductserviceService, public carts:ProductCartService, public router:Router, public wls:WishlistService) { }
 
   ngOnInit(): void {
 
@@ -33,11 +34,7 @@ export class HomeComponent implements OnInit {
     console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
     })
 
-    /* this.ps.getIProducts().subscribe( (Ipl:IProduct[]) => {
-    console.log(Ipl);
-
-      this.ItopProducts = Ipl;
-    } )  */
+  
     this.ps.search.subscribe((val:any)=>{
       this.searchKey=val;
     })
@@ -58,11 +55,21 @@ addProductToCart(product:Product){
     }
     //this.carts.AddtoCart(product)
   }
-  
-  addtocart(p:any)
-  {
-  //  return this.carts.AddtoCart(p);
+
+
+  addProductToWishlist(productId:number){
+    var LoggedInUserEmail = localStorage.getItem("Email");
+    console.log(LoggedInUserEmail);  
+    if(LoggedInUserEmail == null){
+        this.router.navigateByUrl("/Login")
+    }
+    else{
+        this.wls.AddtoWishlist(productId, LoggedInUserEmail)
+    }
+    //this.carts.AddtoCart(product)
   }
   
+  
+
 
 }

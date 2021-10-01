@@ -1,48 +1,69 @@
-<div class="row">
-    <div class="col-sm-2">
-<app-retailer-side-nav></app-retailer-side-nav>
-</div>
-<div class="col-sm-10">
-    <body>
-        <form [formGroup]="AddProductForm" (ngSubmit)="SubmitProduct()">
-        <br>
-        <h4 style="text-align: center;">Add Product</h4>
-        <br>
-        <div class="container" style="margin-left: 45px;">
+<div style="height: 20px;"></div>
+<br>
+<h4 style="text-align: center;">Add Product</h4>
+<br>
+<div class="container">
+    <form  [formGroup]="ProductForm" (ngSubmit)="SubmitForm()" >
+
         <div class="form-group">
-            <label for="productname"><b>Product Name </b></label>
-            <input type="text" style="width: 900px;" class="form-control" placeholder="Product name" id="productnametxt"  formControlName="ProductName" />
+            <label for="ProductName"><b>Product Name </b></label>
+            <input type="text" class="form-control" placeholder="Product name" id="ProductName" formControlName="ProductName" />
         </div>
         <div class="form-group">
-            <label for="brandname"><b>Brand Name</b></label>
-            <input type="text"  style="width: 900px;"  class="form-control" placeholder="Brand Name" id="productimgtxt" formControlName="BrandName" />
+            <label for="BrandName"><b>Brand Name</b></label>
+            <input type="text" class="form-control" placeholder="Brand Name" id="BrandName" formControlName="BrandName" />
         </div>
         <div class="form-group">
-            <label for="productdesc"><b>Product Description </b></label>
-            <textarea rows="10" style="width: 900px;"  class="form-control" placeholder="Product Description" id="productdesctxt" formControlName="Description" ></textarea>
+            <label for="PricePerUnit"><b>Price Per Unit</b></label>
+            <input type="number" class="form-control" placeholder="Price Per Unit" id="PricePerUnit" formControlName="PricePerUnit" />
         </div>
         <div class="form-group">
-            <label for="productprice"><b>Product Price </b></label>
-            <input type="number" style="width: 900px;"  class="form-control" placeholder="Product PricePerUnit" id="productpricetxt" formControlName="PricePerUnit" />
-        </div>
-        <div class="form-group">
-            <label for="productprice"><b>Product Quantity </b></label>
-            <input type="number" style="width: 900px;"  class="form-control" placeholder="Product Quantity" id="productpricetxt" formControlName="Quantity" />
+            <label for="Description"><b>Product Description </b></label>
+            <textarea rows="10" class="form-control" placeholder="Product Description" id="Description" formControlName="Description" ></textarea>
         </div>
         
         <div class="form-group">
-            <label for="productprice"><b>Category Id</b></label>
-            <input type="number" style="width: 900px;"  class="form-control" placeholder="Product CategoryId" id="productpricetxt" formControlName="CategoryId" />
+            <label for="Quantity"><b>Quantity </b></label>
+            <input type="number" class="form-control" placeholder="Quantity" id="Quantity" formControlName="Quantity" />
         </div>
+        <div class="form-group">
+            <label for="productprice"><b>CategoryId</b></label>
+            <select name="CategoryId" id="CategoryId" formControlName="CategoryId">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>        
+        </div>
+
+        <div formArrayName="ProductImages">
+            <h4>Product Images</h4>
+
+            <div *ngFor="let pi of ProductImages.controls; let i=index" >
+                 <div class="form-group">
+                    <label for="ProductImage"><b>Select Image </b></label>
+                    <input type="file" class="form-control" placeholder="Product Image" id="ProductImage" [formControlName]="i" />
+                </div>
+            </div>
+
+
+            <div class="row d-flex ">
+                <div class="col-lg-12">
+                <button class="btn btn-outline-primary btn-sm float-right" (click)="addNewProductImageField()"  >Add More Images</button>
+            </div>
+            </div>
+
+        </div>
+
+
        
         <br>
         <div>
-            <button type="submit" class="form-control" class="btn btn-primary btn-md" id="addproduct" routerLink="../RetailerProfile">Add Product</button>
+            <button type="submit" class="form-control" class="btn btn-primary btn-md" id="addproduct"
+                routerLink="../RetailerProfile">Add Product</button>
         </div>
-        </div>
+
     </form>
-    </body>
-</div>
-</div>
 
-
+</div>
+<div style="height: 20px;"></div>

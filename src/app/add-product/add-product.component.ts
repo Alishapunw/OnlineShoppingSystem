@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { RetailerService } from '../retailer.service';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-product',
@@ -18,10 +16,41 @@ export class AddProductComponent implements OnInit {
     CategoryId:new FormControl("",[Validators.required])
     
   })
-  constructor(public service:RetailerService,public route:Router) { }
+  // constructor(public service:RetailerService,public route:Router) { }
 
+  ProductForm!: FormGroup;
+  ProductImages!:FormArray;
+
+  constructor( private formBuilder:FormBuilder) { }
 
   ngOnInit(): void {
+    this.ProductForm = this.formBuilder.group( {
+      ProductName: new FormControl("", [Validators.required]),
+      BrandName: new FormControl("", [Validators.required]),
+      PricePerUnit: new FormControl("", [Validators.required]),
+      Description: new FormControl("", [Validators.required]),
+      Quantity: new FormControl("", [Validators.required]),
+      CategoryId: new FormControl("", [Validators.required]),
+      ProductImages: this.formBuilder.array( [  ] )
+
+    } )
+  }
+
+  SubmitForm(){
+
+  }
+
+  createNewProductImageField(){
+    return this.formBuilder.control("")
+  }
+
+  getAllProductImages(){
+    return this.ProductForm.get("ProductImages") as FormArray;
+  }
+
+  addNewProductImageField():void{
+    this.ProductImages = this.ProductForm.get("ProductImages") as FormArray;
+    this.ProductImages.push( this.createNewProductImageField() );
   }
 
   get ProductName()

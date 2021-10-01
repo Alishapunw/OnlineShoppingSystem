@@ -62,11 +62,12 @@ export class LoginComponent implements OnInit {
       else if(data["LoginMessage"] == "Success"){
         this.IsLoading=false;
         localStorage.setItem("Email", this.LoginForm.value["Email"]);
+        localStorage.setItem("userRole", "admin");
         this.service.subject.next(true);
+        this.service.userRole.next("admin");
         this.redirectUserBasedOnRole();
-        
-
       }
+
      } 
      );
     }
@@ -86,7 +87,9 @@ export class LoginComponent implements OnInit {
         else if(data["LoginMessage"] == "Success"){
           this.IsLoading=false;
           localStorage.setItem("Email", this.LoginForm.value["Email"])
+          localStorage.setItem("userRole", "customer");
           this.service.subject.next(true);
+          this.service.userRole.next("customer");
           this.redirectUserBasedOnRole();
         }
        } 
@@ -109,7 +112,9 @@ export class LoginComponent implements OnInit {
           else if(data["LoginMessage"] == "Success"){
             this.IsLoading=false;
             localStorage.setItem("Email", this.LoginForm.value["Email"])
+            localStorage.setItem("userRole", "retailer");
             this.service.subject.next(true);
+            this.service.userRole.next("retailer")
             this.redirectUserBasedOnRole();
           }
          } 

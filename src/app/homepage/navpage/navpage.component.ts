@@ -13,6 +13,7 @@ export class NavpageComponent implements OnInit {
   public total: number = 0;
   message!: boolean ;
   CurrentUserEmail:any = "";
+  userRole:any = "customer";
   public searchTerm:string='';
   constructor(private cart:CartService ,public service:ProductserviceService,public auth:AuthenticationService, public router:Router) { }
 
@@ -22,9 +23,15 @@ export class NavpageComponent implements OnInit {
       this.message = data;
     })
 
+    this.auth.getUserStatus().subscribe((data: any) => {
+      this.userRole = data;
+    })
+
     this.CurrentUserEmail = localStorage.getItem("Email");
     if(this.CurrentUserEmail != null){
           this.auth.subject.next(true);
+          this.userRole = localStorage.getItem("userRole");
+          this.auth.userRole.next(this.userRole);
     }
   }
 
@@ -33,6 +40,8 @@ export class NavpageComponent implements OnInit {
     localStorage.removeItem('Email');
     localStorage.clear();
     this.auth.subject.next(false);
+    this.auth.userRole.next("customer")
+
     //this.message=false;
     this.router.navigate(['Login']); 
   } 

@@ -1,6 +1,6 @@
 <div class="container mt-3">
     <div class="row">
-        <section class="col-3">
+        <section class="col-lg-3">
             <h5 class="text-primary ml-3 mt-4 mb-3">Sort</h5>
             <select class="custom-select mb-4" #sortSelect (change)="sortProducts(sortSelect.value)">
                 <option *ngFor="let sort of sortOptions" [value]="sort.value">{{sort.name}} </option>
@@ -16,78 +16,74 @@
             </ul>
         </section>
 
-        <section class="col-9">
+        <section class="col-lg-9">
+
+            <div class="container">
+                <div class="row hidden-md-up">
+                    <div class="col-md-4 pb-2" *ngFor="let p of currentproductsList">
+
+                        <div class="card border border-primary">
 
 
-            <ul>
-                <li *ngFor="let pp of currentproductsList" > {{pp.productName}}  -- {{pp.pricePerUnit}} </li>
-            </ul>
-
-            <div>
-                <div class="card border">
-                    <div class="card-body">
-                        <div class="card-columns">
-                            <div class="card border border-primary" style="min-height: 440px;" *ngFor="let p of currentproductsList">
-
-
-                                <div [id]="'carouselExampleControls'+p.productId" class="carousel slide"
-                                    data-ride="carousel">
-                                    <div class="carousel-inner">
-                                        <div class="carousel-item active">
-                                            <img class="card-img-top" [src]="p.productImages[0].imagePath"
-                                                alt="First slide">
-                                        </div>
-                                        <div class="carousel-item"
-                                            *ngFor="let ii of p.productImages | slice:1:p.productImages.length">
-                                            <img class="card-img-top" src="{{ii.imagePath}}" alt="slide">
-                                        </div>
+                            <div [id]="'carouselExampleControls'+p.productId" class="carousel slide"
+                                data-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img class="card-img-top" [src]="p.productImages[0].imagePath"
+                                            alt="First slide">
                                     </div>
-                                    <a class="carousel-control-prev" [href]="'#carouselExampleControls'+p.productId"
-                                        role="button" data-slide="prev">
-                                        <span class="carousel-control-prev-icon carousel-aria-button"
-                                            aria-hidden="true"></span>
-                                        <span class="sr-only">Previous</span>
-                                    </a>
-                                    <a class="carousel-control-next" [href]="'#carouselExampleControls'+p.productId"
-                                        role="button" data-slide="next">
-                                        <span class="carousel-control-next-icon carousel-aria-button"
-                                            aria-hidden="true"></span>
-                                        <span class="sr-only">Next</span>
-                                    </a>
+                                    <div class="carousel-item"
+                                        *ngFor="let ii of p.productImages | slice:1:p.productImages.length">
+                                        <img class="card-img-top" src="{{ii.imagePath}}" alt="slide">
+                                    </div>
                                 </div>
-
-                                <a [routerLink]="['/ProductDetail/', p.productId]">
-                                    <div class="card-body" >
-                                        <h6 class="card-title">{{p.productName}}</h6>
-                                        <p class="card-text">{{p.description.slice(0,50).concat("...")}}</p>
-                                    </div>
+                                <a class="carousel-control-prev" [href]="'#carouselExampleControls'+p.productId"
+                                    role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon carousel-aria-button"
+                                        aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
                                 </a>
-
-                                <div class="card-footer bg-transparent border-primary">
-                                        <div class="row">
-                                            <div class="col-lg-6 my-auto">
-                                                <h6 class="text-center">{{p.pricePerUnit| currency:"INR"}}</h6>
-
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div class="row justify-content-center">
- <button class="btn btn-primary" (click)="addProductToCart(p)">Add to
-                                                    Cart</button>
-                                                </div>
-                                               
-                                            </div>
-                                        </div>
-                                    </div>
+                                <a class="carousel-control-next" [href]="'#carouselExampleControls'+p.productId"
+                                    role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon carousel-aria-button"
+                                        aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
                             </div>
+
+                            <a [routerLink]="['/ProductDetail/', p.productId]" style="min-height: 162px;">
+                                <div class="card-body">
+                                    <h6 class="card-title">{{p.productName}}</h6>
+                                    <p class="card-text">{{p.description.slice(0,50).concat("...")}}</p>
+                                </div>
+                            </a>
+
+                            <div class="card-footer bg-transparent border-primary">
+                                <div class="row">
+                                    <div class="col-6 my-auto">
+                                        <h6 class="text-center ">{{p.pricePerUnit| currency:"INR"}}</h6>
+
+                                    </div>
+                                    <div class="col-3">
+                                        <i (click)="addProductToWishlist(p.productId)" style="color: #0275d8;"
+                                            onmouseover="this.style.color = '#8dbee9'"
+                                            onmouseout="this.style.color = '#0275d8'" class="fas fa-heart fa-lg"></i>
+                                    </div>
+
+                                    <div class="col-3">
+                                        <i (click)="addProductToCart(p)" style="color: #0275d8; "
+                                            onmouseover="this.style.color = '#8dbee9'"
+                                            onmouseout="this.style.color = '#0275d8'"
+                                            class="fas  fa-cart-plus fa-lg"></i>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
+
+
                 </div>
-
-                <div>
-                    <h2></h2>
-                </div>
-
-
             </div>
 
         </section>
