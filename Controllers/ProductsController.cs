@@ -48,7 +48,7 @@ namespace OnlineShopping.Controllers
 
             return Ok(a);
         }
-
+        
 
         [HttpGet("GetOneProduct")]
         public async  Task<ActionResult<IEnumerable<Products>>> GetOneProduct()
@@ -69,6 +69,7 @@ namespace OnlineShopping.Controllers
 
             return Ok(a[0]);
         }
+       
 
 
         // GET: api/Products/5
@@ -118,7 +119,7 @@ namespace OnlineShopping.Controllers
 
         // PUT: api/Products/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        // more details, see  https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
         public async Task<IActionResult> PutProducts(int id, Products products)
         {
@@ -156,9 +157,12 @@ namespace OnlineShopping.Controllers
         {
             _context.Products.Add(products);
             await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetProducts", new { id = products.ProductId }, products);
+            return Ok(_context.Products);
         }
+
+
+        
+
 
         // DELETE: api/Products/5
         [HttpDelete("{id}")]

@@ -18,7 +18,7 @@ namespace OnlineShopping.Models
         public string Email { get; set; }
         public string Password { get; set; }
         public string RetailerName { get; set; }
-        public long? RetailerMobile { get; set; }
+        public long RetailerMobile { get; set; }
         public string Otp { get; set; }
 
         public virtual ICollection<Products> Products { get; set; }

@@ -67,7 +67,7 @@ namespace OnlineShopping.Controllers
             }
             else
             {
-                if (ud.Password == ComputeSha256Hash(userdetails.Password))
+                if (ud.Password == userdetails.Password)
                 {
                     status.Add("LoginMessage", "Success");
                 }
@@ -156,20 +156,15 @@ namespace OnlineShopping.Controllers
             }
         }
 
-
-
-
-
-        
         [HttpPost("ForgotPassword")]
-        public async Task<IActionResult> ForgotPassword(Customer c)
+        public IActionResult ForgotPassword(Customer c)
         {
             Customer customer = context.Customer.Where(x => x.Email == c.Email).FirstOrDefault();
             Dictionary<string, bool> status = new Dictionary<string, bool>();
 
             if (customer != null)
             {
-                if(customer.Otp == c.Otp)
+                if (customer.Otp == c.Otp)
                 {
                     customer.Password = ComputeSha256Hash(c.Password);
                     customer.Otp = "";
@@ -207,6 +202,31 @@ namespace OnlineShopping.Controllers
                 }
             }
             return BadRequest();    
+        }
+
+
+        [HttpPost("ChangePasswordCustomer")]
+        public async Task<IActionResult> ChangePasswordCustomer(CustomerChangePassword customer)
+        {
+            Customer r = context.Customer.Where(x => x.Email == customer.Email).FirstOrDefault();
+            Dictionary<string, bool> status = new Dictionary<string, bool>();
+
+            if (r != null)
+            {
+                if (r.Password == ComputeSha256Hash(customer.OldPassword))
+                {
+                    r.Password = ComputeSha256Hash(customer.NewPassword);
+                    context.SaveChanges();
+                    status.Add("Change Password successful", true);
+                    return Ok(status);
+                }
+                else
+                {
+                    status.Add("Invalid Password", false);
+                    return Ok(status);
+                }
+            }
+            return BadRequest();
         }
 
 
@@ -265,9 +285,6 @@ namespace OnlineShopping.Controllers
             };
             client.EnableSsl = true;
             client.Send(mail);
-
         }
-
-
     }
 }

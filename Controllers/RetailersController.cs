@@ -43,7 +43,8 @@ namespace OnlineShopping.Controllers
             }
 
             return retailer;
-        }
+        } 
+        
 
         // PUT: api/Retailers/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
@@ -55,7 +56,6 @@ namespace OnlineShopping.Controllers
             {
                 return BadRequest();
             }
-
             _context.Entry(retailer).State = EntityState.Modified;
 
             try
@@ -76,7 +76,6 @@ namespace OnlineShopping.Controllers
 
             return NoContent();
         }
-
         // POST: api/Retailers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
@@ -87,6 +86,13 @@ namespace OnlineShopping.Controllers
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetRetailer", new { id = retailer.RetailerId }, retailer);
+        }
+        [HttpPost("AddProducts")]
+        public async Task<ActionResult<Products>> PostProducts(Products products)
+        {
+            _context.Products.Add(products);
+            await _context.SaveChangesAsync();
+            return Ok(_context.Products);
         }
 
         // DELETE: api/Retailers/5
@@ -104,6 +110,7 @@ namespace OnlineShopping.Controllers
 
             return retailer;
         }
+        [HttpPost("abcd")]
 
         private bool RetailerExists(int id)
         {

@@ -41,6 +41,13 @@ namespace OnlineShopping.Controllers
             return customer;
         }
 
+        [HttpGet("getcustomerbyemail/{email}")]
+        public IActionResult GetCustomerDetails(string email)
+        {
+            var a = _context.Customer.Where(x => x.Email == email).FirstOrDefault();
+            return Ok(a);
+        }
+
         // PUT: api/Customers/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
@@ -100,10 +107,11 @@ namespace OnlineShopping.Controllers
 
             return customer;
         }
-
+        
         private bool CustomerExists(int id)
         {
             return _context.Customer.Any(e => e.CustomerId == id);
         }
+        
     }
 }
