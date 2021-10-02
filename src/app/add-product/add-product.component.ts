@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { RetailerService } from '../retailer.service';
 
 @Component({
   selector: 'app-add-product',
@@ -21,7 +23,7 @@ export class AddProductComponent implements OnInit {
   ProductForm!: FormGroup;
   ProductImages!:FormArray;
 
-  constructor( private formBuilder:FormBuilder) { }
+  constructor( public service:RetailerService,private formBuilder:FormBuilder,private route:Router) { }
 
   ngOnInit(): void {
     this.ProductForm = this.formBuilder.group( {
