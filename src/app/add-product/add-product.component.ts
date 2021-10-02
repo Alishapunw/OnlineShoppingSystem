@@ -3,15 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Category } from '../category';
-<<<<<<< HEAD
-import { RetailerService } from '../retailer.service';
-import { Retailer1 } from '../retailer1';
-=======
 import { CategoriesService } from '../categories.service';
-import { Category } from '../category';
 import { RetailerService } from '../retailer.service';
 import { Retailer1 } from '../retailer1';
->>>>>>> 2a15cfe9ad8c5baaaa2f00f1f03e64d4c285575a
 
 @Component({
   selector: 'app-add-product',
