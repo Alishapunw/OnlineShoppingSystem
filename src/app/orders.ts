@@ -4,5 +4,6 @@ export class Orders {
     orderDate?:Date;
     shippingDate?: Date;
     shippingAddress?: string;
-    orderStatus?: string; 		   
+    orderStatus?: string; 	
+    totalAmount?:number;	   
 }

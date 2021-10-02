@@ -15,6 +15,7 @@ export class CustomerService {
     })
     
   }
+  
   GetCustomer(email:string)
     {
       return this.httpClient.get(this.url+'/getcustomerbyemail/'+email);

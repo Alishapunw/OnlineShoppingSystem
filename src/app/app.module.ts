@@ -25,7 +25,6 @@ import { CartComponent } from './shopping/cart/cart.component';
 import { CartitemComponent } from './shopping/cart/cartitem/cartitem.component';
 import { ProductlistComponent } from './shopping/productlist/productlist.component';
 import { ProductitemComponent } from './shopping/productlist/productitem/productitem.component';
-import { UserProfileComponent } from './user-profile/user-profile.component';
 import { CategorynavComponent } from './homepage/categorynav/categorynav.component';
 import { BillingComponent } from './billing/billing.component';
 import { ProductdetailviewComponent } from './productdetailview/productdetailview.component';
@@ -43,6 +42,9 @@ import { ChangePasswordCustomerComponent } from './change-password-customer/chan
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { OrderSuccessfulComponent } from './order-successful/order-successful.component';
 import { CompareComponent } from './compare/compare.component';
+import { TestImageComponent } from './test-image/test-image.component';
+import { OrderDetailsComponent } from './order-details/order-details.component';
+import { EditProductComponent } from './edit-product/edit-product.component';
 
 
 
@@ -68,7 +70,6 @@ import { CompareComponent } from './compare/compare.component';
     CartitemComponent,
     ProductlistComponent,
     ProductitemComponent,
-    UserProfileComponent,
     CategorynavComponent,
     BillingComponent,
     ProductdetailviewComponent,
@@ -83,7 +84,10 @@ import { CompareComponent } from './compare/compare.component';
     ChangePasswordCustomerComponent,
     WishlistComponent,
     OrderSuccessfulComponent,
-    CompareComponent
+    CompareComponent,
+    TestImageComponent,
+    OrderDetailsComponent,
+    EditProductComponent
   ],
   imports: [
     BrowserModule,

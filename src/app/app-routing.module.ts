@@ -22,7 +22,6 @@ import { ProductlistComponent } from './shopping/productlist/productlist.compone
 import { ProductitemComponent } from './shopping/productlist/productitem/productitem.component';
 import { RetailerDetailsComponent } from './retailer-details/retailer-details.component';
 import { BillingComponent } from './billing/billing.component';
-import { UserProfileComponent } from './user-profile/user-profile.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { ProductsComponent } from './products/products.component';
 import { MailComponent } from './mail/mail.component';
@@ -34,6 +33,9 @@ import { WishlistComponent } from './wishlist/wishlist.component';
 
 import { OrderSuccessfulComponent} from './order-successful/order-successful.component';
 import {CompareComponent} from './compare/compare.component';
+import { TestImageComponent } from './test-image/test-image.component';
+import { OrderDetailsComponent } from './order-details/order-details.component';
+import { EditProductComponent } from './edit-product/edit-product.component';
 
 
 
@@ -51,6 +53,7 @@ const routes: Routes = [
   /*Retailer Routes Start*/
   {path:'RetailerProfile',component:RetailerProfileComponent},
   {path:'AddProduct',component:AddProductComponent},
+  {path:'EditProduct/:productId',component:EditProductComponent},
   {path:'RetailerDetails',component:RetailerDetailsComponent},
   {path:'ChangePassword',component:ChangePasswordComponent},
   /*Retailer Routes End*/
@@ -62,7 +65,6 @@ const routes: Routes = [
   {path:'ProductDetail/:ProductId',component: ProductdetailviewComponent},
   {path:'Registration', component: RegistrationComponent},
   {path:'ForgotPassword',component: ForgotpasswordComponent},
-  {path:'UserProfile',component:UserProfileComponent},
   {path:'Categories',component: CategoriesComponent},
   {path:'Userdetails',component:UserdetailsComponent},
 
@@ -96,6 +98,10 @@ const routes: Routes = [
   {path:"RetailerHome",component:RetailerSideNavComponent},
 
   {path:'WishList',component:WishlistComponent},
+  {path:'TestImage',component:TestImageComponent},
+
+  {path:'OrderDetails',component:OrderDetailsComponent},
+
 
 
 
