@@ -49,6 +49,8 @@ namespace OnlineShopping
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseStaticFiles();
+
             app.UseRouting();
 
             app.UseCors("CorsPolicy");
