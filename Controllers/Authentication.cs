@@ -204,29 +204,29 @@ namespace OnlineShopping.Controllers
             return BadRequest();    
         }
 
-        [HttpPost("ChangePassword")]
-        public async Task<IActionResult> ChangePassword(RetailerChangePassword retailer)
-        {
-            Retailer r = context.Retailer.Where(x => x.Email == retailer.Email).FirstOrDefault();
-            Dictionary<string, bool> status = new Dictionary<string, bool>();
+        //[HttpPost("ChangePassword")]
+        //public async Task<IActionResult> ChangePassword(RetailerChangePassword retailer)
+        //{
+        //    Retailer r = context.Retailer.Where(x => x.Email == retailer.Email).FirstOrDefault();
+        //    Dictionary<string, bool> status = new Dictionary<string, bool>();
 
-            if (r != null)
-            {
-                if (r.Password == ComputeSha256Hash(retailer.OldPassword))
-                {
-                    r.Password = ComputeSha256Hash(retailer.NewPassword);
-                    context.SaveChanges();
-                    status.Add("Change Password successful", true);
-                    return Ok(status);
-                }
-                else
-                {
-                    status.Add("Invalid Password", false);
-                    return Ok(status);
-                }
-            }
-            return BadRequest();
-        }
+        //    if (r != null)
+        //    {
+        //        if (r.Password == ComputeSha256Hash(retailer.OldPassword))
+        //        {
+        //            r.Password = ComputeSha256Hash(retailer.NewPassword);
+        //            context.SaveChanges();
+        //            status.Add("Change Password successful", true);
+        //            return Ok(status);
+        //        }
+        //        else
+        //        {
+        //            status.Add("Invalid Password", false);
+        //            return Ok(status);
+        //        }
+        //    }
+        //    return BadRequest();
+        //}
 
 
         [HttpPost("ChangePasswordCustomer")]

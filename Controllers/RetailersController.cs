@@ -143,37 +143,37 @@ namespace OnlineShopping.Controllers
             return _context.Retailer.Any(e => e.RetailerId == id);
         }
 
-        [HttpGet("retailerbyemail/{email}")]
-        public IActionResult GetRetailerbyEmail(string email)
-        {
-            var retailer = _context.Retailer.Where(x => x.Email == email).FirstOrDefault();
+        //[HttpGet("retailerbyemail/{email}")]
+        //public IActionResult GetRetailerbyEmail(string email)
+        //{
+        //    var retailer = _context.Retailer.Where(x => x.Email == email).FirstOrDefault();
 
-            if (retailer == null)
-            {
-                return NotFound();
-            }
-            return Ok(retailer);
-        }
+        //    if (retailer == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    return Ok(retailer);
+        //}
 
 
-        [HttpGet("xyz/{id}")]
-        public IActionResult GetRetailerProducts(int id)
-        {
-            var a = _context.Products.Select(p => new Products
-            {
-                ProductId = p.ProductId,
-                ProductName = p.ProductName,
-                BrandName = p.BrandName,
-                CategoryId = p.CategoryId,
-                Description = p.Description,
-                PricePerUnit = p.PricePerUnit,
-                Quantity = p.Quantity,
-                RetailerId = p.RetailerId,
-                Status = p.Status,
-                ProductImages = p.ProductImages.Select(pi => new ProductImages { ProductId = pi.ProductId, ImagePath = pi.ImagePath }).ToList()
-            }).ToList();
-            var b = a.Where(x => x.RetailerId == id).ToList();
-            return Ok(b);
-        }
+        //[HttpGet("xyz/{id}")]
+        //public IActionResult GetRetailerProducts(int id)
+        //{
+        //    var a = _context.Products.Select(p => new Products
+        //    {
+        //        ProductId = p.ProductId,
+        //        ProductName = p.ProductName,
+        //        BrandName = p.BrandName,
+        //        CategoryId = p.CategoryId,
+        //        Description = p.Description,
+        //        PricePerUnit = p.PricePerUnit,
+        //        Quantity = p.Quantity,
+        //        RetailerId = p.RetailerId,
+        //        Status = p.Status,
+        //        ProductImages = p.ProductImages.Select(pi => new ProductImages { ProductId = pi.ProductId, ImagePath = pi.ImagePath }).ToList()
+        //    }).ToList();
+        //    var b = a.Where(x => x.RetailerId == id).ToList();
+        //    return Ok(b);
+        //}
     }
 }
