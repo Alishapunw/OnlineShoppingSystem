@@ -21,10 +21,25 @@ namespace OnlineShopping.Controllers
         }
 
         // GET: api/Orders
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Orders>>> GetOrders()
+        [HttpGet("GetOrders/{email}")]
+        public async Task<ActionResult<IEnumerable<Orders>>> GetOrders(string email)
         {
-            return await _context.Orders.ToListAsync();
+            Customer customer = _context.Customer.Where(x => x.Email == email).FirstOrDefault();
+
+           
+            if (customer != null)
+            {
+                var query = from c in _context.Cart
+                            join o in _context.Orders
+                            on c.CartId equals o.CartId
+                            where c.CustomerId == customer.CustomerId
+                            select new { o.OrderId, o.OrderDate, o.OrderStatus, o.ShippingAddress, o.ShippingDate, o.TotalAmount };
+
+                return Ok(query);
+
+
+            }
+            return BadRequest();
         }
 
         // GET: api/Orders/5
@@ -80,6 +95,8 @@ namespace OnlineShopping.Controllers
         public async Task<ActionResult<Orders>> PostOrders(int id)
         {
            var totalamount= _context.ProductCart.Where(x => x.CartId == id).Sum(x => x.Amount);
+            Dictionary<string, bool> status = new Dictionary<string, bool>();
+
             if (id != 0)
             {
                 Orders order = new Orders();
@@ -87,7 +104,7 @@ namespace OnlineShopping.Controllers
                 order.OrderDate = DateTime.Now;
                 order.TotalAmount = totalamount;
                 order.ShippingAddress = "2051 Goldcliff Circle,Washington,Province abbr DC,Province full Washington DC: 20011";
-                order.OrderStatus = "dispatched";
+                order.OrderStatus = "Dispatched";
                 order.ShippingDate = DateTime.Today;
                 _context.Orders.Add(order);
 
@@ -98,11 +115,14 @@ namespace OnlineShopping.Controllers
 
                 await _context.SaveChangesAsync();
 
-                return Ok();
+                status.Add("OrderPlaced", true);
+                return Ok(status);
+
             }
             else
             {
-                return BadRequest();
+                status.Add("OrderPlaced", false);
+                return Ok(status);
             }
         }
 

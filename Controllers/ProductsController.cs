@@ -44,10 +44,9 @@ namespace OnlineShopping.Controllers
                 RetailerId = p.RetailerId,
                 Status = p.Status,
                 ProductImages = p.ProductImages.Select(pi => new ProductImages { ProductId = pi.ProductId,  ImagePath = pi.ImagePath }).ToList()
-            } ).ToList();
-            var b = a.Where(i => i.Status == true).ToList();
+            } ).Where( pp => pp.Status == true ).ToList();
 
-            return Ok(b);
+            return Ok(a);
         }
         
 
@@ -101,9 +100,11 @@ namespace OnlineShopping.Controllers
             return products;
         }
 
+
+
         [HttpPut("EditProduct/{id}")]
 
-        public IActionResult UpdateProduct(int id,Products product)
+        public IActionResult UpdateProduct(int id, Products product)
         {
             var p = _context.Products.Where(x => x.ProductId == id).FirstOrDefault();
             p.ProductName = product.ProductName;

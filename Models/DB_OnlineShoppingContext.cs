@@ -204,11 +204,7 @@ namespace OnlineShopping.Models
 
             modelBuilder.Entity<Timages>(entity =>
             {
-                entity.HasNoKey();
-
                 entity.Property(e => e.FilePath).HasMaxLength(500);
-
-                entity.Property(e => e.Id).ValueGeneratedOnAdd();
             });
 
             modelBuilder.Entity<Wishlist>(entity =>
