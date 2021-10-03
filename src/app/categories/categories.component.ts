@@ -7,6 +7,7 @@ import { ProductCartService } from '../product-cart.service';
 import { ProductserviceService } from '../productservice.service';
 import { WishlistService } from '../wishlist.service';
 
+
 @Component({
   selector: 'app-categories',
   templateUrl: './categories.component.html',
@@ -17,6 +18,7 @@ export class CategoriesComponent implements OnInit {
   categoriesList: Category[] = [];
   allproductsList: Product[] = [];
   currentproductsList: Product[] = [];
+  p: number = 1;
 
   selectedSort:string = "priceAsc";
 

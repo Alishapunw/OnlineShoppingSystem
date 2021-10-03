@@ -20,7 +20,7 @@
 
             <div class="container">
                 <div class="row hidden-md-up">
-                    <div class="col-md-4 pb-2" *ngFor="let p of currentproductsList">
+                    <div class="col-md-4 pb-2" *ngFor="let p of currentproductsList | paginate: { itemsPerPage: 6, currentPage: p }">
 
                         <div class="card border border-primary">
 
@@ -29,13 +29,13 @@
                                 data-ride="carousel">
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
-                                        <img class="card-img-top" [src]="p.productImages[0].imagePath"
+                                        <img class="card-img-top" [src]="'http://localhost:65061/'+p.productImages[0].imagePath"
                                             alt="First slide">
                                     </div>
                                     <div class="carousel-item"
                                         *ngFor="let ii of p.productImages | slice:1:p.productImages.length">
-                                        <img class="card-img-top" src="{{ii.imagePath}}" alt="slide">
-                                    </div>
+                                        <img class="card-img-top" [src]="'http://localhost:65061/'+ii.imagePath" alt="slide">
+                                    </div>  
                                 </div>
                                 <a class="carousel-control-prev" [href]="'#carouselExampleControls'+p.productId"
                                     role="button" data-slide="prev">
@@ -87,11 +87,15 @@
 
                         </div>
                     </div>
+                    
 
 
                 </div>
             </div>
-
+            <div class="row justify-content-center mt-4">
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            </div>
+            
         </section>
 
 
