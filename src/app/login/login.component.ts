@@ -91,6 +91,10 @@ export class LoginComponent implements OnInit {
           this.service.subject.next(true);
           this.service.userRole.next("customer");
           this.redirectUserBasedOnRole();
+
+          console.log(localStorage.getItem("Email"));
+          console.log(localStorage.getItem("userRole"));
+          
         }
        } 
        );

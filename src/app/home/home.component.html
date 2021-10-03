@@ -61,7 +61,7 @@
         <h2 class="text text-primary text-center pt-2">Top Products</h2>
         <div class="card-body">
             <div class="card-deck">
-                <div class="card border border-primary col-lg-3" *ngFor="let p of topProducts  ">
+                <div class="card border border-primary col-lg-3" *ngFor="let p of topProducts | slice:0:4  ">
 
 
                     <div [id]="'carouselExampleControls'+p.productId" class="carousel slide" data-ride="carousel">

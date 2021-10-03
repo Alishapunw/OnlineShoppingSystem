@@ -10,6 +10,7 @@ import { CartService } from 'src/app/services/cart.service';
   styleUrls: ['./navpage.component.css']
 })
 export class NavpageComponent implements OnInit {
+  
   public total: number = 0;
   message!: boolean ;
   CurrentUserEmail:any = "";
