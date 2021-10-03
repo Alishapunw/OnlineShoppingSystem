@@ -29,15 +29,16 @@
 
             <div *ngIf="product1!=null">
                 <div [id]="'carouselExampleControls'+product1.productId" class="carousel slide" data-ride="carousel">
+                    <h6 class="card-title text-primary "> {{product1.productName}} - {{product1.brandName}}</h6>
                     <div class="carousel-inner">
                         <hr>
-                        <h6 class="card-title text-primary "> {{product1.productName}} - {{product1.brandName}}</h6>
+                        
                         <div class="carousel-item active">
-                            <img class="card-img-top" [src]="product1.productImages[0].imagePath" alt="First slide">
+                            <img class="card-img-top" [src]="'http://localhost:65061/'+product1.productImages[0].imagePath" alt="First slide">
                         </div>
                         <div class="carousel-item"
                             *ngFor="let ii of product1.productImages | slice:1:product1.productImages.length">
-                            <img class="card-img-top" src="{{ii.imagePath}}" alt="slide">
+                            <img class="card-img-top" [src]="'http://localhost:65061/'+ii.imagePath" alt="slide">
                         </div>
                     </div>
                     <a class="carousel-control-prev" [href]="'#carouselExampleControls'+product1.productId"
@@ -103,15 +104,16 @@
             <div *ngIf="product2!=null">
 
                 <div [id]="'carouselExampleControls'+product2.productId" class="carousel slide" data-ride="carousel">
+                    <h6 class="card-title text-primary "> {{product2.productName}} - {{product2.brandName}}</h6>
                     <div class="carousel-inner">
                         <hr>
-                        <h6 class="card-title text-primary "> {{product2.productName}} - {{product2.brandName}}</h6>
+                        
                         <div class="carousel-item active">
-                            <img class="card-img-top" [src]="product2.productImages[0].imagePath" alt="First slide">
+                            <img class="card-img-top" [src]="'http://localhost:65061/'+product2.productImages[0].imagePath" alt="First slide">
                         </div>
                         <div class="carousel-item"
                             *ngFor="let ii of product2.productImages | slice:1:product2.productImages.length">
-                            <img class="card-img-top" src="{{ii.imagePath}}" alt="slide">
+                            <img class="card-img-top" [src]="'http://localhost:65061/'+ii.imagePath" alt="slide">
                         </div>
                     </div>
                     <a class="carousel-control-prev" [href]="'#carouselExampleControls'+product2.productId"
@@ -176,15 +178,16 @@
             <div *ngIf="product3!=null">
 
                 <div [id]="'carouselExampleControls'+product3.productId" class="carousel slide" data-ride="carousel">
+                    <h6 class="card-title text-primary "> {{product3.productName}} - {{product3.brandName}}</h6>
                     <div class="carousel-inner">
                         <hr>
-                        <h6 class="card-title text-primary "> {{product3.productName}} - {{product3.brandName}}</h6>
+                        
                         <div class="carousel-item active">
-                            <img class="card-img-top" [src]="product3.productImages[0].imagePath" alt="First slide">
+                            <img class="card-img-top" [src]="'http://localhost:65061/'+product3.productImages[0].imagePath" alt="First slide">
                         </div>
                         <div class="carousel-item"
                             *ngFor="let ii of product3.productImages | slice:1:product3.productImages.length">
-                            <img class="card-img-top" src="{{ii.imagePath}}" alt="slide">
+                            <img class="card-img-top" [src]="'http://localhost:65061/'+ii.imagePath" alt="slide">
                         </div>
                     </div>
                     <a class="carousel-control-prev" [href]="'#carouselExampleControls'+product3.productId"
@@ -247,15 +250,16 @@
             <div *ngIf="product4!=null">
 
                 <div [id]="'carouselExampleControls'+product4.productId" class="carousel slide" data-ride="carousel">
+                    <h6 class="card-title text-primary "> {{product4.productName}} - {{product4.brandName}}</h6>
                     <div class="carousel-inner">
                         <hr>
-                        <h6 class="card-title text-primary "> {{product4.productName}} - {{product4.brandName}}</h6>
+                        
                         <div class="carousel-item active">
-                            <img class="card-img-top" [src]="product4.productImages[0].imagePath" alt="First slide">
+                            <img class="card-img-top" [src]="'http://localhost:65061/'+product4.productImages[0].imagePath" alt="First slide">
                         </div>
                         <div class="carousel-item"
                             *ngFor="let ii of product4.productImages | slice:1:product4.productImages.length">
-                            <img class="card-img-top" src="{{ii.imagePath}}" alt="slide">
+                            <img class="card-img-top" [src]="'http://localhost:65061/'+ii.imagePath" alt="slide">
                         </div>
                     </div>
                     <a class="carousel-control-prev" [href]="'#carouselExampleControls'+product4.productId"

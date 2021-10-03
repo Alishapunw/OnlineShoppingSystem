@@ -18,11 +18,12 @@
                     <div class="carousel-inner">
                         
                         <div class="carousel-item active">
-                            <img class="card-img-top" [src]="currentProduct.productImages[0].imagePath" alt="First slide">
+                            <img class="card-img-top" [src]="'http://localhost:65061/'+currentProduct.productImages[0].imagePath" alt="First slide">
+                            
                         </div>
                        <div class="carousel-item"
                             *ngFor="let ii of currentProduct.productImages | slice:1:currentProduct.productImages.length">
-                            <img class="card-img-top" id="myimage" src="{{ii.imagePath}}" alt="slide">  
+                            <img class="card-img-top" id="myimage" [src]="'http://localhost:65061/'+ii.imagePath" alt="slide">  
                         </div> 
                     </div>
                     <a class="carousel-control-prev" [href]="'#carouselExampleControls0'" role="button"
@@ -43,7 +44,7 @@
 
 
             <div class="row border">
-                <img src="{{imageUrl.imagePath}}" alt="image" style="height: 80px;width: 80px;"
+                <img [src]="'http://localhost:65061/'+imageUrl.imagePath" alt="image" style="height: 80px;width: 80px;"
                     *ngFor="let imageUrl of currentProduct.productImages">
             </div>
          
