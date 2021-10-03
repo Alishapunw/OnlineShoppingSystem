@@ -69,8 +69,27 @@
 
           <li><a routerLink="Home" class="nav-link px-2 text-black">Home</a></li>
           <li><a routerLink="AdminRetailerAdd" class="nav-link px-2 text-black">Add Retailer</a></li>
-          <li><a routerLink="AdminRetailerDetails" class="nav-link px-2 text-black">Retailers</a></li>
+          <!-- <li><a routerLink="AdminRetailerDetails" class="nav-link px-2 text-black">Retailers</a></li> -->
+          <li><a  routerLink="Adminapproval" class="nav-link px-2 text-black">Approve Products</a></li>
+          <!-- <li><a class="dropdown-item" (click)='logout()' routerLink="Categories">
+            <button class="btn btn-primary">Logout</button></a>
+          </li> -->
         </ul>
+        <h6 class="nav-link px-2 text-black" style="padding-top: 16px;">Welcome Admin</h6>
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false" style="padding-top: 5px;">
+              <img src="assets/boy.jpg" class="img-fluid" width="40" height="40" alt="">
+
+            </a>
+
+            <a class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a routerLink="AdminRetailerDetails" class="dropdown-item" >Retailers</a>
+              <!-- <a routerLink="AdminRetailerAdd" class="dropdown-item">Add Retailer</a> -->
+              <!-- <a  routerLink="Adminapproval" class="dropdown-item">Approve Products</a> -->
+              <!-- <a class="dropdown-item" routerLink="ChangePasswordCustomer"> Change Password</a> -->
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" (click)='logout()' routerLink="Categories">Logout</a>
+            </a>
 
       </ng-container>
 
@@ -78,10 +97,25 @@
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
           <li><a routerLink="RetailerProfile" class="nav-link px-2 text-black">Home</a></li>
           <li><a routerLink="AddProduct" class="nav-link px-2 text-black">Add Product</a></li>
-          <li><a routerLink="RetailerDetails" class="nav-link px-2 text-black">Profile</a></li>
-              <a class="dropdown-item" (click)='logout()' routerLink="Categories">Logout</a>
+          <!-- <li><a routerLink="RetailerDetails" class="nav-link px-2 text-black">Profile</a></li> -->
+              <!-- <a class="dropdown-item" (click)='logout()' routerLink="Categories">Logout</a> -->
 
         </ul>
+        <h6 class="nav-link px-2 text-black" style="padding-top: 16px;">Welcome Retailer</h6>
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false" style="padding-top: 5px;">
+              <img src="assets/boy.jpg" class="img-fluid" width="40" height="40" alt="">
+
+            </a>
+            <a class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <!-- <a routerLink="RetailerProfile" class="dropdown-item" >Retailer Home</a> -->
+              <a routerLink="RetailerDetails" class="dropdown-item">Profile</a>
+              <!-- <a  routerLink="AdminRetailerAdd" class="dropdown-item">Add Retailer</a> -->
+              <a class="dropdown-item" routerLink="ChangePassword"> Change Password</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" (click)='logout()' routerLink="Categories">Logout</a>
+            </a>
+
       </ng-container>
 
 

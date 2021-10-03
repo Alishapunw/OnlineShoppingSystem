@@ -1,15 +1,10 @@
 
-<div class="row">
-  <div class="col-sm-2">
-<app-retailer-side-nav></app-retailer-side-nav>
-</div>
 <div class="col-sm-10">
     <body>
         <br><br>
         <div class="container">
             <div class="row">
               <div class="col" style="padding-left:100px">
-                
                 <div *ngFor="let item of RetailerProducts">
                   <div class="card" style="width: 50rem;">
                     <!-- <div class="card-deck"> -->
@@ -18,10 +13,10 @@
                           <div [id]="'carouselExampleControls'+item.productId" class="carousel slide"   data-ride="carousel">
                               <div class="carousel-inner">
                                   <div class="carousel-item active">
-                                      <img class="card-img-top" style="height: 300px;width: 300px;"  [src]="item.productImages[0].imagePath" alt="First slide">
+                                      <img class="card-img-top" style="height: 300px;width: 300px;"  [src]="'http://localhost:65061/'+item.productImages[0].imagePath" alt="First slide">
                                   </div>
                                   <div class="carousel-item" *ngFor="let ii of item.productImages | slice:1:item.productImages.length">
-                                      <img class="card-img-top" style="height: 300px;width: 300px;"   src="{{ii.imagePath}}" alt="slide">
+                                      <img class="card-img-top" style="height: 300px;width: 300px;"   [src]="'http://localhost:65061/'+ii.imagePath" alt="slide">
                                   </div>
                               </div>
                               <a class="carousel-control-prev" [href]="'#carouselExampleControls'+item.productId" role="button"
@@ -56,7 +51,5 @@
           <!-- </div> -->
         </div>
     </body>
-</div>
-</div>
 
 
