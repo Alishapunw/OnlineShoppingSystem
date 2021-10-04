@@ -13,9 +13,9 @@
       <ng-container *ngIf="userRole==='customer' ">
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
 
-          <li><a routerLink="Home" class="nav-link px-2 text-black">Home</a></li>
-          <li><a routerLink="Categories" class="nav-link px-2 text-black">Categories</a></li>
-          <li><a routerLink="Compare" class="nav-link px-2 text-black">Compare</a></li>
+          <li><a routerLink="Home" class="nav-link px-2 text-black " style="font-weight: 500; letter-spacing: 1px;">Home</a></li>
+          <li><a routerLink="Categories" class="nav-link px-2 text-black" style="font-weight: 500; letter-spacing: 1px;">Categories</a></li>
+          <li><a routerLink="Compare" class="nav-link px-2 text-black"  style="font-weight: 500; letter-spacing: 1px;">Compare</a></li>
           
         </ul>
 
@@ -67,7 +67,7 @@
       <ng-container *ngIf="userRole==='admin'">
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
 
-          <li><a routerLink="Home" class="nav-link px-2 text-black">Home</a></li>
+          <li><a routerLink="AdminRetailerDetails" class="nav-link px-2 text-black">Home</a></li>
           <li><a routerLink="AdminRetailerAdd" class="nav-link px-2 text-black">Add Retailer</a></li>
           <!-- <li><a routerLink="AdminRetailerDetails" class="nav-link px-2 text-black">Retailers</a></li> -->
           <li><a  routerLink="Adminapproval" class="nav-link px-2 text-black">Approve Products</a></li>
@@ -120,7 +120,7 @@
 
 
 
-      <div class="text-end pt-2">
+      <div class="text-end ">
 
         <div *ngIf="!message">
           <a routerLink="Login"><button type="button" class="btn btn-primary">Login</button></a>

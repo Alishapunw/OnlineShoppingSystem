@@ -7,8 +7,8 @@
         <div class="col-lg-4 border border-primary p-4 mt-2">
             <div class=" row justify-content-center">
                 <div class="col-8 "></div>
-                <div class="col-4 ">
-                    <button class="btn btn-primary ">WishList</button>
+                <div class="col-4 "> 
+                    <button class="btn btn-primary "  (click)="addProductToWishlist(currentProduct.productId)" >WishList</button>
                 </div>
             </div>
             <div style="height: 26px;"></div>
@@ -63,7 +63,7 @@
             <div style="height: 20px;"></div>
 
             <div class="row px-2">
-                <button class="btn btn-primary btn-lg btn-block " >Add to Cart</button>
+                <button class="btn btn-primary btn-lg btn-block " (click)="addProductToCart(currentProduct)" >Add to Cart</button>
             </div>
         </div>
     </div>

@@ -11,7 +11,7 @@ import { AuthenticationService } from '../authentication.service';
 export class ForgotpasswordComponent implements OnInit {
 
   user!:User;
-  IsOTPValid:boolean = false;
+  IsOTPValid:boolean = true;
   IsLoading:boolean = false;
   PasswordMatch:boolean=true;
 
@@ -46,15 +46,16 @@ export class ForgotpasswordComponent implements OnInit {
   Submitdata(){
     this.IsLoading=true;
     this.IsOTPValid = true;
-    console.log(this.ForgotPasswordForm.value);
+    this.PasswordMatch = true;
+
     
     this.ForgotPasswordForm.value["Email"]=localStorage.getItem('ForgotEmail');
-    console.log(this.ForgotPasswordForm.value);
 
     if(this.ForgotPasswordForm.value["Password"] != this.ForgotPasswordForm.value["ConfirmPassword"] ){
       this.PasswordMatch = false;
       this.IsLoading=false;
     }
+    else{
     this.service.ForgotPassword(this.ForgotPasswordForm.value).subscribe( (data:any) =>{ 
       console.log(data);
       if(data["IsOTPValid"] == true){
@@ -68,6 +69,9 @@ export class ForgotpasswordComponent implements OnInit {
       }
      } 
      );
+    }
+
+
   }
 }
 

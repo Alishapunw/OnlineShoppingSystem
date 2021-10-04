@@ -1,16 +1,15 @@
 
 <div style="height: 20px;"></div>
-<div class="container">
+<div class="container border" style="background-image: url('assets/images/b8.png') ;">
 
-    <div style="border: 0px; " class="card">
+    <div style="border: 0px;  background-color: transparent;" class="card">
     <div class="card-body">
         <div class="row">
             <div class="col-lg-2"></div>
             <div class="col-lg-8">
-                <div style="height: 20px;"></div>
                  <div class="row">
                 <div class="col-lg-3"></div>
-                <div class="col-lg-6 py-4 border border-primary rounded">
+                <div class="col-lg-6 py-4 border rounded"  style="background-color: #ffffff;" >
                     <h4 class="text text-primary text-center" >Register</h4>
               <div style="height: 20px;"></div>
                 <form [formGroup]="RegistrationForm" (ngSubmit)="SubmitForm()">
@@ -48,6 +47,15 @@
                     <label for="Password" class="required" style="font-weight: 600;">Password</label>
                     <input type="password" class="form-control" id="Password" placeholder="Enter Password" formControlName="Password" autocomplete="off">
                   </div>
+                  <div  class="text text-primary" >
+                      <ul>
+                          <li style="font-size: 14px;" >Password should start with capital letter </li>
+                          <li style="font-size: 14px;" >Password minimun length is 8 characters</li>
+                          <li style="font-size: 14px;" >Password should contain atleast one special character</li>
+                      </ul>
+                      
+                  </div>
+                  
                   <div *ngIf="!Password2?.valid &&  (Password2?.dirty || Password2?.touched) " class="text-danger">
                       <div *ngIf="Password2!.errors!.required">
                           Password is required
