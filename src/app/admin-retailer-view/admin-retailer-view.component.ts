@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { AdminService } from '../admin.service';
 import { Retailer } from '../retailer';
 
@@ -9,21 +10,29 @@ import { Retailer } from '../retailer';
   styleUrls: ['./admin-retailer-view.component.css']
 })
 export class AdminRetailerViewComponent implements OnInit {
-  public retailers:Retailer[]=[];
-  constructor(private service:AdminService,public route:Router) { }
+  public retailers: Retailer[] = [];
+  constructor(private service: AdminService, public route: Router, private spinner: NgxSpinnerService) { }
 
-  ngOnInit(): void {
-    this.service.GetRetailers().subscribe((data:Retailer[])=>{
-    console.log(data)
-    this.retailers=data
+  async ngOnInit() {
+    this.spinner.show();
+
+   /* this.service.GetRetailers().subscribe((data: Retailer[]) => {
+      console.log(data)
+      this.retailers = data
     }
-    )
+    )*/
+
+    const getretailerpromise = await this.service.GetRetailers().toPromise();
+    this.retailers = getretailerpromise;
+    this.spinner.hide();
   }
-  DeleteOneData(email:any)
-  {
-    this.service.DeleteRetailer(email).subscribe();
+
+
+  async DeleteOneData(email: any) {
+    this.spinner.show();
+    await this.service.DeleteRetailer(email).toPromise();
     this.ngOnInit();
-    this.route.navigateByUrl('/AdminRetailerDetails');
+    this.spinner.hide();
   }
 
 }

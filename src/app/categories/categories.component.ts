@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { CategoriesService } from '../categories.service';
 import { Category } from '../category';
 import { Product } from '../product';
@@ -30,22 +31,28 @@ export class CategoriesComponent implements OnInit {
   ];
 
 
-  constructor(public cs: CategoriesService, public ps: ProductserviceService , public carts:ProductCartService, public router:Router,  public wls:WishlistService) { }
+  constructor(public cs: CategoriesService, public ps: ProductserviceService , public carts:ProductCartService, public router:Router,  public wls:WishlistService,  private spinner: NgxSpinnerService) { }
 
-  ngOnInit(): void {
-    this.cs.getCategories().subscribe((data) => {
-      this.categoriesList = [{ categoryId: 0, categoryName: 'All' }, ...data];;
-      console.log(data);
-    });
+  async ngOnInit() {
 
-    this.ps.getProducts().subscribe((pl: Product[]) => {
-      console.log(pl);
-      this.allproductsList = pl;
-      this.currentproductsList = pl;
-      this.currentproductsList.sort((a, b) => (a.pricePerUnit < b.pricePerUnit ? -1 : 1));
-    })
+    this.spinner.show();
+
+  
+    const categoriespromise = await this.cs.getCategories().toPromise();
+    this.categoriesList = [{ categoryId: 0, categoryName: 'All' }, ...categoriespromise]
+
+    const productpromise = await this.ps.getProducts().toPromise();
+    this.allproductsList = productpromise;
+    this.currentproductsList=productpromise;
+    this.currentproductsList.sort((a, b) => (a.pricePerUnit < b.pricePerUnit ? -1 : 1));
+
+
+    this.spinner.hide();
+
 
   }
+
+
 
   changeCategory(cId: number) {
     console.log(cId);
@@ -60,7 +67,11 @@ export class CategoriesComponent implements OnInit {
         this.currentproductsList.push( element );
         }
       });
+
+
     }
+
+
   }
 
 
@@ -73,7 +84,6 @@ export class CategoriesComponent implements OnInit {
     else{
         this.carts.AddtoCart(product, LoggedInUserEmail)
     }
-    //this.carts.AddtoCart(product)
   }
 
 
@@ -96,7 +106,21 @@ export class CategoriesComponent implements OnInit {
     else{
         this.wls.AddtoWishlist(productId, LoggedInUserEmail)
     }
-    //this.carts.AddtoCart(product)
   }
 
 }
+
+
+
+ /* this.cs.getCategories().subscribe((data) => {
+      this.categoriesList = [{ categoryId: 0, categoryName: 'All' }, ...data];;
+      console.log(data);
+    });*/
+
+    
+    /*this.ps.getProducts().subscribe((pl: Product[]) => {
+      console.log(pl);
+      this.allproductsList = pl;
+      this.currentproductsList = pl;
+      this.currentproductsList.sort((a, b) => (a.pricePerUnit < b.pricePerUnit ? -1 : 1));
+    })*/

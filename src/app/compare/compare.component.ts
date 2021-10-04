@@ -46,6 +46,7 @@ export class CompareComponent implements OnInit {
   changeCategory(cId: string) {
     
     this.selectedCategotyId = parseInt(cId) ;
+    
     if(this.selectedCategotyId == 0){
       this.currentproductsList = this.allproductsList;
     }

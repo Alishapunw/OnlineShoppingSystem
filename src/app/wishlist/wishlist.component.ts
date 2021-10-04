@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { Product } from '../product';
 import { ProductCartService } from '../product-cart.service';
 import { Wishlist } from '../wishlist';
@@ -19,26 +20,26 @@ export class WishlistComponent implements OnInit {
 
 
 
-  constructor(private ws: WishlistService, public router:Router, public carts:ProductCartService) { }
+  constructor(private ws: WishlistService, public router:Router, public carts:ProductCartService, private spinner: NgxSpinnerService) { }
 
-  ngOnInit(): void {
-    this.IsLoading = true;
+  async ngOnInit() {
+     this.spinner.show();
+
 
     this.LoggedInUserEmail = localStorage.getItem("Email");
-    this.ws.getWishListedProductsByEmail(this.LoggedInUserEmail).subscribe((data: Wishlist[]) => {
-      this.wishList = data;
-      console.log("data");
-      
-      console.log(this.wishList );
-      console.log("data");
-    })
 
-    this.IsLoading = false;
+
+    const wishlistpromise = await this.ws.getWishListedProductsByEmail(this.LoggedInUserEmail).toPromise();
+    this.wishList = wishlistpromise;
+
+
+    this.spinner.hide();
+
 
   }
 
   async DeleteProductFromWishlist(productId:number){
-    this.IsLoading = true;
+     this.spinner.show();
     var LoggedInUserEmail = localStorage.getItem("Email");
     console.log(LoggedInUserEmail);  
     if(LoggedInUserEmail == null){
@@ -49,12 +50,12 @@ export class WishlistComponent implements OnInit {
         this.ngOnInit();
     }
 
-    this.IsLoading = false;
+    this.spinner.hide();
     
   }
 
   async addProductToCart(product:Product){
-    this.IsLoading = true;
+     this.spinner.show();
 
     var LoggedInUserEmail = localStorage.getItem("Email");
     console.log(LoggedInUserEmail);  
@@ -65,10 +66,20 @@ export class WishlistComponent implements OnInit {
         await this.carts.AddtoCartAsyncMethod(product, LoggedInUserEmail).toPromise(  )
         this.ngOnInit();
     }
-    //this.carts.AddtoCart(product)
-    this.IsLoading = true;
-    this.IsLoading = false;
-
+    this.spinner.hide();
   }
 
 }
+
+
+
+
+
+
+    /*this.ws.getWishListedProductsByEmail(this.LoggedInUserEmail).subscribe((data: Wishlist[]) => {
+      this.wishList = data;
+      console.log("data");
+      
+      console.log(this.wishList );
+      console.log("data");
+    })*/

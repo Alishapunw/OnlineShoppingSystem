@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { AdminService } from '../admin.service';
 import { Product } from '../product';
 
@@ -8,18 +9,42 @@ import { Product } from '../product';
   styleUrls: ['./adminapproval.component.css']
 })
 export class AdminapprovalComponent implements OnInit {
-  products:Product[]=[];
-  status:boolean=false;
-  text:string="Not Approved";
-  constructor(public service:AdminService) { }
+  products: Product[] = [];
+  status: boolean = false;
+  text: string = "Not Approved";
+  constructor(public service: AdminService, private spinner: NgxSpinnerService) { }
 
-  ngOnInit(): void {
-    this.service.GetAllProducts().subscribe((data:Product[])=>
-    {
-      this.products=data;
-    })
+  async ngOnInit() {
+    this.spinner.show();
+
+    /*this.service.GetAllProducts().subscribe((data: Product[]) => {
+      this.products = data;
+    })*/
+    const promise = await this.service.GetAllProducts().toPromise();
+    this.products = promise;
+
+
+    this.spinner.hide();
+
   }
-  // State()
+
+  async ApproveProduct(id: number) {
+    this.spinner.show();
+
+    /*this.service.Approve(id).subscribe((data: any) => {
+      console.log(data);
+    });*/
+
+    await this.service.Approve(id).toPromise();
+    this.ngOnInit()
+
+    this.spinner.hide();
+
+  }
+
+}
+
+// State()
   // {
   //   if(this.status==true)
   //   {
@@ -30,13 +55,3 @@ export class AdminapprovalComponent implements OnInit {
   //     this.text="Not Approved"
   //   }
   // }
-  ApproveProduct(id:number)
-  {
-    console.log(id);
-    this.service.Approve(id).subscribe((data:any)=>
-    {
-      console.log(data);
-    });
-  }
-
-}

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { Orders } from '../orders';
 import { OrdersService } from '../orders.service';
 
@@ -11,20 +12,26 @@ export class OrderDetailsComponent implements OnInit {
 
   OrdersList: Orders[] = [];
   LoggedInUserEmail: any = ""
-  IsLoading: boolean = false;
+  //IsLoading: boolean = false;
 
-  constructor(public os:OrdersService) { }
+  constructor(public os:OrdersService,  private spinner: NgxSpinnerService) { }
 
-  ngOnInit(): void {
-    this.IsLoading = true;
+  async ngOnInit() {
+    this.spinner.show();
+
+    
     this.LoggedInUserEmail = localStorage.getItem("Email");
 
-    this.os.GetOrders(this.LoggedInUserEmail).subscribe((data) => {  
+    /*this.os.GetOrders(this.LoggedInUserEmail).subscribe((data) => {  
       this.OrdersList = data;
       console.log(data);
-    });
+    });*/
+    const orderpromise = await this.os.GetOrders(this.LoggedInUserEmail).toPromise();
+    this.OrdersList = orderpromise;
 
-    this.IsLoading = false;
+
+    this.spinner.hide();
+
 
   }
 

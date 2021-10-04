@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { OrdersService } from '../orders.service';
 import { ProductCart } from '../product-cart';
 import { ProductCartService } from '../product-cart.service';
@@ -17,47 +18,54 @@ export class ShoppingComponent implements OnInit {
 
   productList: ProductCart[] = [];
 
-  constructor(private cs: CartService,public o:OrdersService) { }
+  constructor(private cs: CartService,public o:OrdersService, private spinner: NgxSpinnerService) { }
 
-  ngOnInit() {
-    this.IsLoading = true;
+  async ngOnInit() {
+    this.spinner.show();
+
 
     this.LoggedInUserEmail = localStorage.getItem("Email");
-    this.cs.getProducts(this.LoggedInUserEmail).subscribe((data: ProductCart[]) => {
-      this.productList = data;
-      console.log("data");
-      console.log(data);
-      console.log("data");
-    })
-
-    this.IsLoading = false;
 
 
+    const productpromise= await  this.cs.getProducts(this.LoggedInUserEmail).toPromise();
+    this.productList = productpromise;
+
+
+    this.spinner.hide();
   }
 
   async DeleteProductCart(Id: number) {
-    this.IsLoading = true;
+    this.spinner.show();
     await this.cs.DeleteProductCartItem(Id).toPromise();
     this.ngOnInit();
-    this.IsLoading = false;
+    this.spinner.hide();
+
 
   }
 
   async incrementItem(Id: number) {
-    this.IsLoading = true;
+    this.spinner.show();
     await this.cs.increaseProductCartItem(Id).toPromise();
     this.ngOnInit();
-    this.IsLoading = false;
+    this.spinner.hide();
   }
 
   async decrementItem(Id: number) {
-    this.IsLoading = true;
+    this.spinner.show();
     await this.cs.decreaseProductCartItem(Id).toPromise();
     this.ngOnInit();
-    this.IsLoading = false;
+    this.spinner.hide();
 
+    
   }
 
 
 
 }
+
+
+
+/* this.cs.getProducts(this.LoggedInUserEmail).subscribe((data: ProductCart[]) => {
+      this.productList = data;
+      
+    })*/

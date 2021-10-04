@@ -1,5 +1,6 @@
 <!-- <p>adminapproval works!</p> -->
-<table class="table">
+<div style="height: 20px;"></div>
+<table class="table p-2">
     <thead>
         <tr>
             <th>ProductName</th>
@@ -20,7 +21,12 @@
             <td>{{product.retailerId}}</td>
             <td>{{product.status?'Approved':'Pending for Approval'}}</td>
             <td>
-                <button class="btn btn-primary btn-sn" (click)="ApproveProduct(product.productId)">{{product.status?'Approved':'Approve'}}</button>
+                <ng-container *ngIf="product.status" >
+                <button class="btn btn-success btn-sm" >Approved</button>
+                </ng-container>
+                <ng-container *ngIf="!product.status" >
+                <button class="btn btn-primary btn-sm" (click)="ApproveProduct(product.productId)">Approve</button>
+                </ng-container>
             </td>
         </tr>   
     </tbody>

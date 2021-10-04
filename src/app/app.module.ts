@@ -46,6 +46,7 @@ import { CompareComponent } from './compare/compare.component';
 import { TestImageComponent } from './test-image/test-image.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 
@@ -97,7 +98,8 @@ import { EditProductComponent } from './edit-product/edit-product.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    NgxSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

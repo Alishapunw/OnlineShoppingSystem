@@ -7,6 +7,7 @@ import { CartService } from '../services/cart.service';
 import { FilterPipe } from '../filter.pipe';
 import { ProductCartService } from '../product-cart.service';
 import { WishlistService } from '../wishlist.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 @Component({
@@ -16,31 +17,47 @@ import { WishlistService } from '../wishlist.service';
 })
 export class HomeComponent implements OnInit {
   
-  topProducts:Product[] = [];
+  allProducts:Product[] = [];
+  laptopProducts:Product[] = [];
+  mobileProducts:Product[] = [];
+  shoesProducts:Product[] = [];
+  mensshirtsProducts:Product[] = [];
   ItopProducts:Product[] = [];
   oneProduct!:Product;
   searchKey:string="";
+  p: number = 1;
+
   
 
-  constructor(public ps:ProductserviceService, public carts:ProductCartService, public router:Router, public wls:WishlistService) { }
+  constructor(public ps:ProductserviceService, public carts:ProductCartService, public router:Router, public wls:WishlistService, private spinner: NgxSpinnerService) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
 
     /*  console.log("OSGS");  */
 
-    this.ps.getProducts().subscribe( (pl:Product[]) => {
-    console.log(pl);
-    this.topProducts = pl;
-    console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-    })
+     this.spinner.show();
 
-  
+    const promise= await this.ps.getProducts().toPromise();
+
+    this.allProducts = promise
+
+     this.allProducts.forEach(element => {
+      if (element.categoryId==2) {
+        this.laptopProducts.push(element);
+      }
+      else if (element.categoryId==8) {
+        this.shoesProducts.push(element);
+      }
+      else if (element.categoryId==9) {
+        this.mensshirtsProducts.push(element);
+      }
+   });
     this.ps.search.subscribe((val:any)=>{
       this.searchKey=val;
     })
 
    
-
+      this.spinner.hide();
   
 }
 
@@ -73,3 +90,25 @@ addProductToCart(product:Product){
 
 
 }
+
+
+
+ 
+
+    /*this.ps.getProducts().subscribe( (pl:Product[]) => {
+    console.log(pl);
+    this.allProducts = pl;
+
+    pl.forEach(element => {
+      if (element.categoryId==2) {
+        this.laptopProducts.push(element);
+      }
+      else if (element.categoryId==8) {
+        this.shoesProducts.push(element);
+      }
+      else if (element.categoryId==9) {
+        this.mensshirtsProducts.push(element);
+      }
+    });
+    console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+    })  */
