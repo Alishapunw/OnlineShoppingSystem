@@ -1,55 +1,56 @@
+<div style="height: 20px;"></div>
 
-<div class="col-sm-10">
-    <body>
-        <br><br>
-        <div class="container">
-            <div class="row">
-              <div class="col" style="padding-left:100px">
-                <div *ngFor="let item of RetailerProducts">
-                  <div class="card" style="width: 50rem;">
-                    <!-- <div class="card-deck"> -->
-                      <!-- <div class="card border border-primary"  *ngFor="let p of productImages| slice:1:p.productImages.length"> -->
-                        <div class="card-img-top">
-                          <div [id]="'carouselExampleControls'+item.productId" class="carousel slide"   data-ride="carousel">
-                              <div class="carousel-inner">
-                                  <div class="carousel-item active">
-                                      <img class="card-img-top" style="height: 300px;width: 300px;"  [src]="'http://localhost:65061/'+item.productImages[0].imagePath" alt="First slide">
-                                  </div>
-                                  <div class="carousel-item" *ngFor="let ii of item.productImages | slice:1:item.productImages.length">
-                                      <img class="card-img-top" style="height: 300px;width: 300px;"   [src]="'http://localhost:65061/'+ii.imagePath" alt="slide">
-                                  </div>
-                              </div>
-                              <a class="carousel-control-prev" [href]="'#carouselExampleControls'+item.productId" role="button"
-                                  data-slide="prev">
-                                  <span class="carousel-control-prev-icon carousel-aria-button" aria-hidden="true"></span>
-                                  <span class="sr-only">Previous</span>
-                              </a>
-                              <a class="carousel-control-next" [href]="'#carouselExampleControls'+item.productId" role="button"
-                                  data-slide="next">
-                                  <span class="carousel-control-next-icon carousel-aria-button" aria-hidden="true"></span>
-                                  <span class="sr-only">Next</span>
-                              </a>
-                          </div>
-                      </div>
-                  <!-- </div> -->
+<div class="container-fluid" style="min-height: 400px;">
 
-                  
-                    <div class="card-body">
-                      <h5 class="card-title">{{item.productName}}</h5>
-                     <h6 class="card-subtitle mb-2 text-muted">Product ID: {{item.productId}}</h6> 
-                      <p class="card-text">Brand Name: {{item.brandName}}</p>
-                      <p class="card-text">Price Per Unit {{item.pricePerUnit}}</p>
-                      <p class="card-text">Description: {{item.description}}</p>
-                      <a [routerLink]="['/EditProduct/',item.productId]" ><button class="btn btn-primary">Edit</button></a> &nbsp;
-                  </div>
-                  </div>
-                  <br>
+  <div class="row hidden-md-up justify-content-center">
+
+    <div class="col-md-8 pb-2" *ngFor="let item of RetailerProducts">
+      <div class="card">
+        
+            <div [id]="'carouselExampleControls'+item.productId" class="carousel slide" data-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img class="card-img-top" style="height: 300px;width: 300px;"
+                    [src]="'http://localhost:65061/'+item.productImages[0].imagePath" alt="First slide">
+                </div>
+                <div class="carousel-item" *ngFor="let ii of item.productImages | slice:1:item.productImages.length">
+                  <img class="card-img-top" style="height: 300px;width: 300px;"
+                    [src]="'http://localhost:65061/'+ii.imagePath" alt="slide">
                 </div>
               </div>
+              <a class="carousel-control-prev" [href]="'#carouselExampleControls'+item.productId" role="button"
+                data-slide="prev">
+                <span class="carousel-control-prev-icon carousel-aria-button" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" [href]="'#carouselExampleControls'+item.productId" role="button"
+                data-slide="next">
+                <span class="carousel-control-next-icon carousel-aria-button" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
             </div>
-          <!-- </div> -->
-          <!-- </div> -->
-        </div>
-    </body>
+         
+            <div class="card-body">
+              <h5 class="card-title">{{item.productName}}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Product ID: {{item.productId}}</h6>
+              <p class="card-text">Brand Name: {{item.brandName}}</p>
+              <p class="card-text">Price Per Unit : {{item.pricePerUnit| currency:"INR"}}</p>
+              <p class="card-text">Description: {{item.description}}</p>
+              <a [routerLink]="['/EditProduct/',item.productId]"><button class="btn btn-primary">Edit</button></a>
+              &nbsp;
+            </div>
+
+         
 
 
+
+
+
+      </div>
+      <br>
+    </div>
+  </div>
+
+
+
+</div>

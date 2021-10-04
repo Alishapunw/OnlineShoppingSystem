@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AuthenticationService } from 'src/app/authentication.service';
 import { ProductserviceService } from 'src/app/productservice.service';
 import { CartService } from 'src/app/services/cart.service';
@@ -16,7 +17,7 @@ export class NavpageComponent implements OnInit {
   CurrentUserEmail:any = "";
   userRole:any = "customer";
   public searchTerm:string='';
-  constructor(private cart:CartService ,public service:ProductserviceService,public auth:AuthenticationService, public router:Router) { }
+  constructor(private cart:CartService ,public service:ProductserviceService,public auth:AuthenticationService, public router:Router,  private toastr: ToastrService) { }
 
   ngOnInit(): void {
     
@@ -45,6 +46,11 @@ export class NavpageComponent implements OnInit {
 
     //this.message=false;
     this.router.navigate(['Login']); 
+
+    this.toastr.success('Logged out successfully', '' ,{
+  timeOut: 2000,
+  positionClass	: "toast-bottom-right"
+});
   } 
   search(event:any)
   {

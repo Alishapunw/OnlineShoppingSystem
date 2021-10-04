@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
 import { Product } from '../product';
 import { ProductCartService } from '../product-cart.service';
 import { Wishlist } from '../wishlist';
@@ -20,7 +21,7 @@ export class WishlistComponent implements OnInit {
 
 
 
-  constructor(private ws: WishlistService, public router:Router, public carts:ProductCartService, private spinner: NgxSpinnerService) { }
+  constructor(private ws: WishlistService, public router:Router, public carts:ProductCartService, private spinner: NgxSpinnerService, private toastr: ToastrService) { }
 
   async ngOnInit() {
      this.spinner.show();
@@ -46,8 +47,12 @@ export class WishlistComponent implements OnInit {
         this.router.navigateByUrl("/Login")
     }
     else{
-        await this.ws.DeleteProductFromWishlist(productId, LoggedInUserEmail).toPromise(  )
+        await this.ws.DeleteProductFromWishlist(productId, LoggedInUserEmail).toPromise(  );
         this.ngOnInit();
+        this.toastr.success('Product removed from Wishlist', '', {
+      timeOut: 2000,
+      positionClass: "toast-bottom-right"
+    });
     }
 
     this.spinner.hide();
@@ -65,6 +70,10 @@ export class WishlistComponent implements OnInit {
     else{
         await this.carts.AddtoCartAsyncMethod(product, LoggedInUserEmail).toPromise(  )
         this.ngOnInit();
+        this.toastr.success('Product added to Cart', '', {
+      timeOut: 2000,
+      positionClass: "toast-bottom-right"
+    });
     }
     this.spinner.hide();
   }

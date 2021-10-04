@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
 import { OrdersService } from '../orders.service';
 import { ProductCart } from '../product-cart';
 import { ProductCartService } from '../product-cart.service';
@@ -18,7 +19,7 @@ export class ShoppingComponent implements OnInit {
 
   productList: ProductCart[] = [];
 
-  constructor(private cs: CartService,public o:OrdersService, private spinner: NgxSpinnerService) { }
+  constructor(private cs: CartService, public o: OrdersService, private spinner: NgxSpinnerService, private toastr: ToastrService) { }
 
   async ngOnInit() {
     this.spinner.show();
@@ -27,7 +28,7 @@ export class ShoppingComponent implements OnInit {
     this.LoggedInUserEmail = localStorage.getItem("Email");
 
 
-    const productpromise= await  this.cs.getProducts(this.LoggedInUserEmail).toPromise();
+    const productpromise = await this.cs.getProducts(this.LoggedInUserEmail).toPromise();
     this.productList = productpromise;
 
 
@@ -39,6 +40,10 @@ export class ShoppingComponent implements OnInit {
     await this.cs.DeleteProductCartItem(Id).toPromise();
     this.ngOnInit();
     this.spinner.hide();
+    this.toastr.success('Product Removed from Cart', '', {
+      timeOut: 2000,
+      positionClass: "toast-bottom-right"
+    });
 
 
   }
@@ -56,7 +61,7 @@ export class ShoppingComponent implements OnInit {
     this.ngOnInit();
     this.spinner.hide();
 
-    
+
   }
 
 
@@ -67,5 +72,5 @@ export class ShoppingComponent implements OnInit {
 
 /* this.cs.getProducts(this.LoggedInUserEmail).subscribe((data: ProductCart[]) => {
       this.productList = data;
-      
+
     })*/

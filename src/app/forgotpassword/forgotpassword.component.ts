@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AuthenticationService } from '../authentication.service';
 
 @Component({
@@ -10,74 +11,78 @@ import { AuthenticationService } from '../authentication.service';
 })
 export class ForgotpasswordComponent implements OnInit {
 
-  user!:User;
-  IsOTPValid:boolean = true;
-  IsLoading:boolean = false;
-  PasswordMatch:boolean=true;
+  user!: User;
+  IsOTPValid: boolean = true;
+  IsLoading: boolean = false;
+  PasswordMatch: boolean = true;
 
-  ForgotPasswordForm=new FormGroup({
-    Password:new FormControl("",[Validators.required,Validators.pattern("[A-Z](?=.*[a-z0-9A-Z])(?=.*?[!@#\$&*~]).{7,15}$")]),
-    ConfirmPassword:new FormControl("",[Validators.required,Validators.pattern("[A-Z](?=.*[a-z0-9A-Z])(?=.*?[!@#\$&*~]).{7,15}$")]),
-    Otp:new FormControl("",[Validators.required]),
+  ForgotPasswordForm = new FormGroup({
+    Password: new FormControl("", [Validators.required, Validators.pattern("[A-Z](?=.*[a-z0-9A-Z])(?=.*?[!@#\$&*~]).{7,15}$")]),
+    ConfirmPassword: new FormControl("", [Validators.required, Validators.pattern("[A-Z](?=.*[a-z0-9A-Z])(?=.*?[!@#\$&*~]).{7,15}$")]),
+    Otp: new FormControl("", [Validators.required]),
   });
 
-  constructor(public service:AuthenticationService, public router:Router) { }
+  constructor(public service: AuthenticationService, public router: Router, private toastr: ToastrService) { }
 
-  
+
 
   ngOnInit(): void {
-    this.user=new User()
-    
+    this.user = new User()
+
   }
 
   /*get Email(){
     return this.ForgotPasswordForm.get("Email");
   }*/
-  get Password(){
+  get Password() {
     return this.ForgotPasswordForm.get("Password");
   }
-  get ConfirmPassword(){
+  get ConfirmPassword() {
     return this.ForgotPasswordForm.get("ConfirmPassword");
   }
-  get Otp(){
+  get Otp() {
     return this.ForgotPasswordForm.get("Otp");
   }
 
-  Submitdata(){
-    this.IsLoading=true;
+  Submitdata() {
+    this.IsLoading = true;
     this.IsOTPValid = true;
     this.PasswordMatch = true;
 
-    
-    this.ForgotPasswordForm.value["Email"]=localStorage.getItem('ForgotEmail');
 
-    if(this.ForgotPasswordForm.value["Password"] != this.ForgotPasswordForm.value["ConfirmPassword"] ){
+    this.ForgotPasswordForm.value["Email"] = localStorage.getItem('ForgotEmail');
+
+    if (this.ForgotPasswordForm.value["Password"] != this.ForgotPasswordForm.value["ConfirmPassword"]) {
       this.PasswordMatch = false;
-      this.IsLoading=false;
+      this.IsLoading = false;
     }
-    else{
-    this.service.ForgotPassword(this.ForgotPasswordForm.value).subscribe( (data:any) =>{ 
-      console.log(data);
-      if(data["IsOTPValid"] == true){
-        this.IsOTPValid=true;
-        this.IsLoading=false;
-        this.router.navigateByUrl("/Login")
+    else {
+      this.service.ForgotPassword(this.ForgotPasswordForm.value).subscribe((data: any) => {
+        console.log(data);
+        if (data["IsOTPValid"] == true) {
+          this.IsOTPValid = true;
+          this.IsLoading = false;
+          this.toastr.success('Password has been changed successfully.', '', {
+            timeOut: 2000,
+            positionClass: "toast-bottom-right"
+          });
+          this.router.navigateByUrl("/Login")
+        }
+        else if (data["IsOTPValid"] == false) {
+          this.IsOTPValid = false;
+          this.IsLoading = false;
+        }
       }
-      else if(data["IsOTPValid"] == false){
-        this.IsOTPValid=false;
-        this.IsLoading=false;
-      }
-     } 
-     );
+      );
     }
 
 
   }
 }
 
-class User{
+class User {
   NewPassword!: string;
-  Password!:string;
-  otp!:string;
-  constructor(){}
+  Password!: string;
+  otp!: string;
+  constructor() { }
 }

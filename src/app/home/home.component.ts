@@ -8,6 +8,7 @@ import { FilterPipe } from '../filter.pipe';
 import { ProductCartService } from '../product-cart.service';
 import { WishlistService } from '../wishlist.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -29,7 +30,7 @@ export class HomeComponent implements OnInit {
 
   
 
-  constructor(public ps:ProductserviceService, public carts:ProductCartService, public router:Router, public wls:WishlistService, private spinner: NgxSpinnerService) { }
+  constructor(public ps:ProductserviceService, public carts:ProductCartService, public router:Router, public wls:WishlistService, private spinner: NgxSpinnerService, private toastr: ToastrService) { }
 
   async ngOnInit() {
 
@@ -58,17 +59,23 @@ export class HomeComponent implements OnInit {
 
    
       this.spinner.hide();
-  
+
+       
 }
 
-addProductToCart(product:Product){
+ addProductToCart(product:Product){
     var LoggedInUserEmail = localStorage.getItem("Email");
     console.log(LoggedInUserEmail);  
     if(LoggedInUserEmail == null){
         this.router.navigateByUrl("/Login")
     }
     else{
-        this.carts.AddtoCart(product, LoggedInUserEmail)
+        this.carts.AddtoCart(product, LoggedInUserEmail);
+this.toastr.success('Added to cart', '' ,{
+  timeOut: 2000,
+  positionClass	: "toast-bottom-right"
+});
+  
     }
     //this.carts.AddtoCart(product)
   }
@@ -81,7 +88,11 @@ addProductToCart(product:Product){
         this.router.navigateByUrl("/Login")
     }
     else{
-        this.wls.AddtoWishlist(productId, LoggedInUserEmail)
+        this.wls.AddtoWishlist(productId, LoggedInUserEmail);
+        this.toastr.success('Added to wishlist', '' ,{
+  timeOut: 2000,
+  positionClass	: "toast-bottom-right"
+});
     }
     //this.carts.AddtoCart(product)
   }

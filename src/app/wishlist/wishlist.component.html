@@ -35,7 +35,7 @@
                                 <tbody>
                                     <tr *ngFor="let product of wishList;let i=index">
                                         <td>{{i+1}}</td>
-                                        <td>{{product.product.productName}}</td>
+                                        <td> <a [routerLink]="['/ProductDetail/', product.productId]"> {{product.product.productName}} </a> </td>
                                         <td>{{product.product.pricePerUnit}}</td>
                                         <td><button (click)="addProductToCart(product.product)" class="btn btn-success">
                                                 <i class="fas fa-cart-plus"></i>

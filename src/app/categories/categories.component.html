@@ -20,7 +20,8 @@
 
             <div class="container">
                 <div class="row hidden-md-up">
-                    <div class="col-md-4 pb-2" *ngFor="let p of currentproductsList | paginate: { itemsPerPage: 6, currentPage: p }">
+                    <div class="col-md-4 pb-2"
+                        *ngFor="let p of currentproductsList | paginate: { itemsPerPage: 6, currentPage: p }">
 
                         <div class="card border border-primary">
 
@@ -29,13 +30,15 @@
                                 data-ride="carousel">
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
-                                        <img class="card-img-top" [src]="'http://localhost:65061/'+p.productImages[0].imagePath"
+                                        <img class="card-img-top"
+                                            [src]="'http://localhost:65061/'+p.productImages[0].imagePath"
                                             alt="First slide">
                                     </div>
                                     <div class="carousel-item"
                                         *ngFor="let ii of p.productImages | slice:1:p.productImages.length">
-                                        <img class="card-img-top" [src]="'http://localhost:65061/'+ii.imagePath" alt="slide">
-                                    </div>  
+                                        <img class="card-img-top" [src]="'http://localhost:65061/'+ii.imagePath"
+                                            alt="slide">
+                                    </div>
                                 </div>
                                 <a class="carousel-control-prev" [href]="'#carouselExampleControls'+p.productId"
                                     role="button" data-slide="prev">
@@ -51,12 +54,13 @@
                                 </a>
                             </div>
 
-                            <a [routerLink]="['/ProductDetail/', p.productId]" style="min-height: 162px;">
-                                <div class="card-body">
+                            <div class="card-body" style="min-height: 162px;">
+                                <a [routerLink]="['/ProductDetail/', p.productId]" style="text-decoration: none;">
                                     <h6 class="card-title">{{p.productName}}</h6>
                                     <p class="card-text">{{p.description.slice(0,50).concat("...")}}</p>
-                                </div>
-                            </a>
+                                </a>
+
+                            </div>
 
                             <div class="card-footer bg-transparent border-primary">
                                 <div class="row">
@@ -64,7 +68,7 @@
                                         <h6 class="text-center ">{{p.pricePerUnit| currency:"INR"}}</h6>
 
                                     </div>
-                                  
+
                                     <div class="col-2">
                                         <i (click)="addProductToWishlist(p.productId)" style="color: #0275d8;"
                                             onmouseover="this.style.color = '#8dbee9'"
@@ -78,16 +82,18 @@
                                             class="fas  fa-cart-plus fa-lg"></i>
                                     </div>
                                     <div class="col-2">
-                                        <i [routerLink]="['/ProductDetail/', p.productId]" class="fas fa-eye" style="color: #0275d8; " onmouseover="this.style.color = '#8dbee9'" onmouseout="this.style.color = '#0275d8'"></i>
+                                        <i [routerLink]="['/ProductDetail/', p.productId]" class="fas fa-eye"
+                                            style="color: #0275d8; " onmouseover="this.style.color = '#8dbee9'"
+                                            onmouseout="this.style.color = '#0275d8'"></i>
                                     </div>
-                           
-                                    
+
+
                                 </div>
                             </div>
 
                         </div>
                     </div>
-                    
+
 
 
                 </div>
@@ -95,7 +101,7 @@
             <div class="row justify-content-center mt-4">
                 <pagination-controls (pageChange)="p = $event"></pagination-controls>
             </div>
-            
+
         </section>
 
 

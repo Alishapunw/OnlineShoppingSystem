@@ -47,6 +47,8 @@ import { TestImageComponent } from './test-image/test-image.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { ToastrModule, ToastNoAnimation, ToastNoAnimationModule } from 'ngx-toastr';
+
 
 
 
@@ -89,7 +91,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     CompareComponent,
     TestImageComponent,
     OrderDetailsComponent,
-    EditProductComponent
+    EditProductComponent,
   ],
   imports: [
     BrowserModule,
@@ -99,7 +101,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     ReactiveFormsModule,
     HttpClientModule,
     NgxPaginationModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    ToastNoAnimationModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

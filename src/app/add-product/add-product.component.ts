@@ -6,6 +6,8 @@ import { Category } from '../category';
 import { CategoriesService } from '../categories.service';
 import { RetailerService } from '../retailer.service';
 import { Retailer1 } from '../retailer1';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-product',
@@ -16,10 +18,10 @@ export class AddProductComponent implements OnInit {
 
 
   ProductForm!: FormGroup;
-  ProductImages!:FormArray;
-  email?:any;
-  retailer?:Retailer1;
-  id?:number;
+  ProductImages!: FormArray;
+  email?: any;
+  retailer?: Retailer1;
+  id?: number;
   categoriesList: Category[] = [];
   fileToUpload1: any;
   fileToUpload2: any;
@@ -27,16 +29,22 @@ export class AddProductComponent implements OnInit {
   fileToUpload4: any;
 
 
-  constructor( private formBuilder:FormBuilder, public service:RetailerService,public cs: CategoriesService,public route:Router, public http:HttpClient) { }
+  constructor(private formBuilder: FormBuilder, public service: RetailerService, public cs: CategoriesService, public route: Router, public http: HttpClient, private spinner: NgxSpinnerService, private toastr: ToastrService, public router:Router) { }
 
-  ngOnInit(): void {
+   ngOnInit() {
+     //this.spinner.show();
 
-    this.cs.getCategories().subscribe((data:any) => {
+
+      this.cs.getCategories().subscribe((data: any) => {
       this.categoriesList = data;
       console.log(data);
     });
 
-    this.ProductForm = this.formBuilder.group( {
+    //const promise = await  this.cs.getCategories().toPromise();
+    //this.categoriesList = promise;
+
+
+    this.ProductForm = this.formBuilder.group({
       ProductName: new FormControl(""),
       BrandName: new FormControl(""),
       PricePerUnit: new FormControl(""),
@@ -46,113 +54,114 @@ export class AddProductComponent implements OnInit {
       RetailerId: new FormControl(""),
       //ProductImages: this.formBuilder.array( [  ] )
 
-    } )
+    })
 
-    //this.addNewProductImageField();
+          //this.spinner.hide();
+
   }
 
-  
 
-  createNewProductImageField(){
+
+  createNewProductImageField() {
     return this.formBuilder.control("")
   }
 
-  getAllProductImages(){
+  getAllProductImages() {
     return this.ProductForm.get("ProductImages") as FormArray;
   }
 
-  addNewProductImageField():void{
+  addNewProductImageField(): void {
     this.ProductImages = this.ProductForm.get("ProductImages") as FormArray;
-    this.ProductImages.push( this.createNewProductImageField() );
+    this.ProductImages.push(this.createNewProductImageField());
   }
 
-   handleFileInput1(e: any) {
+  handleFileInput1(e: any) {
     this.fileToUpload1 = e?.target?.files[0];
   }
 
-   handleFileInput2(e: any) {
+  handleFileInput2(e: any) {
     this.fileToUpload2 = e?.target?.files[0];
   }
 
-   handleFileInput3(e: any) {
+  handleFileInput3(e: any) {
     this.fileToUpload3 = e?.target?.files[0];
   }
 
-   handleFileInput4(e: any) {
+  handleFileInput4(e: any) {
     this.fileToUpload4 = e?.target?.files[0];
   }
 
-  get ProductName()
-  {
+  get ProductName() {
     return this.ProductForm.get('ProductName');
   }
-  get BrandName()
-  {
+  get BrandName() {
     return this.ProductForm.get('BrandName');
   }
-  get Description()
-  {
+  get Description() {
     return this.ProductForm.get('Description');
   }
-  get PricePerUnit()
-  {
+  get PricePerUnit() {
     return this.ProductForm.get('PricePerUnit');
   }
-  get Quantity()
-  {
+  get Quantity() {
     return this.ProductForm.get('Quantity');
   }
-  get CategoryId()
-  {
+  get CategoryId() {
     return this.ProductForm.get('CategoryId');
   }
-  get RetailerId()
-  {
+  get RetailerId() {
     return this.ProductForm.get('CategoryId');
   }
 
-  
-  SubmitProduct()
-  {
+
+  SubmitProduct() {
     console.log(this.ProductForm.value);
-    this.email=localStorage.getItem("Email");
-    this.service.GetRetailerByEmail(this.email).subscribe((data:Retailer1)=>
-    {
+    this.email = localStorage.getItem("Email");
+    this.service.GetRetailerByEmail(this.email).subscribe((data: Retailer1) => {
       console.log(data);
-      this.retailer=data;
-      this.id=this.retailer.retailerId;
+      this.retailer = data;
+      this.id = this.retailer.retailerId;
       console.log(this.id);
 
-    this.ProductForm.controls["RetailerId"].setValue(this.id);
-    this.ProductForm.controls["CategoryId"].setValue( parseInt(this.ProductForm.value["CategoryId"]  ) )
-    const formData: FormData = new FormData();
-    formData.append('productName', this.ProductForm.value["ProductName"]); 
-    formData.append('brandName', this.ProductForm.value["BrandName"]); 
-    formData.append('pricePerUnit', this.ProductForm.value["PricePerUnit"]); 
-    formData.append('description', this.ProductForm.value["Description"]); 
-    formData.append('quantity', this.ProductForm.value["Quantity"]); 
-    formData.append('categoryId', this.ProductForm.value["CategoryId"]); 
-    formData.append('retailerId', this.ProductForm.value["RetailerId"]); 
-    formData.append('myFile1', this.fileToUpload1); 
-    formData.append('myFile2', this.fileToUpload2); 
-    formData.append('myFile3', this.fileToUpload3); 
-    formData.append('myFile4', this.fileToUpload4); 
+      this.ProductForm.controls["RetailerId"].setValue(this.id);
+      this.ProductForm.controls["CategoryId"].setValue(parseInt(this.ProductForm.value["CategoryId"]))
+      const formData: FormData = new FormData();
+      formData.append('productName', this.ProductForm.value["ProductName"]);
+      formData.append('brandName', this.ProductForm.value["BrandName"]);
+      formData.append('pricePerUnit', this.ProductForm.value["PricePerUnit"]);
+      formData.append('description', this.ProductForm.value["Description"]);
+      formData.append('quantity', this.ProductForm.value["Quantity"]);
+      formData.append('categoryId', this.ProductForm.value["CategoryId"]);
+      formData.append('retailerId', this.ProductForm.value["RetailerId"]);
+      formData.append('myFile1', this.fileToUpload1);
+      formData.append('myFile2', this.fileToUpload2);
+      formData.append('myFile3', this.fileToUpload3);
+      formData.append('myFile4', this.fileToUpload4);
 
-    return this.http.post('http://localhost:65061/api/retailers/AddProducts', formData, {  headers : new HttpHeaders()  }).subscribe( (data) => {  alert("File uploaded"); console.log(data) }) ;
+      return this.http.post('http://localhost:65061/api/retailers/AddProducts', formData, { headers: new HttpHeaders() }).subscribe((data) => {
+        this.toastr.success('Product Added Successfully', '', {
+          timeOut: 2000,
+          positionClass: "toast-bottom-right"
+        });
+
+        this.router.navigateByUrl("/RetailerProfile")
+
+
+      });
 
 
 
 
-    /*this.service.AddProduct(this.ProductForm.value).subscribe((data:any)=>
-    {
-      console.log(data);
-      this.route.navigateByUrl("/RetailerHome");
-    }) */
+      /*this.service.AddProduct(this.ProductForm.value).subscribe((data:any)=>
+      {
+        console.log(data);
+        this.route.navigateByUrl("/RetailerHome");
+      }) */
 
-  })
+    })
 
   }
-  
+
 
 }
 

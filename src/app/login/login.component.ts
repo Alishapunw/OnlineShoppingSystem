@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AuthenticationService } from '../authentication.service';
 
 @Component({
@@ -23,7 +24,7 @@ export class LoginComponent implements OnInit {
     Password: new FormControl("",  [Validators.required, Validators.pattern("[A-Z](?=.*[a-z0-9A-Z])(?=.*?[!@#\$&*~]).{7,15}$")]),
   })
 
-  constructor(public service:AuthenticationService, public router2:Router) { }
+  constructor(public service:AuthenticationService, public router2:Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
   }
@@ -66,6 +67,10 @@ export class LoginComponent implements OnInit {
         this.service.subject.next(true);
         this.service.userRole.next("admin");
         this.redirectUserBasedOnRole();
+        this.toastr.success('Login Success', '', {
+            timeOut: 2000,
+            positionClass: "toast-bottom-right"
+          });
       }
 
      } 
@@ -91,6 +96,10 @@ export class LoginComponent implements OnInit {
           this.service.subject.next(true);
           this.service.userRole.next("customer");
           this.redirectUserBasedOnRole();
+          this.toastr.success('Login Success', '', {
+            timeOut: 2000,
+            positionClass: "toast-bottom-right"
+          });
 
           console.log(localStorage.getItem("Email"));
           console.log(localStorage.getItem("userRole"));
@@ -120,6 +129,11 @@ export class LoginComponent implements OnInit {
             this.service.subject.next(true);
             this.service.userRole.next("retailer")
             this.redirectUserBasedOnRole();
+            this.toastr.success('Login Success', '', {
+            timeOut: 2000,
+            positionClass: "toast-bottom-right"
+          });
+          
           }
          } 
          );

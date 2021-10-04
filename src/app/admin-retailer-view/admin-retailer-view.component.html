@@ -5,7 +5,7 @@
 <br><br> -->
 <h4>List of Retailers: </h4>
 <hr><br>
-<div container="fluid">
+<div class="container-fluid" style="min-height: 320px;">
 <table class="table table-bordered table-hover table-md">
     <thead class="table-primary">
       <tr>
@@ -13,8 +13,8 @@
         <th scope="col">Retailer's Name</th>
         <th scope="col">Email</th>
         <th scope="col">Mobile Number</th>
-        <!-- <th scope="col">Notification to Verify</th> -->
-        <th scope="col">Delete</th>
+        <!-- <th scope="col">Notification to Verify</th> 
+        <th scope="col">Delete</th> -->
       </tr>
     </thead>
     <tbody *ngFor="let r of retailers;let i = index;">
@@ -23,7 +23,9 @@
         <td>{{r.retailerName}}</td>
         <td>{{r.email}}</td>
         <td>{{r.retailerMobile}}</td>
+        <!--  
         <td><button (click)="DeleteOneData(r.email)" class="btn btn-danger">Delete</button></td>
+        -->
       </tr>
 
     </tbody>
