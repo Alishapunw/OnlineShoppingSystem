@@ -2,8 +2,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CategoriesService } from '../categories.service';
 import { Category } from '../category';
+import { CategoriesService } from '../categories.service';
 import { RetailerService } from '../retailer.service';
 import { Retailer1 } from '../retailer1';
 
@@ -31,7 +31,7 @@ export class AddProductComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.cs.getCategories().subscribe((data) => {
+    this.cs.getCategories().subscribe((data:any) => {
       this.categoriesList = data;
       console.log(data);
     });
