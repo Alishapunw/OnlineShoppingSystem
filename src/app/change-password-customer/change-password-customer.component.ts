@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AuthenticationService } from '../authentication.service';
 
 @Component({
@@ -19,7 +20,7 @@ export class ChangePasswordCustomerComponent implements OnInit {
     ConfirmPassword:new FormControl("",[Validators.required])
   });
 
-  constructor(public service:AuthenticationService, public router:Router) { }
+  constructor(public service:AuthenticationService, public router:Router,  private toastr: ToastrService) { }
 
   ngOnInit(): void {
   }
@@ -47,11 +48,15 @@ export class ChangePasswordCustomerComponent implements OnInit {
       console.log(data);
 
       
-      if(data["LoginMessage"] == "InvalidPassword"){
+      if(data["ChangePasswordsuccessful"] == false){
         this.InvalidPassword=true;
         this.IsLoading=false;
       }
-      this.router.navigateByUrl("../Home");
+      this.toastr.success('Password has been changed successfully', '' ,{
+  timeOut: 2000,
+  positionClass	: "toast-bottom-right"
+});
+      this.router.navigateByUrl("/Home");
     }
     );
   }
